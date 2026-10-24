@@ -103,6 +103,21 @@
         .animate-fadeIn {
             animation: fadeIn 0.22s ease-out forwards;
         }
+        .blur-mask-curtain {
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 65%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 65%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.35) 65%, rgba(255, 255, 255, 0) 100%);
+        }
+        .dark .blur-mask-curtain {
+            background: linear-gradient(to bottom, rgba(12, 10, 9, 0.78) 0%, rgba(12, 10, 9, 0.40) 65%, rgba(12, 10, 9, 0) 100%);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #scrollBlurVeil, #navContainer {
+                transition: none !important;
+            }
+        }
     </style>
     @stack('styles')
 </head>
@@ -111,9 +126,12 @@
     <!-- Toast Notification Container -->
     <div id="toastContainer" class="fixed bottom-6 right-6 z-[100] flex flex-col gap-2.5 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
 
+    <!-- ================= TOP PROGRESSIVE SCROLL BLUR CURTAIN (EFEK BUREM WAKTU SCROLL) ================= -->
+    <div id="scrollBlurVeil" class="fixed top-0 left-0 right-0 h-28 sm:h-32 pointer-events-none z-40 blur-mask-curtain transition-opacity duration-300 opacity-0"></div>
+
     <!-- ================= 1. FLOATING GLASS ISLAND NAVIGATION BAR ================= -->
     <header id="navbar" class="fixed top-3 sm:top-5 left-0 right-0 z-50 px-3 sm:px-6 transition-all duration-300">
-        <div id="navContainer" class="max-w-6xl mx-auto rounded-full px-4 sm:px-6 py-2.5 sm:py-3 transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-xl border border-stone-200/90 dark:border-stone-800 bg-white/90 dark:bg-stone-900/90 flex items-center justify-between">
+        <div id="navContainer" class="max-w-6xl mx-auto rounded-full px-4 sm:px-6 py-2.5 sm:py-3 transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl border border-stone-200/90 dark:border-stone-800 bg-white/85 dark:bg-stone-900/85 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="{{ route('home') }}" class="flex items-center gap-2.5 group">
                 <div class="w-9 h-9 rounded-full bg-stone-900 dark:bg-stone-100 text-amber-300 dark:text-stone-900 flex items-center justify-center text-sm shadow-xs group-hover:rotate-45 transition-transform duration-500 shrink-0">
@@ -827,19 +845,34 @@
                 dateInput.value = nextWeek.toISOString().split('T')[0];
             }
 
-            // Dynamic Island Navbar Scroll Effect
+            // Dynamic Island Navbar & Progressive Top Scroll Blur Curtain Effect
             const navContainer = document.getElementById('navContainer');
-            if (navContainer) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 40) {
-                        navContainer.classList.add('shadow-[0_12px_40px_rgba(0,0,0,0.14)]', 'bg-white/95', 'dark:bg-stone-900/95');
-                        navContainer.classList.remove('bg-white/90', 'dark:bg-stone-900/90');
+            const scrollBlurVeil = document.getElementById('scrollBlurVeil');
+
+            function handleNavbarScroll() {
+                const scrolled = window.scrollY > 25;
+                if (navContainer) {
+                    if (scrolled) {
+                        navContainer.classList.add('shadow-[0_12px_40px_rgba(0,0,0,0.12)]', 'bg-white/75', 'dark:bg-stone-900/75', 'backdrop-blur-2xl', 'border-stone-300/80', 'dark:border-stone-700/80');
+                        navContainer.classList.remove('bg-white/85', 'dark:bg-stone-900/85', 'backdrop-blur-xl', 'border-stone-200/90', 'dark:border-stone-800');
                     } else {
-                        navContainer.classList.remove('shadow-[0_12px_40px_rgba(0,0,0,0.14)]', 'bg-white/95', 'dark:bg-stone-900/95');
-                        navContainer.classList.add('bg-white/90', 'dark:bg-stone-900/90');
+                        navContainer.classList.remove('shadow-[0_12px_40px_rgba(0,0,0,0.12)]', 'bg-white/75', 'dark:bg-stone-900/75', 'backdrop-blur-2xl', 'border-stone-300/80', 'dark:border-stone-700/80');
+                        navContainer.classList.add('bg-white/85', 'dark:bg-stone-900/85', 'backdrop-blur-xl', 'border-stone-200/90', 'dark:border-stone-800');
                     }
-                });
+                }
+                if (scrollBlurVeil) {
+                    if (scrolled) {
+                        scrollBlurVeil.classList.remove('opacity-0');
+                        scrollBlurVeil.classList.add('opacity-100');
+                    } else {
+                        scrollBlurVeil.classList.remove('opacity-100');
+                        scrollBlurVeil.classList.add('opacity-0');
+                    }
+                }
             }
+
+            window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+            handleNavbarScroll();
         });
     </script>
     @stack('scripts')
