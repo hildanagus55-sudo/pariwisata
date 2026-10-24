@@ -143,24 +143,20 @@
                 <div class="w-9 h-9 rounded-full bg-stone-900 text-amber-300 flex items-center justify-center text-sm shadow-xs group-hover:rotate-45 transition-transform duration-500 shrink-0">
                     <i class="fa-solid fa-compass"></i>
                 </div>
-                <div class="flex items-baseline gap-1">
+                <div>
                     <span class="text-base font-serif font-bold tracking-tight text-stone-950">Nusantara<span class="italic font-normal text-stone-500">Wander</span></span>
-                    <span id="brandLangTag" class="hidden sm:inline-block text-[9px] font-mono px-1.5 py-0.5 rounded bg-stone-100 text-stone-500 font-semibold tracking-wider">ID</span>
+                    <p class="text-[9px] tracking-widest text-stone-500 uppercase font-semibold">Boutique Travel</p>
                 </div>
             </a>
 
             <!-- Desktop Navigation Links -->
             <nav class="hidden lg:flex items-center gap-1 text-xs font-semibold text-stone-600">
                 <a href="{{ route('home') }}#beranda" data-i18n="navHome" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Beranda</a>
-                <a href="{{ route('destinations.index') }}" data-i18n="navDest" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Destinasi</a>
-                <a href="{{ route('packages.index') }}" data-i18n="navPkg" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Paket Wisata</a>
+                <a href="{{ route('home') }}#destinasi" data-i18n="navDest" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Destinasi</a>
+                <a href="{{ route('home') }}#paket" data-i18n="navPkg" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Paket Wisata</a>
                 <a href="{{ route('home') }}#cerita" data-i18n="navStory" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Filosofi</a>
                 <a href="{{ route('home') }}#galeri" data-i18n="navGallery" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Galeri</a>
                 <a href="{{ route('home') }}#testimoni" data-i18n="navTesti" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Testimoni</a>
-                <a href="{{ route('admin.bookings') }}" class="px-2.5 py-1 rounded-full text-[11px] text-stone-400 hover:text-stone-800 transition-colors flex items-center gap-1">
-                    <i class="fa-regular fa-folder-open text-[10px]"></i>
-                    <span data-i18n="navAdmin">Admin</span>
-                </a>
             </nav>
 
             <!-- Actions: Wishlist, Language Switcher (ID/EN), WhatsApp, CTA -->
@@ -206,12 +202,11 @@
         <div id="mobileMenu" class="hidden lg:hidden max-w-6xl mx-auto mt-2 rounded-3xl bg-white/95 backdrop-blur-xl border border-stone-200/90 p-5 space-y-3 shadow-xl animate-fadeIn">
             <div class="flex flex-col space-y-2 text-xs font-semibold text-stone-700">
                 <a href="{{ route('home') }}#beranda" onclick="toggleMobileMenu()" data-i18n="navHome" class="px-3 py-2 rounded-xl hover:bg-stone-100">Beranda</a>
-                <a href="{{ route('destinations.index') }}" onclick="toggleMobileMenu()" data-i18n="navDest" class="px-3 py-2 rounded-xl hover:bg-stone-100">Destinasi</a>
-                <a href="{{ route('packages.index') }}" onclick="toggleMobileMenu()" data-i18n="navPkg" class="px-3 py-2 rounded-xl hover:bg-stone-100">Paket Wisata</a>
+                <a href="{{ route('home') }}#destinasi" onclick="toggleMobileMenu()" data-i18n="navDest" class="px-3 py-2 rounded-xl hover:bg-stone-100">Destinasi</a>
+                <a href="{{ route('home') }}#paket" onclick="toggleMobileMenu()" data-i18n="navPkg" class="px-3 py-2 rounded-xl hover:bg-stone-100">Paket Wisata</a>
                 <a href="{{ route('home') }}#cerita" onclick="toggleMobileMenu()" data-i18n="navStory" class="px-3 py-2 rounded-xl hover:bg-stone-100">Filosofi</a>
                 <a href="{{ route('home') }}#galeri" onclick="toggleMobileMenu()" data-i18n="navGallery" class="px-3 py-2 rounded-xl hover:bg-stone-100">Galeri</a>
                 <a href="{{ route('home') }}#testimoni" onclick="toggleMobileMenu()" data-i18n="navTesti" class="px-3 py-2 rounded-xl hover:bg-stone-100">Testimoni</a>
-                <a href="{{ route('admin.bookings') }}" onclick="toggleMobileMenu()" data-i18n="navAdmin" class="px-3 py-2 rounded-xl hover:bg-stone-100 text-stone-900">Admin Reservasi</a>
             </div>
             <div class="pt-3 border-t border-stone-200 flex flex-col gap-2">
                 <!-- Mobile Language Selector Row -->
