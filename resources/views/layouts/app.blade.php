@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'NusantaraWander — Jelajahi Keajaiban Wisata Indonesia')</title>
-    <meta name="description" content="@yield('meta_description', 'Platform perjalanan wisata terpadu menghadirkan kurasi destinasi terbaik di seluruh Indonesia dengan kenyamanan dan pemandu lokal profesional.')">
+    <title>@yield('title', 'NusantaraWander — Kurasi Perjalanan & Wisata Alam Indonesia')</title>
+    <meta name="description" content="@yield('meta_description', 'Boutique travel organizer untuk menjelajah pulau, budaya, dan alam tersembunyi di Indonesia bersama pemandu warga lokal.')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <!-- Google Fonts: Plus Jakarta Sans & Newsreader / Playfair Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -24,28 +24,39 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+                        serif: ['"Newsreader"', 'Georgia', 'serif'],
                     },
                     colors: {
-                        brand: {
-                            50: '#eefbf6',
-                            100: '#d6f5e8',
-                            200: '#b0ead4',
-                            300: '#7cd8b8',
-                            400: '#45bf98',
-                            500: '#21a37d',
-                            600: '#148364',
-                            700: '#116952',
-                            800: '#105342',
-                            900: '#0e4437',
+                        stone: {
+                            25: '#fdfcfb',
+                            50: '#faf8f5',
+                            100: '#f5f2ec',
+                            150: '#ede8e1',
+                            200: '#e4ddd3',
+                            300: '#cfc4b4',
+                            400: '#a89882',
+                            500: '#857560',
+                            600: '#685947',
+                            700: '#524536',
+                            800: '#3d3328',
+                            900: '#262019',
+                            950: '#17130f',
                         },
-                        sand: {
-                            50: '#fdfaf6',
-                            100: '#f9f1e7',
-                            200: '#f1dfca',
-                            500: '#d49b54',
-                            600: '#be803b',
+                        forest: {
+                            50: '#f2f7f4',
+                            100: '#e1ede6',
+                            200: '#c5dcce',
+                            600: '#245a43',
+                            700: '#1c4634',
+                            800: '#153629',
+                            900: '#0e241c',
+                        },
+                        clay: {
+                            50: '#faf5f0',
+                            100: '#f4e9dd',
+                            500: '#bd6a3f',
+                            600: '#9d522c',
                         }
                     }
                 }
@@ -55,140 +66,129 @@
 
     <style>
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 7px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: #faf8f5;
         }
         ::-webkit-scrollbar-thumb {
-            background: #148364;
+            background: #d6cebf;
             border-radius: 9999px;
         }
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.90);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a89882;
         }
-        .dark .glass-nav {
-            background: rgba(15, 23, 42, 0.90);
+        .clean-nav {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
-        .hero-gradient {
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.65) 55%, rgba(15, 23, 42, 0.92) 100%);
-        }
-        .card-zoom:hover .card-img {
-            transform: scale(1.08);
-        }
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-        .animate-float {
-            animation: floatSlow 4s ease-in-out infinite;
+        .dark .clean-nav {
+            background: rgba(23, 19, 15, 0.94);
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.96); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .animate-fadeIn {
-            animation: fadeIn 0.25s ease-out forwards;
+            animation: fadeIn 0.22s ease-out forwards;
         }
     </style>
     @stack('styles')
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white transition-colors duration-300">
+<body class="bg-white text-stone-900 dark:bg-stone-950 dark:text-stone-100 font-sans antialiased selection:bg-stone-900 selection:text-white transition-colors duration-200">
 
-    <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
-    <div id="toastContainer" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-3 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed bottom-6 right-6 z-[100] flex flex-col gap-2.5 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
 
-    <!-- ================= 1. NAVIGATION BAR ================= -->
-    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav border-b border-slate-200/70 dark:border-slate-800/80">
+    <!-- 1. Navigation Bar (Clean Editorial Minimalist) -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 clean-nav border-b border-stone-200/80 dark:border-stone-800 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Brand Logo -->
                 <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-500 to-teal-700 flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
-                        <i class="fa-solid fa-compass text-xl"></i>
+                    <div class="w-10 h-10 rounded-xl bg-stone-900 dark:bg-stone-100 dark:text-stone-900 flex items-center justify-center text-white transition-transform group-hover:scale-105">
+                        <i class="fa-solid fa-compass text-base"></i>
                     </div>
                     <div>
-                        <span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Nusantara<span class="text-brand-600 dark:text-brand-400">Wander</span></span>
-                        <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 -mt-1 tracking-wider uppercase">Pesona Indonesia</p>
+                        <span class="text-lg font-serif font-semibold tracking-tight text-stone-950 dark:text-white">Nusantara<span class="italic font-normal text-stone-600 dark:text-stone-300">Wander</span></span>
+                        <p class="text-[10px] tracking-widest text-stone-600 dark:text-stone-300 uppercase font-medium">Boutique Travel Journal</p>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600 dark:text-slate-300">
-                    <a href="{{ route('home') }}#beranda" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Beranda</a>
-                    <a href="{{ route('home') }}#destinasi" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Destinasi</a>
-                    <a href="{{ route('home') }}#paket" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Paket Wisata</a>
-                    <a href="{{ route('home') }}#keunggulan" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Keunggulan</a>
-                    <a href="{{ route('home') }}#galeri" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Galeri</a>
-                    <a href="{{ route('home') }}#testimoni" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Testimoni</a>
-                    <a href="{{ route('admin.bookings') }}" class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 transition-colors">
-                        <i class="fa-solid fa-clipboard-list text-brand-600"></i>
-                        <span>Admin Reservasi</span>
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-700 dark:text-stone-200">
+                    <a href="{{ route('home') }}#beranda" class="hover:text-stone-950 dark:hover:text-white transition-colors">Beranda</a>
+                    <a href="{{ route('home') }}#destinasi" class="hover:text-stone-950 dark:hover:text-white transition-colors">Destinasi</a>
+                    <a href="{{ route('home') }}#paket" class="hover:text-stone-950 dark:hover:text-white transition-colors">Paket Perjalanan</a>
+                    <a href="{{ route('home') }}#cerita" class="hover:text-stone-950 dark:hover:text-white transition-colors">Filosofi</a>
+                    <a href="{{ route('home') }}#galeri" class="hover:text-stone-950 dark:hover:text-white transition-colors">Galeri</a>
+                    <a href="{{ route('home') }}#testimoni" class="hover:text-stone-950 dark:hover:text-white transition-colors">Catatan Tamu</a>
+                    <a href="{{ route('admin.bookings') }}" class="text-xs px-2.5 py-1 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:text-stone-900 border border-stone-200/70 dark:border-stone-700 flex items-center gap-1.5 transition-colors">
+                        <i class="fa-regular fa-folder-open text-stone-500"></i>
+                        <span>Admin</span>
                     </a>
                 </nav>
 
-                <!-- Action Buttons (Wishlist, Theme, CTA) -->
+                <!-- Actions: Wishlist, Theme Toggle, CTA -->
                 <div class="hidden lg:flex items-center gap-3">
-                    <!-- Wishlist Counter Button -->
-                    <button onclick="showSavedDestinations()" class="relative p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Destinasi Tersimpan">
-                        <i class="fa-regular fa-heart text-lg"></i>
-                        <span id="wishlistBadge" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-rose-500 text-white text-[11px] font-bold flex items-center justify-center">0</span>
+                    <button onclick="showSavedDestinations()" class="relative p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors" title="Destinasi Tersimpan">
+                        <i class="fa-regular fa-heart text-base"></i>
+                        <span id="wishlistBadge" class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-stone-900 text-white text-[10px] font-bold flex items-center justify-center">0</span>
                     </button>
 
-                    <!-- Dark Mode Toggle -->
-                    <button onclick="toggleTheme()" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Ubah Tema Tampilan">
-                        <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                    <button onclick="toggleTheme()" class="p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors" title="Ubah Tema">
+                        <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
                     </button>
 
-                    <!-- Pesan Sekarang CTA -->
-                    <button onclick="openBookingModal()" class="ml-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-teal-600 hover:from-brand-700 hover:to-teal-700 text-white font-semibold text-sm shadow-lg shadow-brand-600/25 hover:shadow-brand-600/40 transition-all flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-paper-plane text-xs"></i>
-                        <span>Pesan Sekarang</span>
+                    <a href="https://wa.me/6281199887766" target="_blank" class="px-3.5 py-2 rounded-full border border-stone-300 dark:border-stone-700 text-xs font-semibold hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors flex items-center gap-1.5 text-stone-700 dark:text-stone-200">
+                        <i class="fa-brands fa-whatsapp text-emerald-600"></i>
+                        <span>Konsultasi</span>
+                    </a>
+
+                    <button onclick="openBookingModal()" class="px-5 py-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
+                        Rencanakan Trip
                     </button>
                 </div>
 
-                <!-- Mobile Hamburger Button -->
+                <!-- Mobile Menu Button -->
                 <div class="flex items-center gap-2 lg:hidden">
-                    <button onclick="toggleTheme()" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                        <i id="themeIconMobile" class="fa-solid fa-moon text-lg"></i>
+                    <button onclick="toggleTheme()" class="p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800">
+                        <i id="themeIconMobile" class="fa-solid fa-moon text-sm"></i>
                     </button>
-                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
-                        <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2 rounded-xl text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 focus:outline-none">
+                        <i id="mobileMenuIcon" class="fa-solid fa-bars text-lg"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu Drawer -->
-        <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 space-y-3 shadow-xl">
-            <div class="flex flex-col space-y-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
-                <a href="{{ route('home') }}#beranda" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">Beranda</a>
-                <a href="{{ route('home') }}#destinasi" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">Destinasi Populer</a>
-                <a href="{{ route('home') }}#paket" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">Paket Wisata</a>
-                <a href="{{ route('home') }}#keunggulan" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">Keunggulan Layanan</a>
-                <a href="{{ route('home') }}#galeri" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">Galeri Nusantara</a>
-                <a href="{{ route('home') }}#testimoni" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">Testimoni</a>
-                <a href="{{ route('admin.bookings') }}" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 text-brand-600">Admin Reservasi</a>
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 px-5 pt-3 pb-6 space-y-3 shadow-lg">
+            <div class="flex flex-col space-y-2 text-sm font-medium text-stone-700 dark:text-stone-200">
+                <a href="{{ route('home') }}#beranda" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Beranda</a>
+                <a href="{{ route('home') }}#destinasi" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Destinasi</a>
+                <a href="{{ route('home') }}#paket" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Paket Perjalanan</a>
+                <a href="{{ route('home') }}#cerita" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Filosofi Kami</a>
+                <a href="{{ route('home') }}#galeri" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Galeri Foto</a>
+                <a href="{{ route('home') }}#testimoni" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Catatan Tamu</a>
+                <a href="{{ route('admin.bookings') }}" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-900 dark:text-white font-semibold">Admin Reservasi</a>
             </div>
-            <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2.5">
-                <button onclick="toggleMobileMenu(); showSavedDestinations();" class="w-full py-2.5 px-4 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-sm flex items-center justify-center gap-2">
-                    <i class="fa-regular fa-heart text-rose-500"></i>
-                    <span>Destinasi Favorit (<span id="wishlistBadgeMobile">0</span>)</span>
+            <div class="pt-3 border-t border-stone-200 dark:border-stone-800 flex flex-col gap-2">
+                <button onclick="toggleMobileMenu(); showSavedDestinations();" class="w-full py-2.5 px-4 rounded-xl border border-stone-200 dark:border-stone-700 font-medium text-xs flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-heart text-stone-500"></i>
+                    <span>Tersimpan (<span id="wishlistBadgeMobile">0</span>)</span>
                 </button>
-                <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-600 to-teal-600 text-white font-semibold text-sm shadow-md flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    <span>Pesan Sekarang</span>
+                <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full py-3 px-4 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold text-xs shadow-sm">
+                    Rencanakan Trip Sekarang
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Flash message from session -->
     @if(session('success'))
-        <div class="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-emerald-600 text-white px-6 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-sm font-semibold animate-fadeIn">
-            <i class="fa-solid fa-circle-check text-lg"></i>
+        <div class="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-stone-900 text-white px-5 py-2.5 rounded-full shadow-lg flex items-center gap-2.5 text-xs font-medium animate-fadeIn">
+            <i class="fa-solid fa-check text-emerald-400"></i>
             <span>{{ session('success') }}</span>
         </div>
     @endif
@@ -197,357 +197,316 @@
         @yield('content')
     </main>
 
-    <!-- ================= 8. FOOTER LENGKAP ================= -->
-    <footer class="bg-slate-950 text-slate-300 pt-16 pb-10 border-t border-slate-800">
+    <!-- Footer: Clean, Minimalist, Transparent Editorial -->
+    <footer class="bg-stone-50 dark:bg-stone-900 text-stone-700 dark:text-stone-300 pt-16 pb-12 border-t border-stone-200/80 dark:border-stone-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
-                <!-- Column 1: Brand Info -->
-                <div class="lg:col-span-4">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-teal-700 flex items-center justify-center text-white">
-                            <i class="fa-solid fa-compass text-lg"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-stone-200 dark:border-stone-800">
+                <!-- Col 1: Bio -->
+                <div class="lg:col-span-5">
+                    <div class="flex items-center gap-2.5 mb-3.5">
+                        <div class="w-8 h-8 rounded-lg bg-stone-900 dark:bg-stone-100 dark:text-stone-900 flex items-center justify-center text-white text-xs">
+                            <i class="fa-solid fa-compass"></i>
                         </div>
-                        <span class="text-xl font-extrabold text-white">Nusantara<span class="text-brand-400">Wander</span></span>
+                        <span class="text-base font-serif font-semibold text-stone-900 dark:text-white">Nusantara<span class="italic font-normal text-stone-500">Wander</span></span>
                     </div>
-                    <p class="text-sm text-slate-400 leading-relaxed mb-6">
-                        Platform perjalanan wisata terpadu yang menghadirkan kurasi destinasi terbaik di seluruh Indonesia dengan mengedepankan pariwisata berkelanjutan dan pemberdayaan komunitas lokal.
+                    <p class="text-xs leading-relaxed text-stone-500 dark:text-stone-400 max-w-sm mb-5">
+                        Boutique trip curator berbasis di Indonesia. Kami menemani Anda menikmati keindahan pulau, rasa rempah, dan keramahan warga lokal secara bertanggung jawab dan tanpa tergesa-gesa.
                     </p>
-                    <div class="flex items-center gap-3">
-                        <a href="#footer" onclick="showToast('Membuka halaman Instagram NusantaraWander', 'info')" class="w-10 h-10 rounded-xl bg-slate-900 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="#footer" onclick="showToast('Membuka kanal YouTube NusantaraWander', 'info')" class="w-10 h-10 rounded-xl bg-slate-900 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-                        <a href="#footer" onclick="showToast('Membuka TikTok NusantaraWander', 'info')" class="w-10 h-10 rounded-xl bg-slate-900 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
-                        <a href="https://wa.me/6281199887766" target="_blank" class="w-10 h-10 rounded-xl bg-slate-900 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+                    <div class="flex items-center gap-2.5 text-xs text-stone-500">
+                        <a href="https://wa.me/6281199887766" target="_blank" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors">
                             <i class="fa-brands fa-whatsapp"></i>
                         </a>
+                        <a href="#footer" onclick="showToast('Instagram: @nusantarawander.trip', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#footer" onclick="showToast('YouTube: Dokumentasi Perjalanan Nusantara', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Column 2: Tautan Cepat -->
+                <!-- Col 2: Navigasi -->
                 <div class="lg:col-span-2">
-                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Tautan Cepat</h4>
-                    <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="{{ route('home') }}#beranda" class="hover:text-brand-400 transition-colors">Beranda</a></li>
-                        <li><a href="{{ route('home') }}#destinasi" class="hover:text-brand-400 transition-colors">Destinasi Populer</a></li>
-                        <li><a href="{{ route('home') }}#paket" class="hover:text-brand-400 transition-colors">Paket Wisata</a></li>
-                        <li><a href="{{ route('home') }}#keunggulan" class="hover:text-brand-400 transition-colors">Tentang Kami</a></li>
-                        <li><a href="{{ route('home') }}#galeri" class="hover:text-brand-400 transition-colors">Galeri Foto</a></li>
-                        <li><a href="{{ route('home') }}#testimoni" class="hover:text-brand-400 transition-colors">Ulasan Wisatawan</a></li>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-white mb-3.5">Eksplorasi</h4>
+                    <ul class="space-y-2 text-xs text-stone-500 dark:text-stone-400">
+                        <li><a href="{{ route('home') }}#beranda" class="hover:text-stone-900 dark:hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="{{ route('home') }}#destinasi" class="hover:text-stone-900 dark:hover:text-white transition-colors">Destinasi</a></li>
+                        <li><a href="{{ route('home') }}#paket" class="hover:text-stone-900 dark:hover:text-white transition-colors">Paket Wisata</a></li>
+                        <li><a href="{{ route('home') }}#cerita" class="hover:text-stone-900 dark:hover:text-white transition-colors">Filosofi Perjalanan</a></li>
+                        <li><a href="{{ route('home') }}#galeri" class="hover:text-stone-900 dark:hover:text-white transition-colors">Galeri Dokumentasi</a></li>
                     </ul>
                 </div>
 
-                <!-- Column 3: Kontak Kami -->
-                <div class="lg:col-span-3">
-                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Hubungi Kami</h4>
-                    <ul class="space-y-3 text-sm text-slate-400">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-location-dot text-brand-400 mt-1"></i>
-                            <span>Gedung Pesona Nusantara Lt. 12, Jl. Jenderal Sudirman Kav. 52, Jakarta Selatan 12190</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-phone text-brand-400"></i>
-                            <span>+62 (21) 5098-7788 / 0811-9988-7766</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-envelope text-brand-400"></i>
-                            <span>halo@nusantarawander.id</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-clock text-brand-400"></i>
-                            <span>Senin - Minggu (08.00 - 22.00 WIB)</span>
-                        </li>
+                <!-- Col 3: Kontak & Hub -->
+                <div class="lg:col-span-2">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-white mb-3.5">Kontak Tim</h4>
+                    <ul class="space-y-2 text-xs text-stone-500 dark:text-stone-400">
+                        <li>Jakarta & Denpasar, Indonesia</li>
+                        <li><a href="https://wa.me/6281199887766" class="hover:underline">+62 811-9988-7766</a></li>
+                        <li>halo@nusantarawander.id</li>
+                        <li class="text-[11px] text-stone-400 pt-1">Balas cepat: 08.00 - 21.00 WIB</li>
                     </ul>
                 </div>
 
-                <!-- Column 4: Newsletter -->
+                <!-- Col 4: Newsletter Sederhana -->
                 <div class="lg:col-span-3">
-                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Berlangganan Newsletter</h4>
-                    <p class="text-sm text-slate-400 mb-4">
-                        Dapatkan inspirasi destinasi rahasia dan info promo tiket pesawat & paket tur setiap minggu.
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-white mb-2">Warta Perjalanan</h4>
+                    <p class="text-xs text-stone-500 dark:text-stone-400 mb-3">
+                        Kirimkan alamat surel Anda untuk menerima catatan destinasi baru dan promo open trip berkala.
                     </p>
-                    <form onsubmit="handleNewsletter(event)" class="space-y-2.5">
+                    <form onsubmit="handleNewsletter(event)" class="flex gap-1.5">
                         <input 
                             type="email" 
                             id="newsletterEmail"
                             required 
-                            placeholder="Masukkan alamat email Anda..." 
-                            class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-sm text-white placeholder-slate-500 focus:ring-2 focus:ring-brand-500 focus:outline-none"
+                            placeholder="Alamat surel Anda..." 
+                            class="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-xs focus:ring-1 focus:ring-stone-900 focus:outline-none"
                         >
-                        <button type="submit" class="w-full py-3 px-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2">
-                            <span>Berlangganan Sekarang</span>
-                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        <button type="submit" class="px-4 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold shrink-0 transition-colors">
+                            Kirim
                         </button>
                     </form>
                 </div>
             </div>
 
-            <!-- Bottom Copyright -->
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                <p>&copy; {{ date('Y') }} PT Nusantara Wander Indonesia. Powered by Laravel 12.</p>
-                <div class="flex gap-6">
-                    <button onclick="showToast('Membuka Syarat & Ketentuan Perjalanan', 'info')" class="hover:text-slate-300">Syarat & Ketentuan</button>
-                    <button onclick="showToast('Membuka Kebijakan Privasi', 'info')" class="hover:text-slate-300">Kebijakan Privasi</button>
-                    <button onclick="showToast('Membuka Panduan Keamanan Wisata', 'info')" class="hover:text-slate-300">Panduan Wisata Aman</button>
+            <!-- Bottom -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-600 dark:text-stone-300 gap-3">
+                <p>&copy; {{ date('Y') }} PT Nusantara Wander Indonesia. Dikurasi dengan cinta di Bumi Nusantara.</p>
+                <div class="flex gap-4">
+                    <button onclick="showToast('Mitra terdaftar: ASITA & Komunitas Pemandu Lokal HPI', 'info')" class="hover:underline">Mitra Pemandu Lokal</button>
+                    <button onclick="showToast('Kebijakan Privasi: Data Anda aman dan tidak pernah dijual.', 'info')" class="hover:underline">Privasi & Etika Perjalanan</button>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- ================= MODAL 1: DETAIL DESTINASI ================= -->
-    <div id="detailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm overflow-y-auto">
-        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 my-8 animate-fadeIn">
-            <!-- Modal Image Header -->
-            <div class="relative h-64 sm:h-80">
+    <!-- MODAL 1: DETAIL DESTINASI (CLEAN WHITE CARD) -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-stone-950/60 backdrop-blur-xs overflow-y-auto">
+        <div class="bg-white dark:bg-stone-900 rounded-3xl max-w-2xl w-full overflow-hidden shadow-xl border border-stone-200 dark:border-stone-800 my-8 animate-fadeIn">
+            <div class="relative h-64 sm:h-72">
                 <img id="modalDestImage" src="" alt="Detail Destinasi" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent"></div>
                 
-                <!-- Close Button -->
-                <button onclick="closeDetailModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white flex items-center justify-center transition-colors">
-                    <i class="fa-solid fa-xmark text-lg"></i>
+                <button onclick="closeDetailModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-stone-900/60 hover:bg-stone-900 text-white flex items-center justify-center text-sm transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
 
                 <div class="absolute bottom-5 left-6 right-6 text-white">
-                    <div class="flex flex-wrap items-center gap-2 mb-2">
-                        <span id="modalDestCategory" class="px-3 py-1 rounded-full bg-brand-600 text-xs font-bold uppercase tracking-wider"></span>
-                        <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold flex items-center gap-1">
-                            <i class="fa-solid fa-star text-amber-400"></i>
+                    <div class="flex items-center gap-2 mb-1.5">
+                        <span id="modalDestCategory" class="px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-medium tracking-wide"></span>
+                        <span class="text-xs text-stone-200 flex items-center gap-1">
+                            <i class="fa-solid fa-star text-amber-300 text-[10px]"></i>
                             <span id="modalDestRating"></span>
                         </span>
                     </div>
-                    <h3 id="modalDestTitle" class="font-serif text-2xl sm:text-3xl font-bold"></h3>
-                    <p id="modalDestLocation" class="text-sm text-slate-200 flex items-center gap-1.5 mt-1"></p>
+                    <h3 id="modalDestTitle" class="font-serif text-2xl font-bold"></h3>
+                    <p id="modalDestLocation" class="text-xs text-stone-200 flex items-center gap-1.5 mt-0.5"></p>
                 </div>
             </div>
 
-            <!-- Modal Body -->
-            <div class="p-6 sm:p-8 max-h-[65vh] overflow-y-auto space-y-6">
+            <div class="p-6 sm:p-7 max-h-[60vh] overflow-y-auto space-y-5">
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Tentang Destinasi</h4>
-                    <p id="modalDestDesc" class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed"></p>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-400 mb-1.5">Catatan Perjalanan</h4>
+                    <p id="modalDestDesc" class="text-stone-600 dark:text-stone-300 text-sm leading-relaxed"></p>
                 </div>
 
-                <!-- Highlights & Info Grid -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800">
+                <div class="grid grid-cols-3 gap-3 p-3.5 rounded-2xl bg-stone-50 dark:bg-stone-800/60 border border-stone-200/60 dark:border-stone-700 text-xs">
                     <div>
-                        <p class="text-xs text-slate-400">Waktu Terbaik</p>
-                        <p id="modalDestBestTime" class="text-sm font-bold text-slate-800 dark:text-white mt-0.5"></p>
+                        <span class="text-stone-400 block">Waktu Cocok</span>
+                        <span id="modalDestBestTime" class="font-semibold text-stone-800 dark:text-white mt-0.5 block"></span>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-400">Durasi Ideal</p>
-                        <p id="modalDestDuration" class="text-sm font-bold text-slate-800 dark:text-white mt-0.5"></p>
+                        <span class="text-stone-400 block">Durasi Trip</span>
+                        <span id="modalDestDuration" class="font-semibold text-stone-800 dark:text-white mt-0.5 block"></span>
                     </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <p class="text-xs text-slate-400">Harga Mulai Dari</p>
-                        <p id="modalDestPrice" class="text-base font-extrabold text-brand-600 dark:text-brand-400 mt-0.5"></p>
+                    <div>
+                        <span class="text-stone-400 block">Perkiraan Biaya</span>
+                        <span id="modalDestPrice" class="font-bold text-stone-900 dark:text-white mt-0.5 block"></span>
                     </div>
                 </div>
 
-                <!-- Aktivitas Unggulan -->
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Aktivitas & Daya Tarik Utama</h4>
-                    <div id="modalDestHighlights" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">Yang Menanti di Sana</h4>
+                    <div id="modalDestHighlights" class="space-y-1.5"></div>
                 </div>
 
-                <!-- Action Footer -->
-                <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div class="text-center sm:text-left">
-                        <p class="text-xs text-slate-400">Termasuk pemandu lokal, tiket konservasi & transport lokal</p>
-                    </div>
-                    <div class="flex items-center gap-3 w-full sm:w-auto">
-                        <button onclick="closeDetailModal()" class="w-1/2 sm:w-auto px-5 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">
-                            Tutup
-                        </button>
-                        <button id="modalBookNowBtn" class="w-1/2 sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-teal-600 hover:from-brand-700 hover:to-teal-700 text-white text-sm font-bold shadow-lg shadow-brand-600/25 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-calendar-check"></i>
-                            <span>Pesan Destinasi Ini</span>
-                        </button>
-                    </div>
+                <div class="pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between gap-3">
+                    <button onclick="closeDetailModal()" class="px-4 py-2.5 rounded-full border border-stone-200 dark:border-stone-700 text-xs font-semibold hover:bg-stone-50 dark:hover:bg-stone-800">
+                        Tutup
+                    </button>
+                    <button id="modalBookNowBtn" class="px-6 py-2.5 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 text-xs font-semibold shadow-sm hover:opacity-90 flex items-center gap-1.5">
+                        <span>Pesan Trip Ini</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ================= MODAL 2: SIMULASI PEMESANAN TIKET / PAKET WISATA ================= -->
-    <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm overflow-y-auto">
-        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 my-8">
-            <!-- Header -->
-            <div class="px-6 py-5 bg-gradient-to-r from-brand-700 to-teal-700 text-white flex items-center justify-between">
+    <!-- MODAL 2: FORMULIR PEMESANAN (NATURAL & CLEAN) -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-stone-950/60 backdrop-blur-xs overflow-y-auto">
+        <div class="bg-white dark:bg-stone-900 rounded-3xl max-w-xl w-full overflow-hidden shadow-xl border border-stone-200 dark:border-stone-800 my-8">
+            <div class="px-6 py-4 bg-stone-900 text-white dark:bg-stone-800 flex items-center justify-between">
                 <div>
-                    <span class="text-[11px] uppercase tracking-widest text-emerald-200 font-bold">Reservasi Online Instan • Laravel Backend</span>
-                    <h3 class="font-serif text-xl sm:text-2xl font-bold">Formulir Simulasi Pemesanan Wisata</h3>
+                    <span class="text-[10px] uppercase tracking-widest text-stone-400 font-medium">Boutique Booking Concierge</span>
+                    <h3 class="font-serif text-lg font-semibold">Rencanakan Perjalanan Anda</h3>
                 </div>
-                <button onclick="closeBookingModal()" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white">
+                <button onclick="closeBookingModal()" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-xs">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <!-- Form Body -->
-            <form id="bookingForm" onsubmit="submitBookingForm(event)" class="p-6 sm:p-8 max-h-[78vh] overflow-y-auto space-y-5">
+            <form id="bookingForm" onsubmit="submitBookingForm(event)" class="p-6 max-h-[75vh] overflow-y-auto space-y-4 text-xs">
                 @csrf
-                <!-- Pilih Destinasi / Paket -->
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
-                        Pilih Destinasi / Paket Wisata
+                    <label class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">
+                        Pilihan Destinasi / Paket
                     </label>
-                    <select id="bookItemSelect" name="item_name" onchange="calculateSimulatedPrice()" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-semibold focus:ring-2 focus:ring-brand-500 focus:outline-none">
-                        <!-- Populated dynamically via JS or server -->
+                    <select id="bookItemSelect" name="item_name" onchange="calculateSimulatedPrice()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 font-medium text-stone-900 dark:text-white focus:ring-1 focus:ring-stone-900 focus:outline-none">
                     </select>
                 </div>
 
-                <!-- Data Pemesan -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Nama Lengkap</label>
-                        <input type="text" id="bookName" name="customer_name" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        <label class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Nama Lengkap</label>
+                        <input type="text" id="bookName" name="customer_name" required placeholder="Nama Anda" class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Nomor WhatsApp</label>
-                        <input type="tel" id="bookPhone" name="customer_phone" required placeholder="0812xxxx" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
-                    </div>
-                </div>
-
-                <!-- Tanggal & Jumlah Peserta -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Tanggal Keberangkatan</label>
-                        <input type="date" id="bookDate" name="travel_date" required class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Jumlah Peserta (Orang)</label>
-                        <input type="number" id="bookPax" name="pax" min="1" max="50" value="2" oninput="calculateSimulatedPrice()" required class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-bold focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        <label class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Nomor WhatsApp</label>
+                        <input type="tel" id="bookPhone" name="customer_phone" required placeholder="08xxxxxxxx" class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
                     </div>
                 </div>
 
-                <!-- Layanan Tambahan (Add-ons) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Rencana Berangkat</label>
+                        <input type="date" id="bookDate" name="travel_date" required class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Jumlah Peserta</label>
+                        <input type="number" id="bookPax" name="pax" min="1" max="40" value="2" oninput="calculateSimulatedPrice()" required class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 font-semibold focus:ring-1 focus:ring-stone-900 focus:outline-none">
+                    </div>
+                </div>
+
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Layanan Tambahan Opsional</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                            <input type="checkbox" id="addonDrone" name="addon_drone" value="1" onchange="calculateSimulatedPrice()" class="w-4 h-4 accent-brand-600 rounded">
+                    <label class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5">Opsi Layanan Tambahan</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-stone-200 dark:border-stone-700 cursor-pointer hover:bg-stone-50 dark:hover:bg-stone-800/40">
+                            <input type="checkbox" id="addonDrone" name="addon_drone" value="1" onchange="calculateSimulatedPrice()" class="mt-0.5 accent-stone-900 rounded">
                             <div>
-                                <p class="font-semibold text-slate-800 dark:text-slate-200">Paket Dokumentasi Drone</p>
-                                <p class="text-xs text-slate-500">+Rp 450.000 / grup</p>
+                                <p class="font-semibold text-stone-800 dark:text-stone-200">Dokumentasi Drone & Foto</p>
+                                <p class="text-[10px] text-stone-400">+Rp 450.000 / grup</p>
                             </div>
                         </label>
-                        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                            <input type="checkbox" id="addonVip" name="addon_vip" value="1" onchange="calculateSimulatedPrice()" class="w-4 h-4 accent-brand-600 rounded">
+                        <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-stone-200 dark:border-stone-700 cursor-pointer hover:bg-stone-50 dark:hover:bg-stone-800/40">
+                            <input type="checkbox" id="addonVip" name="addon_vip" value="1" onchange="calculateSimulatedPrice()" class="mt-0.5 accent-stone-900 rounded">
                             <div>
-                                <p class="font-semibold text-slate-800 dark:text-slate-200">Upgrade Hotel Bintang 5</p>
-                                <p class="text-xs text-slate-500">+Rp 650.000 / orang</p>
+                                <p class="font-semibold text-stone-800 dark:text-stone-200">Upgrade Private Villa</p>
+                                <p class="text-[10px] text-stone-400">+Rp 650.000 / orang</p>
                             </div>
                         </label>
                     </div>
                 </div>
 
-                <!-- Kode Promo -->
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Kode Promo (Ketik: <span class="text-brand-600 font-bold">PESONAID</span> untuk diskon 15%)</label>
-                    <div class="flex gap-2">
-                        <input type="text" id="bookPromo" name="promo_code" oninput="calculateSimulatedPrice()" placeholder="Masukkan kode voucher..." class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm uppercase focus:ring-2 focus:ring-brand-500 focus:outline-none">
-                    </div>
+                    <label class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Kode Voucher Promo (Coba: <span class="font-mono text-stone-900 dark:text-white underline">PESONAID</span>)</label>
+                    <input type="text" id="bookPromo" name="promo_code" oninput="calculateSimulatedPrice()" placeholder="Ketik kode voucher..." class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 uppercase focus:ring-1 focus:ring-stone-900 focus:outline-none">
                 </div>
 
-                <!-- Catatan Khusus -->
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Catatan Perjalanan (Opsional)</label>
-                    <textarea id="bookNotes" name="notes" rows="2" placeholder="Contoh: Permintaan makanan vegetarian, penjemputan khusus hotel, dsb..." class="w-full px-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
+                    <label class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Catatan Tambahan (Opsional)</label>
+                    <textarea id="bookNotes" name="notes" rows="2" placeholder="Makanan khusus, penjemputan bandara, atau preferensi kamar..." class="w-full px-3.5 py-1.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none"></textarea>
                 </div>
 
-                <!-- Ringkasan Estimasi Biaya -->
-                <div class="p-4 rounded-2xl bg-brand-50/80 dark:bg-slate-800 border border-brand-200 dark:border-slate-700 space-y-2">
-                    <div class="flex justify-between text-xs text-slate-600 dark:text-slate-400">
-                        <span>Harga Dasar (<span id="summaryPaxCount">2</span> Peserta)</span>
-                        <span id="summaryBasePrice" class="font-semibold">Rp 0</span>
+                <!-- Estimasi Ringkasan -->
+                <div class="p-3.5 rounded-xl bg-stone-50 dark:bg-stone-800/80 border border-stone-200/70 dark:border-stone-700 space-y-1.5">
+                    <div class="flex justify-between text-stone-500">
+                        <span>Biaya Pokok (<span id="summaryPaxCount">2</span> Peserta)</span>
+                        <span id="summaryBasePrice" class="font-medium text-stone-800 dark:text-white">Rp 0</span>
                     </div>
-                    <div class="flex justify-between text-xs text-slate-600 dark:text-slate-400">
+                    <div class="flex justify-between text-stone-500">
                         <span>Layanan Tambahan</span>
-                        <span id="summaryAddonPrice" class="font-semibold">Rp 0</span>
+                        <span id="summaryAddonPrice" class="font-medium text-stone-800 dark:text-white">Rp 0</span>
                     </div>
-                    <div id="summaryDiscountRow" class="hidden justify-between text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
-                        <span>Potongan Kode Promo (15%)</span>
+                    <div id="summaryDiscountRow" class="hidden justify-between text-emerald-600 font-semibold">
+                        <span>Potongan Voucher (15%)</span>
                         <span id="summaryDiscountPrice">-Rp 0</span>
                     </div>
-                    <div class="pt-2 border-t border-brand-200 dark:border-slate-700 flex justify-between items-center">
-                        <span class="text-sm font-bold text-slate-800 dark:text-white">Total Estimasi Pembayaran</span>
-                        <span id="summaryTotalPrice" class="text-xl font-extrabold text-brand-700 dark:text-brand-400">Rp 0</span>
+                    <div class="pt-2 border-t border-stone-200 dark:border-stone-700 flex justify-between items-center text-sm">
+                        <span class="font-bold text-stone-800 dark:text-white">Total Perkiraan Biaya</span>
+                        <span id="summaryTotalPrice" class="font-serif font-bold text-stone-950 dark:text-white text-base">Rp 0</span>
                     </div>
                 </div>
 
-                <div class="flex items-center justify-end gap-3 pt-2">
-                    <button type="button" onclick="closeBookingModal()" class="px-5 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">
+                <div class="flex items-center justify-end gap-2.5 pt-2">
+                    <button type="button" onclick="closeBookingModal()" class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 font-semibold">
                         Batal
                     </button>
-                    <button type="submit" id="btnSubmitBooking" class="px-7 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-teal-600 hover:from-brand-700 hover:to-teal-700 text-white font-bold text-sm shadow-lg shadow-brand-600/30 flex items-center gap-2">
-                        <i class="fa-solid fa-check-circle"></i>
-                        <span>Konfirmasi Pesanan</span>
+                    <button type="submit" id="btnSubmitBooking" class="px-6 py-2 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold shadow-sm hover:opacity-90">
+                        Konfirmasi Reservasi
                     </button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- ================= MODAL 3: BUKTI KONFIRMASI PEMESANAN ================= -->
-    <div id="receiptModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm">
-        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 text-center animate-fadeIn">
-            <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-3xl mx-auto mb-4">
-                <i class="fa-solid fa-circle-check"></i>
+    <!-- MODAL 3: BUKTI RESERVASI (E-TIKET RINGKAS) -->
+    <div id="receiptModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-stone-950/60 backdrop-blur-xs">
+        <div class="bg-white dark:bg-stone-900 rounded-3xl max-w-sm w-full p-6 shadow-xl border border-stone-200 dark:border-stone-800 text-center animate-fadeIn">
+            <div class="w-12 h-12 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-white flex items-center justify-center text-xl mx-auto mb-3">
+                <i class="fa-solid fa-check"></i>
             </div>
-            <span class="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-xs font-bold">Kode Booking: <span id="receiptCode">NW-88291</span></span>
-            <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white mt-3">Simulasi Pemesanan Berhasil!</h3>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-                Terima kasih <strong id="receiptName" class="text-slate-800 dark:text-slate-200"></strong>, reservasi Anda telah tersimpan di database Laravel.
+            <span class="px-2.5 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-[10px] font-mono font-semibold">Kode: <span id="receiptCode">NW-88291</span></span>
+            <h3 class="font-serif text-xl font-bold text-stone-900 dark:text-white mt-2">Reservasi Terdaftar</h3>
+            <p class="text-xs text-stone-500 mt-1">
+                Terima kasih <strong id="receiptName" class="text-stone-800 dark:text-stone-200"></strong>, rincian perjalanan Anda telah tersimpan di sistem kami.
             </p>
 
-            <div class="mt-5 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 text-left text-xs space-y-2 border border-slate-200/70 dark:border-slate-700">
+            <div class="mt-4 p-3 rounded-2xl bg-stone-50 dark:bg-stone-800/60 text-left text-xs space-y-1.5 border border-stone-200/60 dark:border-stone-700">
                 <div class="flex justify-between">
-                    <span class="text-slate-400">Paket / Destinasi:</span>
-                    <span id="receiptItem" class="font-bold text-slate-800 dark:text-white text-right"></span>
+                    <span class="text-stone-400">Pilihan:</span>
+                    <span id="receiptItem" class="font-semibold text-stone-800 dark:text-white truncate max-w-[170px]"></span>
                 </div>
                 <div class="flex justify-between">
-                    <span class="text-slate-400">Tanggal Berangkat:</span>
-                    <span id="receiptDate" class="font-semibold text-slate-700 dark:text-slate-200"></span>
+                    <span class="text-stone-400">Jadwal:</span>
+                    <span id="receiptDate" class="text-stone-700 dark:text-stone-300"></span>
                 </div>
                 <div class="flex justify-between">
-                    <span class="text-slate-400">Jumlah Peserta:</span>
-                    <span id="receiptPax" class="font-semibold text-slate-700 dark:text-slate-200"></span>
+                    <span class="text-stone-400">Peserta:</span>
+                    <span id="receiptPax" class="text-stone-700 dark:text-stone-300"></span>
                 </div>
-                <div class="pt-2 border-t border-slate-200 dark:border-slate-700 flex justify-between text-sm">
-                    <span class="font-bold text-slate-700 dark:text-slate-200">Total Biaya:</span>
-                    <span id="receiptTotal" class="font-extrabold text-brand-600 dark:text-brand-400"></span>
+                <div class="pt-1.5 border-t border-stone-200 dark:border-stone-700 flex justify-between font-bold">
+                    <span>Total:</span>
+                    <span id="receiptTotal" class="text-stone-900 dark:text-white"></span>
                 </div>
             </div>
 
-            <div class="mt-6 flex flex-col gap-2.5">
-                <a id="receiptPrintLink" href="#" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-receipt"></i>
-                    <span>Buka Lembar E-Tiket Digital</span>
+            <div class="mt-5 flex flex-col gap-2">
+                <a id="receiptPrintLink" href="#" class="w-full py-2.5 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold text-xs transition-opacity hover:opacity-90 flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-receipt text-[11px]"></i>
+                    <span>Buka Lembar E-Tiket Lengkap</span>
                 </a>
-                <button onclick="closeReceiptModal()" class="w-full py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-semibold text-xs hover:bg-slate-100 dark:hover:bg-slate-800">
-                    Tutup & Lanjutkan Menjelajah
+                <button onclick="closeReceiptModal()" class="w-full py-2 rounded-full border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 text-xs hover:bg-stone-50 dark:hover:bg-stone-800">
+                    Selesai
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- ================= MODAL 4: LIGHTBOX GALERI ================= -->
-    <div id="lightboxModal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md">
-        <div class="max-w-4xl w-full relative" onclick="event.stopPropagation()">
-            <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white/80 hover:text-white text-2xl">
+    <!-- MODAL 4: LIGHTBOX GALERI FOTO -->
+    <div id="lightboxModal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-stone-950/85 backdrop-blur-sm">
+        <div class="max-w-3xl w-full relative" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white/80 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <img id="lightboxImg" src="" alt="Galeri Nusantara" class="w-full max-h-[78vh] object-cover rounded-2xl shadow-2xl border border-white/15">
-            <div class="mt-4 flex items-center justify-between text-white">
+            <img id="lightboxImg" src="" alt="Galeri Nusantara" class="w-full max-h-[75vh] object-cover rounded-2xl shadow-2xl">
+            <div class="mt-3 flex items-center justify-between text-white">
                 <div>
-                    <h4 id="lightboxCaption" class="font-serif text-xl font-bold"></h4>
-                    <p id="lightboxSub" class="text-xs text-slate-300"></p>
+                    <h4 id="lightboxCaption" class="font-serif text-lg font-bold"></h4>
+                    <p id="lightboxSub" class="text-xs text-stone-300"></p>
                 </div>
-                <button onclick="closeLightbox(); openBookingModal();" class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-xs font-bold">
-                    Kunjungi Lokasi Ini
+                <button onclick="closeLightbox(); openBookingModal();" class="px-4 py-1.5 rounded-full bg-white text-stone-950 text-xs font-semibold hover:bg-stone-100">
+                    Kunjungi Tempat Ini
                 </button>
             </div>
         </div>
@@ -555,65 +514,58 @@
 
     <!-- Global Application Scripts -->
     <script>
-        // Setup CSRF Token for AJAX
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-        // Helper Format Rupiah
         function formatRupiah(num) {
             return 'Rp ' + Number(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
 
-        // Custom Toast Notification
         function showToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             const icon = type === 'success' 
-                ? '<i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>' 
-                : '<i class="fa-solid fa-circle-info text-sky-400 text-lg"></i>';
+                ? '<i class="fa-solid fa-check text-stone-900 dark:text-stone-100 text-sm"></i>' 
+                : '<i class="fa-solid fa-info text-stone-500 text-sm"></i>';
 
-            toast.className = 'pointer-events-auto flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-slate-900/95 dark:bg-slate-800 text-white text-xs sm:text-sm font-medium shadow-xl border border-slate-700/80 transition-all duration-300 animate-fadeIn';
+            toast.className = 'pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100 text-xs font-medium shadow-md border border-stone-200 dark:border-stone-800 transition-all duration-200 animate-fadeIn';
             toast.innerHTML = `${icon}<span>${message}</span>`;
 
             container.appendChild(toast);
             setTimeout(() => {
                 toast.style.opacity = '0';
-                toast.style.transform = 'translateY(10px)';
-                setTimeout(() => toast.remove(), 300);
-            }, 3400);
+                toast.style.transform = 'translateY(6px)';
+                setTimeout(() => toast.remove(), 250);
+            }, 3200);
         }
 
-        // Dark / Light Mode Toggle
         function toggleTheme() {
             const htmlEl = document.documentElement;
             htmlEl.classList.toggle('dark');
             const isDark = htmlEl.classList.contains('dark');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            const iconClass = isDark ? 'fa-solid fa-sun text-amber-400 text-lg' : 'fa-solid fa-moon text-lg';
+            const iconClass = isDark ? 'fa-solid fa-sun text-amber-400 text-sm' : 'fa-solid fa-moon text-sm';
             if (document.getElementById('themeIcon')) document.getElementById('themeIcon').className = iconClass;
             if (document.getElementById('themeIconMobile')) document.getElementById('themeIconMobile').className = iconClass;
         }
 
-        // Initialize Theme from localStorage
         (function() {
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            if (savedTheme === 'dark') {
                 document.documentElement.classList.add('dark');
             }
         })();
 
-        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             const icon = document.getElementById('mobileMenuIcon');
             menu.classList.toggle('hidden');
             if (menu.classList.contains('hidden')) {
-                icon.className = 'fa-solid fa-bars text-xl';
+                icon.className = 'fa-solid fa-bars text-lg';
             } else {
-                icon.className = 'fa-solid fa-xmark text-xl';
+                icon.className = 'fa-solid fa-xmark text-lg';
             }
         }
 
-        // Wishlist
         let savedWishlist = new Set(JSON.parse(localStorage.getItem('nw_wishlist') || '[1, 3]'));
 
         function updateWishlistBadges() {
@@ -625,10 +577,10 @@
         function toggleWishlist(id, name = 'Destinasi') {
             if (savedWishlist.has(id)) {
                 savedWishlist.delete(id);
-                showToast(`${name} dihapus dari daftar favorit`, 'info');
+                showToast(`${name} dihapus dari daftar tersimpan`, 'info');
             } else {
                 savedWishlist.add(id);
-                showToast(`${name} disimpan ke daftar favorit!`, 'success');
+                showToast(`${name} disimpan ke daftar impian`, 'success');
             }
             updateWishlistBadges();
             if (typeof renderDestinationsGrid === 'function') {
@@ -641,12 +593,11 @@
                 showToast('Belum ada destinasi favorit yang disimpan.', 'info');
                 return;
             }
-            showToast(`Anda memiliki ${savedWishlist.size} destinasi favorit tersimpan!`, 'success');
+            showToast(`Anda memiliki ${savedWishlist.size} destinasi tersimpan di jurnal impian!`, 'success');
             const destSection = document.getElementById('destinasi');
             if (destSection) destSection.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Lightbox Galeri
         function openLightbox(url, title, sub) {
             document.getElementById('lightboxImg').src = url;
             document.getElementById('lightboxCaption').textContent = title;
@@ -662,7 +613,6 @@
             modal.classList.remove('flex');
         }
 
-        // Voucher Copy
         function copyVoucherCode() {
             const code = 'PESONAID';
             const tempInput = document.createElement('input');
@@ -675,10 +625,9 @@
             if (document.getElementById('bookPromo')) {
                 document.getElementById('bookPromo').value = code;
             }
-            showToast('Kode voucher PESONAID berhasil disalin (Diskon 15%)!', 'success');
+            showToast('Kode voucher PESONAID diterapkan (Diskon 15%)', 'success');
         }
 
-        // Newsletter form
         function handleNewsletter(e) {
             e.preventDefault();
             const input = document.getElementById('newsletterEmail');
@@ -699,12 +648,11 @@
                 input.value = '';
             })
             .catch(() => {
-                showToast(`Terima kasih! Inspirasi wisata akan dikirim ke ${email}`, 'success');
+                showToast(`Terima kasih! Warta perjalanan akan dikirim ke ${email}`, 'success');
                 input.value = '';
             });
         }
 
-        // Modal Detail Destinasi via AJAX
         function openDetailModal(id) {
             fetch(`/api/destinations/${id}`)
                 .then(res => res.json())
@@ -713,7 +661,7 @@
                     document.getElementById('modalDestCategory').textContent = dest.category;
                     document.getElementById('modalDestRating').textContent = `${dest.rating} (${dest.reviews_count} ulasan)`;
                     document.getElementById('modalDestTitle').textContent = dest.name;
-                    document.getElementById('modalDestLocation').innerHTML = `<i class="fa-solid fa-location-dot text-emerald-400"></i> ${dest.location}`;
+                    document.getElementById('modalDestLocation').innerHTML = `<i class="fa-solid fa-location-dot text-stone-300"></i> ${dest.location}`;
                     document.getElementById('modalDestDesc').textContent = dest.description;
                     document.getElementById('modalDestBestTime').textContent = dest.best_time;
                     document.getElementById('modalDestDuration').textContent = dest.duration;
@@ -721,8 +669,8 @@
 
                     const highlights = dest.highlights || [];
                     document.getElementById('modalDestHighlights').innerHTML = highlights.map(h => `
-                        <div class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/90 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">
-                            <i class="fa-solid fa-compass text-brand-600 dark:text-brand-400"></i>
+                        <div class="flex items-center gap-2 p-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 text-xs text-stone-700 dark:text-stone-300">
+                            <span class="w-1.5 h-1.5 rounded-full bg-stone-900 dark:bg-white shrink-0"></span>
                             <span>${h}</span>
                         </div>
                     `).join('');
@@ -736,8 +684,8 @@
                     modal.classList.remove('hidden');
                     modal.classList.add('flex');
                 })
-                .catch(err => {
-                    showToast('Gagal memuat detail destinasi', 'info');
+                .catch(() => {
+                    showToast('Gagal memuat catatan destinasi', 'info');
                 });
         }
 
@@ -747,7 +695,6 @@
             modal.classList.remove('flex');
         }
 
-        // Booking Modal Logic
         function openBookingModal(preselectedName) {
             const select = document.getElementById('bookItemSelect');
             if (preselectedName) {
@@ -810,7 +757,7 @@
             const form = document.getElementById('bookingForm');
             const submitBtn = document.getElementById('btnSubmitBooking');
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...';
+            submitBtn.innerHTML = 'Memproses...';
 
             const formData = new FormData(form);
 
@@ -825,7 +772,7 @@
             .then(res => res.json())
             .then(data => {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-check-circle"></i> Konfirmasi Pesanan';
+                submitBtn.innerHTML = 'Konfirmasi Reservasi';
                 
                 if (data.success) {
                     closeBookingModal();
@@ -840,14 +787,14 @@
                     const receiptModal = document.getElementById('receiptModal');
                     receiptModal.classList.remove('hidden');
                     receiptModal.classList.add('flex');
-                    showToast('Reservasi berhasil disimpan ke database!', 'success');
+                    showToast('Reservasi berhasil disimpan ke sistem!', 'success');
                 } else {
                     showToast(data.message || 'Terjadi kesalahan saat memproses pesanan', 'info');
                 }
             })
-            .catch(err => {
+            .catch(() => {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-check-circle"></i> Konfirmasi Pesanan';
+                submitBtn.innerHTML = 'Konfirmasi Reservasi';
                 showToast('Gagal memproses data. Silakan coba kembali.', 'info');
             });
         }
@@ -861,7 +808,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             updateWishlistBadges();
 
-            // Set default dates
             const dateInput = document.getElementById('bookDate');
             if (dateInput && !dateInput.value) {
                 const nextWeek = new Date();
