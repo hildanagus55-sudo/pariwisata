@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Concierge — Manajemen Reservasi | NusantaraWander')
+@section('title', 'Admin Concierge — Manajemen Reservasi | ANWISATA')
 
 @section('content')
 <div class="pt-28 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

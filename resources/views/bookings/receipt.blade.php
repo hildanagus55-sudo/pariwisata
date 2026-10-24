@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'E-Tiket Reservasi #' . $booking->booking_code . ' — NusantaraWander')
+@section('title', 'E-Tiket Reservasi #' . $booking->booking_code . ' — ANWISATA')
 
 @section('content')
 <div class="pt-28 pb-24 max-w-2xl mx-auto px-4 sm:px-6">
@@ -21,13 +21,7 @@
         <!-- Header -->
         <div class="p-6 sm:p-8 bg-stone-900 text-white relative flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white text-lg">
-                    <i class="fa-solid fa-compass"></i>
-                </div>
-                <div>
-                    <h2 class="font-serif text-lg font-semibold tracking-tight">Nusantara<span class="italic font-normal text-stone-400">Wander</span></h2>
-                    <p class="text-[10px] text-stone-400 uppercase tracking-widest">Travel Voucher & Confirmation</p>
-                </div>
+                <img src="{{ asset('images/logo.png') }}" alt="ANWISATA" class="h-9 w-auto object-contain bg-white rounded-xl px-2.5 py-1 shadow-xs">
             </div>
 
             <div class="sm:text-right">
@@ -120,7 +114,7 @@
 
         <!-- Footer -->
         <div class="px-6 py-3.5 bg-stone-50 dark:bg-stone-950 border-t border-stone-200 dark:border-stone-800 flex items-center justify-between text-[11px] text-stone-400">
-            <span class="font-mono">NUSANTARAWANDER CONFIRMED • {{ now()->format('d/m/Y') }}</span>
+            <span class="font-mono">ANWISATA CONFIRMED • {{ now()->format('d/m/Y') }}</span>
             <span class="font-mono tracking-widest text-stone-600 dark:text-stone-300">||| |||| | || ||||| |</span>
         </div>
     </div>

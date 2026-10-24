@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Katalog Lengkap Destinasi Wisata — NusantaraWander')
-@section('meta_description', 'Jelajahi pilihan lengkap destinasi wisata alam dan budaya Indonesia yang dikurasi bersama pemandu lokal.')
+@section('title', 'Katalog Lengkap Destinasi Wisata — ANWISATA')
+@section('meta_description', 'Jelajahi pilihan lengkap destinasi wisata alam dan budaya Indonesia resmi di ANWISATA Portal Pariwisata.')
 
 @section('content')
 <div class="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

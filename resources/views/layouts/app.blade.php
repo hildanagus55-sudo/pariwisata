@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'NusantaraWander — Kurasi Perjalanan & Wisata Alam Indonesia')</title>
-    <meta name="description" content="@yield('meta_description', 'Boutique travel organizer untuk menjelajah pulau, budaya, dan alam tersembunyi di Indonesia bersama pemandu warga lokal.')">
+    <title>@yield('title', 'ANWISATA — Portal Pariwisata Indonesia')</title>
+    <meta name="description" content="@yield('meta_description', 'ANWISATA — Portal Pariwisata Indonesia resmi dan terpercaya untuk menjelajahi keindahan destinasi wisata alam, budaya, dan paket liburan terbaik di Nusantara.')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -138,15 +139,9 @@
     <!-- ================= 1. FLOATING GLASS ISLAND NAVIGATION BAR ================= -->
     <header id="navbar" class="fixed top-3 sm:top-5 left-0 right-0 z-50 px-3 sm:px-6 transition-all duration-300">
         <div id="navContainer" class="max-w-6xl mx-auto rounded-full px-4 sm:px-6 py-2.5 sm:py-3 transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl border border-stone-200/90 dark:border-stone-800 bg-white/85 dark:bg-stone-900/85 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="{{ route('home') }}" class="flex items-center gap-2.5 group">
-                <div class="w-9 h-9 rounded-full bg-stone-900 text-amber-300 flex items-center justify-center text-sm shadow-xs group-hover:rotate-45 transition-transform duration-500 shrink-0">
-                    <i class="fa-solid fa-compass"></i>
-                </div>
-                <div>
-                    <span class="text-base font-serif font-bold tracking-tight text-stone-950">Nusantara<span class="italic font-normal text-stone-500">Wander</span></span>
-                    <p class="text-[9px] tracking-widest text-stone-500 uppercase font-semibold">Boutique Travel</p>
-                </div>
+            <!-- Brand Logo: ANWISATA -->
+            <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
+                <img src="{{ asset('images/logo.png') }}" alt="ANWISATA — Portal Pariwisata Indonesia" class="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
             </a>
 
             <!-- Desktop Navigation Links -->
@@ -246,22 +241,19 @@
                 <!-- Col 1: Bio -->
                 <div class="lg:col-span-5">
                     <div class="flex items-center gap-2.5 mb-3.5">
-                        <div class="w-8 h-8 rounded-lg bg-stone-900 dark:bg-stone-100 dark:text-stone-900 flex items-center justify-center text-white text-xs">
-                            <i class="fa-solid fa-compass"></i>
-                        </div>
-                        <span class="text-base font-serif font-semibold text-stone-900 dark:text-white">Nusantara<span class="italic font-normal text-stone-500">Wander</span></span>
+                        <img src="{{ asset('images/logo.png') }}" alt="ANWISATA — Portal Pariwisata Indonesia" class="h-9 w-auto object-contain">
                     </div>
                     <p data-i18n="footerDesc" class="text-xs leading-relaxed text-stone-500 dark:text-stone-400 max-w-sm mb-5">
-                        Boutique trip curator berbasis di Indonesia. Kami menemani Anda menikmati keindahan pulau, rasa rempah, dan keramahan warga lokal secara bertanggung jawab dan tanpa tergesa-gesa.
+                        Portal Pariwisata Indonesia terpercaya. Kami menemani Anda menjelajahi keindahan nusantara, ragam budaya, dan paket liburan impian terbaik dengan pengalaman berkesan.
                     </p>
                     <div class="flex items-center gap-2.5 text-xs text-stone-500">
-                        <a href="https://wa.me/6281199887766" target="_blank" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors">
+                        <a href="https://wa.me/6281199887766" target="_blank" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="WhatsApp Concierge">
                             <i class="fa-brands fa-whatsapp"></i>
                         </a>
-                        <a href="#footer" onclick="showToast('Instagram: @nusantarawander.trip', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors">
+                        <a href="#footer" onclick="showToast('Instagram: @anwisata.id', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="Instagram Resmi">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="#footer" onclick="showToast('YouTube: Dokumentasi Perjalanan Nusantara', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors">
+                        <a href="#footer" onclick="showToast('YouTube: ANWISATA Portal Pariwisata', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="YouTube Resmi">
                             <i class="fa-brands fa-youtube"></i>
                         </a>
                     </div>
@@ -285,7 +277,7 @@
                     <ul class="space-y-2 text-xs text-stone-500 dark:text-stone-400">
                         <li>Jakarta & Denpasar, Indonesia</li>
                         <li><a href="https://wa.me/6281199887766" class="hover:underline">+62 811-9988-7766</a></li>
-                        <li>halo@nusantarawander.id</li>
+                        <li>halo@anwisata.id</li>
                         <li class="text-[11px] text-stone-400 pt-1">Balas cepat: 08.00 - 21.00 WIB</li>
                     </ul>
                 </div>
@@ -656,9 +648,9 @@
                 // Story / Philosophy
                 storySubtitle: 'Kenapa Berkelana Bersama Kami?',
                 storyTitle: 'Sebuah Perjalanan yang Bernapas, Menghargai Waktu & Warga Lokal',
-                storyDesc: 'Kami memulai perjalanan ini karena lelah melihat paket wisata seragam yang terburu-buru, dipenuhi pemberhentian komersial yang melelahkan. Di NusantaraWander, kami merancang rute yang memberi ruang Anda untuk benar-benar menikmati heningnya alam dan kehangatan cerita warga desa.',
+                storyDesc: 'Kami mendirikan ANWISATA sebagai portal pariwisata Indonesia untuk menghadirkan rute perjalanan yang autentik, menghormati alam, dan mendekatkan Anda dengan kehangatan warga lokal.',
                 storyQuote: '"Pariwisata yang baik bukan sekadar meninggalkan jejak langkah, melainkan membawa pulang rasa hormat pada tanah dan manusianya."',
-                storyPrinciple: '— Prinsip Perjalanan NusantaraWander',
+                storyPrinciple: '— Prinsip Perjalanan ANWISATA',
 
                 // Gallery
                 gallerySubtitle: 'Dokumentasi Asli',
@@ -676,13 +668,13 @@
                 promoPlan: 'Rencanakan Trip',
 
                 // Footer
-                footerDesc: 'Boutique trip curator berbasis di Indonesia. Kami menemani Anda menikmati keindahan pulau, rasa rempah, dan keramahan warga lokal secara bertanggung jawab dan tanpa tergesa-gesa.',
+                footerDesc: 'Portal Pariwisata Indonesia terpercaya. Kami menemani Anda menjelajahi keindahan nusantara, ragam budaya, dan paket liburan impian terbaik dengan pengalaman berkesan.',
                 footerExplore: 'Eksplorasi',
                 footerContact: 'Kontak Tim',
                 footerGazette: 'Warta Perjalanan',
                 footerGazetteDesc: 'Kirimkan alamat surel Anda untuk menerima catatan destinasi baru dan promo open trip berkala.',
                 footerSubBtn: 'Daftar',
-                footerCopyright: '© 2026 PT Nusantara Wander Indonesia. Dikurasi dengan cinta di Bumi Nusantara.',
+                footerCopyright: '© 2026 PT ANWISATA Indonesia — Portal Pariwisata Indonesia. Hak cipta dilindungi.',
 
                 // Modals
                 modalDetailTitle: 'Catatan Destinasi & Panduan Musim',
@@ -802,9 +794,9 @@
                 // Story / Philosophy
                 storySubtitle: 'Why Travel With Us?',
                 storyTitle: 'A Breathing Journey that Honors Time and Local Communities',
-                storyDesc: 'We founded NusantaraWander because we were tired of rushed, commercialized mass tourism. We design itineraries that leave ample room for quiet natural serenity and heartwarming local connections.',
+                storyDesc: 'We founded ANWISATA as the official Indonesian tourism portal to craft authentic journeys that honor nature and connect you with local communities.',
                 storyQuote: '"True travel does not merely leave footprints; it brings home heartfelt respect for the land and its people."',
-                storyPrinciple: '— NusantaraWander Travel Principles',
+                storyPrinciple: '— ANWISATA Travel Principles',
 
                 // Gallery
                 gallerySubtitle: 'Authentic Moments',
@@ -822,13 +814,13 @@
                 promoPlan: 'Plan Your Trip',
 
                 // Footer
-                footerDesc: 'Indonesia-based boutique trip curator. We accompany you to embrace pristine islands, historic spice heritage, and local hospitality responsibly and unhurriedly.',
+                footerDesc: 'Trusted Indonesia Tourism Portal. We accompany you to embrace pristine islands, historic spice heritage, and local hospitality responsibly and memorable.',
                 footerExplore: 'Explore',
                 footerContact: 'Contact Us',
                 footerGazette: 'Travel Gazette',
                 footerGazetteDesc: 'Enter your email to receive newly curated secret routes and seasonal promotions.',
                 footerSubBtn: 'Subscribe',
-                footerCopyright: '© 2026 PT Nusantara Wander Indonesia. Curated with love in Indonesia.',
+                footerCopyright: '© 2026 PT ANWISATA Indonesia — Indonesia Tourism Portal. All rights reserved.',
 
                 // Modals
                 modalDetailTitle: 'Destination Notes & Seasonal Guide',

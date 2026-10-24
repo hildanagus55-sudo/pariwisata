@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $destination->name . ' — Catatan Perjalanan | NusantaraWander')
+@section('title', $destination->name . ' — Catatan Perjalanan | ANWISATA')
 @section('meta_description', Str::limit(strip_tags($destination->description), 160))
 
 @section('content')
@@ -169,7 +169,7 @@
                         <button onclick="openBookingModal('{{ addslashes($destination->name) }}')" class="w-full py-3 px-5 rounded-full bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold text-xs transition-all shadow-sm">
                             Rencanakan Kunjungan
                         </button>
-                        <a href="https://wa.me/6281199887766?text=Halo%20NusantaraWander,%20saya%20tertarik%20dengan%20destinasi%20{{ urlencode($destination->name) }}" target="_blank" class="w-full py-2.5 px-5 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200 font-medium text-xs transition-colors flex items-center justify-center gap-2">
+                        <a href="https://wa.me/6281199887766?text=Halo%20ANWISATA,%20saya%20tertarik%20dengan%20destinasi%20{{ urlencode($destination->name) }}" target="_blank" class="w-full py-2.5 px-5 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200 font-medium text-xs transition-colors flex items-center justify-center gap-2">
                             <i class="fa-brands fa-whatsapp text-emerald-600"></i>
                             <span>Tanya Rute di WhatsApp</span>
                         </a>
