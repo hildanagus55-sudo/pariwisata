@@ -254,10 +254,13 @@
             <!-- Packages Grid -->
             <div id="packagesGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 @foreach($packages as $idx => $pkg)
-                    <div class="bg-white dark:bg-stone-900 rounded-3xl border {{ $idx === 0 ? 'border-stone-900 dark:border-stone-200 ring-1 ring-stone-900/10' : 'border-stone-200 dark:border-stone-800' }} p-7 shadow-xs flex flex-col justify-between">
+                    <div 
+                        onclick="selectPackageCard(this, event)"
+                        class="package-card group bg-white dark:bg-stone-900 rounded-3xl border-2 {{ $idx === 0 ? 'border-stone-900 dark:border-stone-100 ring-2 ring-stone-900/10 dark:ring-stone-100/10 -translate-y-1 shadow-xl is-active' : 'border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700 shadow-xs translate-y-0' }} p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer"
+                    >
                         <div>
                             <div class="flex items-center justify-between gap-2 mb-4">
-                                <span class="px-2.5 py-0.5 rounded-full {{ $idx === 0 ? 'bg-stone-900 text-white dark:bg-white dark:text-stone-900' : 'bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300' }} text-[11px] font-semibold tracking-wide">
+                                <span class="package-badge px-2.5 py-0.5 rounded-full {{ $idx === 0 ? 'bg-stone-900 text-white dark:bg-white dark:text-stone-900' : 'bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300' }} text-[11px] font-semibold tracking-wide transition-all duration-300">
                                     {{ $pkg->badge }}
                                 </span>
                                 <span class="text-xs text-stone-500">
@@ -294,10 +297,19 @@
                             </ul>
                         </div>
 
-                        <button onclick="openBookingModal('{{ addslashes($pkg->name) }}')" class="w-full py-3 px-5 rounded-full {{ $idx === 0 ? 'bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900' : 'border border-stone-300 dark:border-stone-700 hover:bg-stone-100 text-stone-800 dark:text-stone-200' }} font-semibold text-xs tracking-wide transition-all flex items-center justify-center gap-1.5">
-                            <span>Pilih Paket Ini</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
+                        <div class="space-y-2 pt-2">
+                            <button 
+                                type="button"
+                                onclick="selectPackageCard(this, event); openBookingModal('{{ addslashes($pkg->name) }}');" 
+                                class="package-btn w-full py-3 px-5 rounded-full {{ $idx === 0 ? 'bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 shadow-md' : 'border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 bg-transparent' }} font-semibold text-xs tracking-wide transition-all duration-300 flex items-center justify-center gap-1.5"
+                            >
+                                <span>Pilih Paket Ini</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                            <a href="{{ route('packages.show', $pkg->slug) }}" class="block text-center text-xs text-stone-500 hover:text-stone-950 dark:hover:text-stone-100 transition-colors py-1">
+                                Lihat Selengkapnya <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>

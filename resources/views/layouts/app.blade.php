@@ -725,6 +725,53 @@
             modal.classList.remove('flex');
         }
 
+        function selectPackageCard(target, event) {
+            if (event && event.target && event.target.closest('a')) {
+                return;
+            }
+
+            const card = target.closest('.package-card');
+            if (!card) return;
+
+            const parentGrid = card.closest('#packagesGrid') || card.parentElement;
+            if (!parentGrid) return;
+
+            const allCards = parentGrid.querySelectorAll('.package-card');
+
+            allCards.forEach(c => {
+                const badge = c.querySelector('.package-badge');
+                const btn = c.querySelector('.package-btn');
+
+                if (c === card) {
+                    c.classList.add('is-active', 'border-stone-900', 'dark:border-stone-100', 'ring-2', 'ring-stone-900/10', 'dark:ring-stone-100/10', '-translate-y-1', 'shadow-xl');
+                    c.classList.remove('border-stone-200', 'dark:border-stone-800', 'shadow-xs', 'translate-y-0');
+
+                    if (badge) {
+                        badge.classList.add('bg-stone-900', 'text-white', 'dark:bg-white', 'dark:text-stone-900');
+                        badge.classList.remove('bg-stone-100', 'dark:bg-stone-800', 'text-stone-700', 'dark:text-stone-300');
+                    }
+
+                    if (btn) {
+                        btn.classList.add('bg-stone-900', 'text-white', 'dark:bg-stone-100', 'dark:text-stone-900', 'shadow-md');
+                        btn.classList.remove('border', 'border-stone-300', 'dark:border-stone-700', 'hover:bg-stone-100', 'dark:hover:bg-stone-800', 'text-stone-800', 'dark:text-stone-200', 'bg-transparent');
+                    }
+                } else {
+                    c.classList.remove('is-active', 'border-stone-900', 'dark:border-stone-100', 'ring-2', 'ring-stone-900/10', 'dark:ring-stone-100/10', '-translate-y-1', 'shadow-xl');
+                    c.classList.add('border-stone-200', 'dark:border-stone-800', 'shadow-xs', 'translate-y-0');
+
+                    if (badge) {
+                        badge.classList.remove('bg-stone-900', 'text-white', 'dark:bg-white', 'dark:text-stone-900');
+                        badge.classList.add('bg-stone-100', 'dark:bg-stone-800', 'text-stone-700', 'dark:text-stone-300');
+                    }
+
+                    if (btn) {
+                        btn.classList.remove('bg-stone-900', 'text-white', 'dark:bg-stone-100', 'dark:text-stone-900', 'shadow-md');
+                        btn.classList.add('border', 'border-stone-300', 'dark:border-stone-700', 'hover:bg-stone-100', 'dark:hover:bg-stone-800', 'text-stone-800', 'dark:text-stone-200', 'bg-transparent');
+                    }
+                }
+            });
+        }
+
         function openBookingModal(preselectedName) {
             const select = document.getElementById('bookItemSelect');
             if (preselectedName) {
