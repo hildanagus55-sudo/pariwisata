@@ -5,6 +5,14 @@
 
 @section('content')
 <div class="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Top Navigation -->
+    <div class="mb-6">
+        <a href="{{ route('home') }}#destinasi" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all shadow-xs group">
+            <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-0.5 transition-transform"></i>
+            <span>Kembali ke Beranda</span>
+        </a>
+    </div>
+
     <!-- Header -->
     <div class="mb-10 text-center max-w-3xl mx-auto">
         <span class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">

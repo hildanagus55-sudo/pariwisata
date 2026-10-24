@@ -317,7 +317,11 @@
                 <img id="modalDestImage" src="" alt="Detail Destinasi" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent"></div>
                 
-                <button onclick="closeDetailModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-stone-900/60 hover:bg-stone-900 text-white flex items-center justify-center text-sm transition-colors">
+                <button onclick="closeDetailModal()" class="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-stone-900/70 hover:bg-stone-900 text-white backdrop-blur-md flex items-center gap-1.5 text-xs font-semibold transition-all shadow-md">
+                    <i class="fa-solid fa-arrow-left text-[11px]"></i>
+                    <span>Kembali</span>
+                </button>
+                <button onclick="closeDetailModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-stone-900/60 hover:bg-stone-900 text-white flex items-center justify-center text-sm transition-colors" title="Tutup">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
 
@@ -361,8 +365,9 @@
                 </div>
 
                 <div class="pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between gap-3">
-                    <button onclick="closeDetailModal()" class="px-4 py-2.5 rounded-full border border-stone-200 dark:border-stone-700 text-xs font-semibold hover:bg-stone-50 dark:hover:bg-stone-800">
-                        Tutup
+                    <button onclick="closeDetailModal()" class="px-4 py-2.5 rounded-full border border-stone-200 dark:border-stone-700 text-xs font-semibold hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 flex items-center gap-1.5 transition-colors">
+                        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                        <span>Kembali</span>
                     </button>
                     <button id="modalBookNowBtn" class="px-6 py-2.5 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 text-xs font-semibold shadow-sm hover:opacity-90 flex items-center gap-1.5">
                         <span>Pesan Trip Ini</span>
@@ -381,8 +386,9 @@
                     <span class="text-[10px] uppercase tracking-widest text-stone-400 font-medium">Boutique Booking Concierge</span>
                     <h3 class="font-serif text-lg font-semibold">Rencanakan Perjalanan Anda</h3>
                 </div>
-                <button onclick="closeBookingModal()" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-xs">
-                    <i class="fa-solid fa-xmark"></i>
+                <button onclick="closeBookingModal()" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 flex items-center gap-1.5 text-xs text-stone-200 hover:text-white transition-colors">
+                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                    <span>Kembali</span>
                 </button>
             </div>
 
@@ -469,8 +475,9 @@
                 </div>
 
                 <div class="flex items-center justify-end gap-2.5 pt-2">
-                    <button type="button" onclick="closeBookingModal()" class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 font-semibold">
-                        Batal
+                    <button type="button" onclick="closeBookingModal()" class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 font-semibold hover:bg-stone-50 dark:hover:bg-stone-800 flex items-center gap-1.5 text-stone-700 dark:text-stone-300 transition-colors">
+                        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                        <span>Kembali</span>
                     </button>
                     <button type="submit" id="btnSubmitBooking" class="px-6 py-2 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold shadow-sm hover:opacity-90">
                         Konfirmasi Reservasi
@@ -516,8 +523,9 @@
                     <i class="fa-solid fa-receipt text-[11px]"></i>
                     <span>Buka Lembar E-Tiket Lengkap</span>
                 </a>
-                <button onclick="closeReceiptModal()" class="w-full py-2 rounded-full border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 text-xs hover:bg-stone-50 dark:hover:bg-stone-800">
-                    Selesai
+                <button onclick="closeReceiptModal()" class="w-full py-2 rounded-full border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 text-xs hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center justify-center gap-1.5 transition-colors">
+                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                    <span>Kembali ke Beranda</span>
                 </button>
             </div>
         </div>

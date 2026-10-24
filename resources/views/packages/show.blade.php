@@ -5,14 +5,22 @@
 
 @section('content')
     <div class="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Breadcrumb -->
-        <nav class="flex items-center gap-2 text-xs text-stone-500 mb-6">
-            <a href="{{ route('home') }}" class="hover:text-stone-900 transition-colors">Beranda</a>
-            <span class="text-stone-300">/</span>
-            <a href="{{ route('home') }}#paket" class="hover:text-stone-900 transition-colors">Paket Wisata</a>
-            <span class="text-stone-300">/</span>
-            <span class="text-stone-900 dark:text-stone-100 font-medium truncate">{{ $package->name }}</span>
-        </nav>
+        <!-- Navigation & Breadcrumb -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <a href="{{ route('home') }}#paket" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all shadow-xs group">
+                <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-0.5 transition-transform"></i>
+                <span>Kembali ke Paket Wisata</span>
+            </a>
+
+            <!-- Breadcrumb -->
+            <nav class="flex items-center gap-2 text-xs text-stone-500">
+                <a href="{{ route('home') }}" class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors">Beranda</a>
+                <span class="text-stone-300 dark:text-stone-700">/</span>
+                <a href="{{ route('home') }}#paket" class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors">Paket Wisata</a>
+                <span class="text-stone-300 dark:text-stone-700">/</span>
+                <span class="text-stone-900 dark:text-stone-100 font-medium truncate max-w-[180px] sm:max-w-xs">{{ $package->name }}</span>
+            </nav>
+        </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <!-- Package Content -->
@@ -104,6 +112,18 @@
                     </div>
                 @endif
             </div>
+        </div>
+
+        <!-- Bottom Back & Action Bar -->
+        <div class="mt-14 pt-8 border-t border-stone-200 dark:border-stone-800 flex flex-wrap items-center justify-between gap-4">
+            <a href="{{ route('home') }}#paket" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
+                <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                <span>Kembali ke Koleksi Paket</span>
+            </a>
+            <button onclick="openBookingModal('{{ addslashes($package->name) }}')" class="px-6 py-2.5 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 text-xs font-semibold shadow-sm hover:opacity-90 transition-all flex items-center gap-1.5">
+                <span>Rencanakan Perjalanan Ini</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
         </div>
     </div>
 @endsection
