@@ -47,9 +47,10 @@ class DestinationController extends Controller
                 break;
         }
 
-        $destinations = $query->paginate(9);
+        $destinations = $query->paginate(24);
+        $totalCount = Destination::count();
 
-        return view('destinations.index', compact('destinations', 'category', 'region', 'keyword', 'sort'));
+        return view('destinations.index', compact('destinations', 'category', 'region', 'keyword', 'sort', 'totalCount'));
     }
 
     public function show($slug)

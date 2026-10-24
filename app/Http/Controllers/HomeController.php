@@ -51,15 +51,22 @@ class HomeController extends Controller
                 break;
         }
 
-        $destinations = $destinationsQuery->get();
+        $totalDestinationsCount = Destination::count();
+        $totalPackagesCount = TourPackage::count();
+
+        // If no explicit filter is applied, show top 6 curated destinations on homepage
+        $isFiltered = ($category && $category !== 'Semua') || ($region && $region !== 'Semua') || !empty($keyword);
+        $destinations = $isFiltered ? $destinationsQuery->get() : $destinationsQuery->take(6)->get();
+
         $allDestinations = Destination::all();
+        $allPackages = TourPackage::all();
         $packages = TourPackage::where('is_featured', true)->get();
         $testimonials = Testimonial::all();
         $gallery = GalleryItem::all();
 
-        // Items for booking modal dropdown
+        // Items for booking modal dropdown (all packages & all destinations)
         $bookingOptions = [];
-        foreach ($packages as $pkg) {
+        foreach ($allPackages as $pkg) {
             $bookingOptions[] = [
                 'type' => 'package',
                 'name' => $pkg->name,
@@ -93,7 +100,9 @@ class HomeController extends Controller
             'category',
             'region',
             'keyword',
-            'sort'
+            'sort',
+            'totalDestinationsCount',
+            'totalPackagesCount'
         ));
     }
 }

@@ -144,6 +144,10 @@
                     <option value="price-desc">Biaya: Tinggi ke Rendah</option>
                     <option value="rating">Ulasan Terbaik</option>
                 </select>
+                <a href="{{ route('destinations.index') }}" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-semibold transition-all whitespace-nowrap shadow-xs" title="Buka Halaman Lengkap Destinasi">
+                    <span>Lihat Halaman Destinasi</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
             </div>
         </div>
 
@@ -237,6 +241,18 @@
                 </article>
             @endforeach
         </div>
+
+        <!-- CTA Lihat Seluruh Halaman Destinasi -->
+        <div class="mt-14 text-center">
+            <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold text-sm hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all group shadow-md">
+                <i class="fa-solid fa-compass text-amber-300 dark:text-stone-700"></i>
+                <span>Lihat Seluruh Koleksi Destinasi ({{ $totalDestinationsCount ?? 20 }} Lokasi Lengkap)</span>
+                <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
+            </a>
+            <p class="text-xs text-stone-500 dark:text-stone-400 mt-2.5">
+                Buka halaman katalog lengkap untuk melihat seluruh 20 rute kaldera, pantai karst, rimba satwa, dan desa adat.
+            </p>
+        </div>
     </section>
 
     <!-- ================= 3. PAKET PERJALANAN (CLEAN BOUTIQUE PACKAGES) ================= -->
@@ -252,6 +268,12 @@
                 <p class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
                     Sudah mencakup kabin/hotel yang bersih dan estetik, transportasi darat & laut privat, tiket kawasan konservasi, serta santap hidangan lokal segar.
                 </p>
+                <div class="mt-4 flex items-center justify-center">
+                    <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-200/70 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all group">
+                        <span>Buka Halaman Lengkap ({{ $totalPackagesCount ?? 9 }} Paket Wisata)</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
             </div>
 
             <!-- Packages Grid -->
@@ -315,6 +337,18 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <!-- CTA Lihat Seluruh Halaman Paket Wisata -->
+            <div class="mt-14 text-center">
+                <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold text-sm hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all group shadow-md">
+                    <i class="fa-solid fa-suitcase-rolling text-amber-300 dark:text-stone-700"></i>
+                    <span>Lihat Seluruh Pilihan Paket Wisata ({{ $totalPackagesCount ?? 9 }} Rute Lengkap)</span>
+                    <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
+                </a>
+                <p class="text-xs text-stone-500 dark:text-stone-400 mt-2.5">
+                    Halaman lengkap mencakup sailing phinisi privat, overland kawah, slow living, jalur rempah, dan glamping.
+                </p>
             </div>
         </div>
     </section>

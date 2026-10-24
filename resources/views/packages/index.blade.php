@@ -14,9 +14,10 @@
     </div>
 
     <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
-            Boutique Itinerary
-        </span>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-semibold mb-3 border border-stone-200/80 dark:border-stone-700">
+            <i class="fa-solid fa-compass text-amber-600 dark:text-amber-400"></i>
+            <span>{{ $packages->count() }} Pilihan Paket Lengkap & All-Inclusive</span>
+        </div>
         <h1 class="font-serif text-3xl sm:text-5xl font-normal text-stone-950 dark:text-white">
             Koleksi Paket Perjalanan Terkurasi
         </h1>
@@ -25,7 +26,7 @@
         </p>
     </div>
 
-    <div id="packagesGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div id="packagesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @foreach($packages as $idx => $pkg)
             <div 
                 onclick="selectPackageCard(this, event)"
@@ -84,6 +85,18 @@
                 </div>
             </div>
         @endforeach
+    </div>
+
+    <!-- Bottom Navigation & CTA -->
+    <div class="mt-16 pt-8 border-t border-stone-200 dark:border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="{{ route('home') }}#paket" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
+            <i class="fa-solid fa-arrow-left text-[10px]"></i>
+            <span>Kembali ke Beranda</span>
+        </a>
+        <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 text-xs font-semibold shadow-sm hover:opacity-90 transition-all">
+            <span>Jelajahi Seluruh Destinasi (20 Lokasi)</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </a>
     </div>
 </div>
 @endsection
