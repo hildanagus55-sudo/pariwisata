@@ -4,107 +4,107 @@
 @section('meta_description', 'Boutique trip curator untuk menjelajah pulau, budaya, dan alam tersembunyi di Indonesia bersama pemandu warga lokal.')
 
 @section('content')
-    <!-- ================= HERO SECTION (AIRY, CLEAN WHITE & EDITORIAL) ================= -->
-    <section id="beranda" class="pt-32 pb-16 sm:pb-24 bg-stone-25 dark:bg-stone-950 border-b border-stone-200/70 dark:border-stone-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center mb-12">
-                <!-- Natural Subtitle Pill -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-100 dark:bg-stone-800/80 border border-stone-200/80 dark:border-stone-700 text-stone-600 dark:text-stone-300 text-xs font-medium mb-6">
-                    <span class="w-2 h-2 rounded-full bg-stone-800 dark:bg-stone-200"></span>
-                    <span>Kurasi Wisata Alam & Budaya Asli Indonesia</span>
+    <!-- ================= 2. HERO SECTION & INTERACTIVE SEARCH WIDGET (CINEMATIC PHOTO HERO) ================= -->
+    <section id="beranda" class="relative min-h-[92vh] pt-28 pb-20 flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Fallback -->
+        <img 
+            src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85" 
+            onerror="this.src='https://placehold.co/1920x1080/0e4437/ffffff?text=Pesona+Alam+Indonesia'"
+            alt="Pemandangan Alam Kepulauan Indonesia" 
+            class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
+        >
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-3xl mx-auto text-center text-white">
+                <!-- Pill Badge with Ping Indicator -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-xs sm:text-sm font-medium mb-6 animate-float">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>Eksplorasi 17.000+ Pulau Eksotis di Zamrud Khatulistiwa</span>
                 </div>
 
-                <!-- Editorial Headline -->
-                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-stone-900 dark:text-stone-50 leading-[1.18]">
-                    Menjelajah Nusantara dengan Rasa, Tenang & <span class="italic font-normal">Tanpa Tergesa</span>.
+                <!-- Inspiring Headline -->
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+                    Temukan Surga Tersembunyi di <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 italic">Bumi Nusantara</span>
                 </h1>
 
-                <p class="mt-5 text-sm sm:text-base text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl mx-auto">
-                    Bukan sekadar itinerary padat mengejar foto. Kami mengajak Anda berlayar di perairan tenang Flores, menyapa fajar di puncak kaldera, dan berbincang hangat dengan warga lokal di pulau-pulau sunyi.
+                <p class="text-base sm:text-lg text-slate-200/90 leading-relaxed mb-10 max-w-2xl mx-auto">
+                    Dari birunya perairan Raja Ampat, megahnya kabut pagi Borobudur, hingga hangatnya senja di Labuan Bajo. Wujudkan perjalanan impian Anda bersama pemandu lokal terbaik.
                 </p>
+
+                <!-- Quick Stats Counter -->
+                <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-12 text-center">
+                    <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
+                        <p class="text-xl sm:text-2xl font-extrabold text-emerald-300">120+</p>
+                        <p class="text-xs text-slate-200">Destinasi Unggulan</p>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
+                        <p class="text-xl sm:text-2xl font-extrabold text-amber-300">4.9/5</p>
+                        <p class="text-xs text-slate-200">Rating Wisatawan</p>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
+                        <p class="text-xl sm:text-2xl font-extrabold text-teal-300">45K+</p>
+                        <p class="text-xs text-slate-200">Pelanggan Puas</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Clean Capsule Search Bar -->
-            <div class="max-w-4xl mx-auto bg-white dark:bg-stone-900 rounded-3xl sm:rounded-full p-2.5 sm:p-3 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-stone-200/90 dark:border-stone-800">
-                <form id="heroSearchForm" onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-1 items-center">
+            <!-- Interactive Search Widget Card -->
+            <div class="max-w-5xl mx-auto bg-white dark:bg-stone-900 rounded-3xl p-4 sm:p-6 shadow-2xl border border-stone-200/80 dark:border-stone-800">
+                <form id="heroSearchForm" onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
                     <!-- Lokasi Tujuan -->
-                    <div class="sm:col-span-4 px-4 py-2 border-b sm:border-b-0 sm:border-r border-stone-200/70 dark:border-stone-800">
-                        <label class="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-0.5">Tujuan Wisata</label>
-                        <select id="searchLocation" class="w-full bg-transparent text-stone-900 dark:text-stone-100 font-medium text-xs sm:text-sm focus:outline-none cursor-pointer">
-                            <option value="Semua">Semua Wilayah Nusantara</option>
-                            <option value="Bali & Nusa Tenggara">Labuan Bajo & Bali</option>
-                            <option value="Papua & Maluku">Raja Ampat & Maluku</option>
-                            <option value="Jawa">Bromo, Ijen & Borobudur</option>
-                            <option value="Sumatera">Danau Toba & Samosir</option>
-                            <option value="Kalimantan & Sulawesi">Derawan & Toraja</option>
+                    <div class="md:col-span-4">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+                            <i class="fa-solid fa-location-dot text-stone-800 dark:text-stone-200 mr-1.5"></i> Lokasi Tujuan
+                        </label>
+                        <select id="searchLocation" class="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
+                            <option value="Semua">Semua Destinasi Nusantara</option>
+                            <option value="Bali & Nusa Tenggara">Bali & Labuan Bajo (NTT)</option>
+                            <option value="Papua & Maluku">Raja Ampat, Papua Barat</option>
+                            <option value="Jawa">Bromo, Ijen & Borobudur (Jawa)</option>
+                            <option value="Sumatera">Danau Toba & Pulau Weh (Sumatera)</option>
+                            <option value="Kalimantan & Sulawesi">Derawan & Tana Toraja</option>
                         </select>
                     </div>
 
                     <!-- Tanggal Keberangkatan -->
-                    <div class="sm:col-span-3 px-4 py-2 border-b sm:border-b-0 sm:border-r border-stone-200/70 dark:border-stone-800">
-                        <label class="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-0.5">Jadwal Perjalanan</label>
-                        <input type="date" id="searchDate" required class="w-full bg-transparent text-stone-900 dark:text-stone-100 font-medium text-xs sm:text-sm focus:outline-none cursor-pointer">
+                    <div class="md:col-span-3">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+                            <i class="fa-regular fa-calendar-days text-stone-800 dark:text-stone-200 mr-1.5"></i> Tanggal Berangkat
+                        </label>
+                        <input type="date" id="searchDate" required class="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
                     </div>
 
                     <!-- Jumlah Peserta -->
-                    <div class="sm:col-span-3 px-4 py-2">
-                        <label class="block text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-0.5">Jumlah Tamu</label>
-                        <select id="searchPax" class="w-full bg-transparent text-stone-900 dark:text-stone-100 font-medium text-xs sm:text-sm focus:outline-none cursor-pointer">
-                            <option value="1">1 Orang (Solo)</option>
-                            <option value="2" selected>2 Orang (Pasangan / Teman)</option>
-                            <option value="4">4 Orang (Keluarga)</option>
+                    <div class="md:col-span-3">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+                            <i class="fa-solid fa-user-group text-stone-800 dark:text-stone-200 mr-1.5"></i> Jumlah Peserta
+                        </label>
+                        <select id="searchPax" class="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
+                            <option value="1">1 Orang (Solo Traveler)</option>
+                            <option value="2" selected>2 Orang (Pasangan / Sahabat)</option>
+                            <option value="4">4 Orang (Keluarga Kecil)</option>
                             <option value="6">6 Orang (Grup Privat)</option>
                             <option value="10">10+ Orang (Rombongan)</option>
                         </select>
                     </div>
 
                     <!-- Tombol Cari -->
-                    <div class="sm:col-span-2 p-1">
-                        <button type="submit" class="w-full h-11 sm:h-12 rounded-2xl sm:rounded-full bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm">
-                            <i class="fa-solid fa-magnifying-glass text-xs"></i>
-                            <span>Cari Trip</span>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="w-full py-3.5 px-5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-95">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>Cari Wisata</span>
                         </button>
                     </div>
                 </form>
-            </div>
 
-            <!-- Natural Tags Strip -->
-            <div class="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-stone-500">
-                <span class="text-stone-400">Pilihan populer:</span>
-                <button onclick="quickFilter('Pantai')" class="px-3 py-1 rounded-full bg-white dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400 text-stone-700 dark:text-stone-300 transition-colors">Teluk Raja Ampat</button>
-                <button onclick="quickFilter('Pegunungan')" class="px-3 py-1 rounded-full bg-white dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400 text-stone-700 dark:text-stone-300 transition-colors">Fajar Kaldera Bromo</button>
-                <button onclick="quickFilter('Alam')" class="px-3 py-1 rounded-full bg-white dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400 text-stone-700 dark:text-stone-300 transition-colors">Sailing Phinisi Flores</button>
-                <button onclick="quickFilter('Budaya')" class="px-3 py-1 rounded-full bg-white dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400 text-stone-700 dark:text-stone-300 transition-colors">Relief & Desa Borobudur</button>
-            </div>
-
-            <!-- Editorial Feature Highlights -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto mt-14 pt-10 border-t border-stone-200/70 dark:border-stone-800 text-center sm:text-left">
-                <div class="flex items-center gap-3 justify-center sm:justify-start">
-                    <div class="w-9 h-9 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-stone-800 dark:text-stone-200 text-xs shrink-0">
-                        <i class="fa-solid fa-person-hiking"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-semibold text-stone-900 dark:text-white">Pemandu Warga Asli</h4>
-                        <p class="text-[11px] text-stone-500">Mengenal cerita dan alam tanah kelahirannya</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3 justify-center sm:justify-start">
-                    <div class="w-9 h-9 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-stone-800 dark:text-stone-200 text-xs shrink-0">
-                        <i class="fa-solid fa-shield-heart"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-semibold text-stone-900 dark:text-white">Transparan & Jujur</h4>
-                        <p class="text-[11px] text-stone-500">Tanpa pungutan liar atau toko paksaan</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3 justify-center sm:justify-start">
-                    <div class="w-9 h-9 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-stone-800 dark:text-stone-200 text-xs shrink-0">
-                        <i class="fa-solid fa-leaf"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-semibold text-stone-900 dark:text-white">Pariwisata Berkelanjutan</h4>
-                        <p class="text-[11px] text-stone-500">Menghargai tradisi adat & ekosistem laut</p>
-                    </div>
+                <!-- Popular Quick Tags -->
+                <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 flex flex-wrap items-center gap-2 text-xs text-stone-500 dark:text-stone-400">
+                    <span class="font-semibold">Pencarian Populer:</span>
+                    <button onclick="quickFilter('Pantai')" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🏝️ Kepulauan Raja Ampat</button>
+                    <button onclick="quickFilter('Pegunungan')" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🌋 Sunrise Gunung Bromo</button>
+                    <button onclick="quickFilter('Budaya')" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🛕 Candi Borobudur</button>
+                    <button onclick="quickFilter('Alam')" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🐉 Taman Nasional Komodo</button>
                 </div>
             </div>
         </div>

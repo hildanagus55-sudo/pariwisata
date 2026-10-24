@@ -86,6 +86,16 @@
         .dark .clean-nav {
             background: rgba(23, 19, 15, 0.94);
         }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.40) 0%, rgba(15, 23, 42, 0.62) 55%, rgba(15, 23, 42, 0.92) 100%);
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
