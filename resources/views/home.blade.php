@@ -20,15 +20,15 @@
                 <!-- Pill Badge with Ping Indicator -->
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-xs sm:text-sm font-medium mb-6 animate-float">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    <span>Eksplorasi 17.000+ Pulau Eksotis di Zamrud Khatulistiwa</span>
+                    <span data-i18n="heroBadge">Eksplorasi 17.000+ Pulau Eksotis di Zamrud Khatulistiwa</span>
                 </div>
 
                 <!-- Inspiring Headline -->
-                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+                <h1 data-i18n="heroTitle" class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
                     Temukan Surga Tersembunyi di <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 italic">Bumi Nusantara</span>
                 </h1>
 
-                <p class="text-base sm:text-lg text-slate-200/90 leading-relaxed mb-10 max-w-2xl mx-auto">
+                <p data-i18n="heroDesc" class="text-base sm:text-lg text-slate-200/90 leading-relaxed mb-10 max-w-2xl mx-auto">
                     Dari birunya perairan Raja Ampat, megahnya kabut pagi Borobudur, hingga hangatnya senja di Labuan Bajo. Wujudkan perjalanan impian Anda bersama pemandu lokal terbaik.
                 </p>
 
@@ -36,15 +36,15 @@
                 <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-12 text-center">
                     <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
                         <p class="text-xl sm:text-2xl font-extrabold text-emerald-300">120+</p>
-                        <p class="text-xs text-slate-200">Destinasi Unggulan</p>
+                        <p data-i18n="heroStatDest" class="text-xs text-slate-200">Destinasi Unggulan</p>
                     </div>
                     <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
                         <p class="text-xl sm:text-2xl font-extrabold text-amber-300">4.9/5</p>
-                        <p class="text-xs text-slate-200">Rating Wisatawan</p>
+                        <p data-i18n="heroStatGuide" class="text-xs text-slate-200">Rating Wisatawan</p>
                     </div>
                     <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
                         <p class="text-xl sm:text-2xl font-extrabold text-teal-300">45K+</p>
-                        <p class="text-xs text-slate-200">Pelanggan Puas</p>
+                        <p data-i18n="heroStatSat" class="text-xs text-slate-200">Pelanggan Puas</p>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     <!-- Lokasi Tujuan -->
                     <div class="md:col-span-4">
                         <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
-                            <i class="fa-solid fa-location-dot text-stone-800 dark:text-stone-200 mr-1.5"></i> Lokasi Tujuan
+                            <i class="fa-solid fa-location-dot text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldRegion">Lokasi Tujuan</span>
                         </label>
                         <select id="searchLocation" class="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
                             <option value="Semua">Semua Destinasi Nusantara</option>
@@ -70,7 +70,7 @@
                     <!-- Tanggal Keberangkatan -->
                     <div class="md:col-span-3">
                         <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
-                            <i class="fa-regular fa-calendar-days text-stone-800 dark:text-stone-200 mr-1.5"></i> Tanggal Berangkat
+                            <i class="fa-regular fa-calendar-days text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldDate">Tanggal Berangkat</span>
                         </label>
                         <input type="date" id="searchDate" required class="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
                     </div>
@@ -78,7 +78,7 @@
                     <!-- Jumlah Peserta -->
                     <div class="md:col-span-3">
                         <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
-                            <i class="fa-solid fa-user-group text-stone-800 dark:text-stone-200 mr-1.5"></i> Jumlah Peserta
+                            <i class="fa-solid fa-user-group text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldPax">Jumlah Peserta</span>
                         </label>
                         <select id="searchPax" class="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
                             <option value="1">1 Orang (Solo Traveler)</option>
@@ -93,18 +93,18 @@
                     <div class="md:col-span-2">
                         <button type="submit" class="w-full py-3.5 px-5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-95">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <span>Cari Wisata</span>
+                            <span data-i18n="heroBtnSearch">Cari Wisata</span>
                         </button>
                     </div>
                 </form>
 
                 <!-- Popular Quick Tags -->
                 <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 flex flex-wrap items-center gap-2 text-xs text-stone-500 dark:text-stone-400">
-                    <span class="font-semibold">Pencarian Populer:</span>
-                    <button onclick="quickFilter('Pantai')" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🏝️ Kepulauan Raja Ampat</button>
-                    <button onclick="quickFilter('Pegunungan')" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🌋 Sunrise Gunung Bromo</button>
-                    <button onclick="quickFilter('Budaya')" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🛕 Candi Borobudur</button>
-                    <button onclick="quickFilter('Alam')" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🐉 Taman Nasional Komodo</button>
+                    <span data-i18n="heroPopSearch" class="font-semibold">Pencarian Populer:</span>
+                    <button onclick="quickFilter('Pantai')" data-i18n="heroPopRajaAmpat" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🏝️ Kepulauan Raja Ampat</button>
+                    <button onclick="quickFilter('Pegunungan')" data-i18n="heroPopBromo" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🌋 Sunrise Gunung Bromo</button>
+                    <button onclick="quickFilter('Budaya')" data-i18n="heroPopBorobudur" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🛕 Candi Borobudur</button>
+                    <button onclick="quickFilter('Alam')" data-i18n="heroPopKomodo" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🐉 Taman Nasional Komodo</button>
                 </div>
             </div>
         </div>
@@ -115,13 +115,13 @@
         <!-- Section Header -->
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5 pb-6 border-b border-stone-200/80 dark:border-stone-800">
             <div>
-                <span class="text-xs font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wider block mb-1">
+                <span data-i18n="destSubtitle" class="text-xs font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wider block mb-1">
                     Jurnal Destinasi
                 </span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight">
+                <h2 data-i18n="destTitle" class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight">
                     Tempat-Tempat Istimewa di Bumi Pertiwi
                 </h2>
-                <p class="mt-2 text-stone-600 dark:text-stone-400 max-w-xl text-xs sm:text-sm leading-relaxed">
+                <p data-i18n="destDesc" class="mt-2 text-stone-600 dark:text-stone-400 max-w-xl text-xs sm:text-sm leading-relaxed">
                     Setiap lokasi dikurasi dengan cermat: memilih musim terbaik, penginapan berkarakter, dan rute santai yang bersahabat dengan alam.
                 </p>
             </div>
@@ -129,7 +129,7 @@
             <!-- Tombol Lihat Halaman di Samping Judul -->
             <div class="shrink-0">
                 <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:border-stone-900 dark:hover:border-stone-200 bg-white dark:bg-stone-900 hover:bg-stone-900 hover:text-white dark:hover:bg-stone-100 dark:hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all whitespace-nowrap shadow-xs group" title="Buka Halaman Lengkap Destinasi">
-                    <span>Lihat Halaman Destinasi</span>
+                    <span data-i18n="destBtnViewAll">Lihat Halaman Destinasi</span>
                     <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
@@ -137,19 +137,19 @@
 
         <!-- Category Filter Pills -->
         <div id="categoryButtons" class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar text-xs">
-            <button onclick="setCategory('Semua')" data-cat="Semua" class="cat-btn px-4 py-2 rounded-full font-semibold transition-all whitespace-nowrap bg-stone-900 text-white dark:bg-white dark:text-stone-900 shadow-sm">
+            <button onclick="setCategory('Semua')" data-cat="Semua" data-i18n="catAll" class="cat-btn px-4 py-2 rounded-full font-semibold transition-all whitespace-nowrap bg-stone-900 text-white dark:bg-white dark:text-stone-900 shadow-sm">
                 Semua Koleksi
             </button>
-            <button onclick="setCategory('Pantai')" data-cat="Pantai" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
+            <button onclick="setCategory('Pantai')" data-cat="Pantai" data-i18n="catBeach" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
                 Pantai & Perairan Karst
             </button>
-            <button onclick="setCategory('Pegunungan')" data-cat="Pegunungan" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
+            <button onclick="setCategory('Pegunungan')" data-cat="Pegunungan" data-i18n="catMountain" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
                 Puncak & Kaldera Dingin
             </button>
-            <button onclick="setCategory('Budaya')" data-cat="Budaya" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
+            <button onclick="setCategory('Budaya')" data-cat="Budaya" data-i18n="catCulture" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
                 Sejarah & Perkampungan Adat
             </button>
-            <button onclick="setCategory('Alam')" data-cat="Alam" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
+            <button onclick="setCategory('Alam')" data-cat="Alam" data-i18n="catNature" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
                 Eksotisme Rimba & Satwa
             </button>
         </div>
@@ -212,11 +212,11 @@
                         <!-- Price & Action -->
                         <div class="mt-6 pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between gap-2">
                             <div>
-                                <span class="text-[10px] text-stone-400 uppercase tracking-wider block">Mulai dari</span>
-                                <p class="text-base font-serif font-bold text-stone-900 dark:text-white">{{ $dest->formatted_price }}<span class="text-[11px] font-sans font-normal text-stone-400">/org</span></p>
+                                <span data-i18n="cardStartingFrom" class="text-[10px] text-stone-400 uppercase tracking-wider block">Mulai dari</span>
+                                <p class="text-base font-serif font-bold text-stone-900 dark:text-white">{{ $dest->formatted_price }}<span data-i18n="cardPerPerson" class="text-[11px] font-sans font-normal text-stone-400">/org</span></p>
                             </div>
                             <div class="flex items-center gap-2">
-                                <span class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 group-hover:bg-stone-900 group-hover:text-white dark:group-hover:bg-stone-100 dark:group-hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
+                                <span data-i18n="cardRouteNotes" class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 group-hover:bg-stone-900 group-hover:text-white dark:group-hover:bg-stone-100 dark:group-hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
                                     Catatan Rute
                                 </span>
                             </div>
@@ -231,18 +231,18 @@
     <section id="paket" class="py-20 bg-stone-50 dark:bg-stone-900/50 border-y border-stone-200/80 dark:border-stone-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14">
-                <span class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
+                <span data-i18n="pkgSubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
                     Boutique Itinerary
                 </span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight">
+                <h2 data-i18n="pkgTitle" class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight">
                     Paket Perjalanan Terkurasi
                 </h2>
-                <p class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
+                <p data-i18n="pkgDesc" class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
                     Sudah mencakup kabin/hotel yang bersih dan estetik, transportasi darat & laut privat, tiket kawasan konservasi, serta santap hidangan lokal segar.
                 </p>
                 <div class="mt-4 flex items-center justify-center">
                     <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-200/70 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all group">
-                        <span>Buka Halaman Lengkap ({{ $totalPackagesCount ?? 9 }} Paket Wisata)</span>
+                        <span data-i18n="pkgHeaderBtn">Buka Halaman Lengkap ({{ $totalPackagesCount ?? 9 }} Paket Wisata)</span>
                         <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
@@ -279,11 +279,11 @@
                                 @endif
                                 <div class="flex items-baseline gap-1 mt-0.5">
                                     <span class="font-serif text-2xl sm:text-3xl font-bold text-stone-950 dark:text-white">{{ $pkg->formatted_price }}</span>
-                                    <span class="text-xs text-stone-400">/ tamu</span>
+                                    <span data-i18n="cardPerPerson" class="text-xs text-stone-400">/ tamu</span>
                                 </div>
                             </div>
 
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-2.5">Sudah Termasuk:</span>
+                            <span data-i18n="pkgIncluded" class="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-2.5">Sudah Termasuk:</span>
                             <ul class="space-y-2 text-xs text-stone-600 dark:text-stone-300 mb-8">
                                 @foreach($pkg->facilities ?? [] as $f)
                                     <li class="flex items-start gap-2">
@@ -300,11 +300,11 @@
                                 onclick="selectPackageCard(this, event); openBookingModal('{{ addslashes($pkg->name) }}');" 
                                 class="package-btn w-full py-3 px-5 rounded-full {{ $idx === 0 ? 'bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 shadow-md' : 'border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 bg-transparent' }} font-semibold text-xs tracking-wide transition-all duration-300 flex items-center justify-center gap-1.5"
                             >
-                                <span>Pilih Paket Ini</span>
+                                <span data-i18n="pkgSelectBtn">Pilih Paket Ini</span>
                                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </button>
                             <a href="{{ route('packages.show', $pkg->slug) }}" class="block text-center text-xs text-stone-500 hover:text-stone-950 dark:hover:text-stone-100 transition-colors py-1">
-                                Lihat Selengkapnya <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i>
+                                <span data-i18n="pkgSeeMore">Lihat Selengkapnya</span> <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i>
                             </a>
                         </div>
                     </div>
@@ -315,10 +315,10 @@
             <div class="mt-14 text-center">
                 <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold text-sm hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all group shadow-md">
                     <i class="fa-solid fa-suitcase-rolling text-amber-300 dark:text-stone-700"></i>
-                    <span>Lihat Seluruh Pilihan Paket Wisata ({{ $totalPackagesCount ?? 9 }} Rute Lengkap)</span>
+                    <span data-i18n="pkgBottomBtn">Lihat Seluruh Pilihan Paket Wisata ({{ $totalPackagesCount ?? 9 }} Rute Lengkap)</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
                 </a>
-                <p class="text-xs text-stone-500 dark:text-stone-400 mt-2.5">
+                <p data-i18n="pkgBottomSub" class="text-xs text-stone-500 dark:text-stone-400 mt-2.5">
                     Halaman lengkap mencakup sailing phinisi privat, overland kawah, slow living, jalur rempah, dan glamping.
                 </p>
             </div>
@@ -337,10 +337,10 @@
                         class="w-full h-[420px] object-cover"
                     >
                     <div class="p-5 bg-white dark:bg-stone-900 border-t border-stone-200/80 dark:border-stone-800">
-                        <p class="font-serif italic text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+                        <p data-i18n="storyQuote" class="font-serif italic text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
                             "Pariwisata yang baik bukan sekadar meninggalkan jejak langkah, melainkan membawa pulang rasa hormat pada tanah dan manusianya."
                         </p>
-                        <span class="block text-[11px] text-stone-400 mt-2">— Prinsip Perjalanan NusantaraWander</span>
+                        <span data-i18n="storyPrinciple" class="block text-[11px] text-stone-400 mt-2">— Prinsip Perjalanan NusantaraWander</span>
                     </div>
                 </div>
             </div>
@@ -348,15 +348,15 @@
             <!-- Right Story Content -->
             <div class="lg:col-span-7 space-y-6">
                 <div>
-                    <span class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
+                    <span data-i18n="storySubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
                         Kenapa Berkelana Bersama Kami?
                     </span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight leading-tight">
+                    <h2 data-i18n="storyTitle" class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight leading-tight">
                         Sebuah Perjalanan yang Bernapas, Menghargai Waktu & Warga Lokal
                     </h2>
                 </div>
 
-                <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
+                <p data-i18n="storyDesc" class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
                     Kami memulai perjalanan ini karena lelah melihat paket wisata seragam yang terburu-buru, dipenuhi pemberhentian komersial yang melelahkan. Di NusantaraWander, kami merancang rute yang memberi ruang Anda untuk benar-benar menikmati heningnya alam dan kehangatan cerita warga desa.
                 </p>
 
@@ -410,12 +410,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-3">
                 <div>
-                    <span class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">Lensa Perjalanan</span>
-                    <h2 class="font-serif text-3xl font-normal text-stone-950 dark:text-white">
+                    <span data-i18n="gallerySubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">Lensa Perjalanan</span>
+                    <h2 data-i18n="galleryTitle" class="font-serif text-3xl font-normal text-stone-950 dark:text-white">
                         Momen-Momen yang Tertangkap
                     </h2>
                 </div>
-                <p class="text-xs text-stone-500 max-w-sm">
+                <p data-i18n="galleryDesc" class="text-xs text-stone-500 max-w-sm">
                     Klik pada foto untuk melihat catatan lokasi dan suasana perjalanan saat kamera merekamnya.
                 </p>
             </div>
@@ -441,13 +441,13 @@
     <!-- ================= 6. TESTIMONI CATATAN TAMU ================= -->
     <section id="testimoni" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-12">
-            <span class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
+            <span data-i18n="testiSubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
                 Catatan Tamu
             </span>
-            <h2 class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white">
+            <h2 data-i18n="testiTitle" class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white">
                 Cerita dari Mereka yang Pernah Ikut
             </h2>
-            <p class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+            <p data-i18n="testiDesc" class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
                 Bukan ulasan palsu atau bintang buatan. Ini adalah pesan nyata yang kami terima dari teman-teman yang telah pulang dengan hati gembira.
             </p>
         </div>
@@ -489,19 +489,19 @@
         <!-- Banner Bersahabat -->
         <div class="mt-14 rounded-3xl bg-stone-900 text-white p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
             <div class="max-w-xl text-center sm:text-left">
-                <span class="text-[11px] uppercase tracking-wider text-stone-400 font-medium">Rencana Liburan Bareng Sahabat atau Keluarga?</span>
-                <h3 class="font-serif text-2xl font-normal mt-1.5">
+                <span data-i18n="promoHeader" class="text-[11px] uppercase tracking-wider text-stone-400 font-medium">Rencana Liburan Bareng Sahabat atau Keluarga?</span>
+                <h3 data-i18n="promoTitle" class="font-serif text-2xl font-normal mt-1.5">
                     Gunakan Kode Voucher <span class="underline decoration-stone-500 font-mono text-amber-200">PESONAID</span> untuk Diskon 15%
                 </h3>
-                <p class="text-stone-400 text-xs mt-1 leading-relaxed">
+                <p data-i18n="promoDesc" class="text-stone-400 text-xs mt-1 leading-relaxed">
                     Berlaku untuk simulasi dan pemesanan seluruh rute private tour dan open trip kami bulan ini.
                 </p>
             </div>
             <div class="flex items-center gap-3 shrink-0">
-                <button onclick="copyVoucherCode()" class="px-4 py-2.5 rounded-full border border-stone-700 hover:bg-stone-800 text-xs font-medium transition-colors">
+                <button onclick="copyVoucherCode()" data-i18n="promoCopy" class="px-4 py-2.5 rounded-full border border-stone-700 hover:bg-stone-800 text-xs font-medium transition-colors">
                     Salin Kode
                 </button>
-                <button onclick="openBookingModal('Sailing Phinisi Labuan Bajo (Private Cabin)')" class="px-5 py-2.5 rounded-full bg-white text-stone-900 hover:bg-stone-100 text-xs font-semibold shadow-sm transition-all">
+                <button onclick="openBookingModal('Sailing Phinisi Labuan Bajo (Private Cabin)')" data-i18n="promoPlan" class="px-5 py-2.5 rounded-full bg-white text-stone-900 hover:bg-stone-100 text-xs font-semibold shadow-sm transition-all">
                     Rencanakan Trip
                 </button>
             </div>
@@ -609,11 +609,11 @@
 
                         <div class="mt-6 pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between gap-2">
                             <div>
-                                <span class="text-[10px] text-stone-400 uppercase tracking-wider block">Mulai dari</span>
-                                <p class="text-base font-serif font-bold text-stone-900 dark:text-white">${formatRupiah(dest.price)}<span class="text-[11px] font-sans font-normal text-stone-400">/org</span></p>
+                                <span data-i18n="cardStartingFrom" class="text-[10px] text-stone-400 uppercase tracking-wider block">${(i18nDictionary[currentLang] && i18nDictionary[currentLang].cardStartingFrom) ? i18nDictionary[currentLang].cardStartingFrom : 'Mulai dari'}</span>
+                                <p class="text-base font-serif font-bold text-stone-900 dark:text-white">${formatRupiah(dest.price)}<span data-i18n="cardPerPerson" class="text-[11px] font-sans font-normal text-stone-400">${(i18nDictionary[currentLang] && i18nDictionary[currentLang].cardPerPerson) ? i18nDictionary[currentLang].cardPerPerson : '/org'}</span></p>
                             </div>
-                            <span class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 group-hover:bg-stone-900 group-hover:text-white dark:group-hover:bg-stone-100 dark:group-hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
-                                Catatan Rute
+                            <span data-i18n="cardRouteNotes" class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 group-hover:bg-stone-900 group-hover:text-white dark:group-hover:bg-stone-100 dark:group-hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
+                                ${(i18nDictionary[currentLang] && i18nDictionary[currentLang].cardRouteNotes) ? i18nDictionary[currentLang].cardRouteNotes : 'Catatan Rute'}
                             </span>
                         </div>
                     </div>

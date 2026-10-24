@@ -9,7 +9,7 @@
     <div class="mb-6">
         <a href="{{ route('home') }}#destinasi" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all shadow-xs group">
             <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-0.5 transition-transform"></i>
-            <span>Kembali ke Beranda</span>
+            <span data-i18n="catDestBack">Kembali ke Beranda</span>
         </a>
     </div>
 
@@ -17,12 +17,12 @@
     <div class="mb-10 text-center max-w-3xl mx-auto">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-semibold mb-3 border border-stone-200/80 dark:border-stone-700">
             <i class="fa-solid fa-map-location-dot text-amber-600 dark:text-amber-400"></i>
-            <span>{{ $destinations->total() }} Destinasi Terkurasi di 6 Wilayah Nusantara</span>
+            <span data-i18n="catDestBadge">{{ $destinations->total() }} Destinasi Terkurasi di 6 Wilayah Nusantara</span>
         </div>
-        <h1 class="font-serif text-3xl sm:text-5xl font-normal text-stone-950 dark:text-white">
+        <h1 data-i18n="catDestTitle" class="font-serif text-3xl sm:text-5xl font-normal text-stone-950 dark:text-white">
             Eksplorasi Seluruh Penjuru Nusantara
         </h1>
-        <p class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
+        <p data-i18n="catDestDesc" class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
             Pilih perjalanan sesuai musim dan minat Anda: dari perairan tenang kepulauan timur hingga kaldera sejuk pegunungan Jawa.
         </p>
     </div>
@@ -33,13 +33,14 @@
             <div>
                 <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
                     <i class="fa-solid fa-magnifying-glass text-[10px]"></i>
-                    <span>Pencarian Cepat</span>
+                    <span data-i18n="catDestSearch">Pencarian Cepat</span>
                 </label>
                 <input 
                     type="text" 
                     name="keyword" 
                     value="{{ request('keyword') }}" 
                     oninput="autoFilterDestinations(this.form)"
+                    data-i18n-placeholder="catSearchPlaceholder"
                     placeholder="Ketik nama lokasi / wilayah..." 
                     class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none"
                 >
@@ -48,7 +49,7 @@
             <div>
                 <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
                     <i class="fa-solid fa-tags text-[10px]"></i>
-                    <span>Kategori</span>
+                    <span data-i18n="catDestCategory">Kategori</span>
                 </label>
                 <select name="category" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
                     <option value="Semua" {{ request('category') == 'Semua' ? 'selected' : '' }}>Semua Kategori</option>
@@ -62,7 +63,7 @@
             <div>
                 <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
                     <i class="fa-solid fa-map text-[10px]"></i>
-                    <span>Wilayah</span>
+                    <span data-i18n="catDestRegion">Wilayah</span>
                 </label>
                 <select name="region" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
                     <option value="Semua" {{ request('region') == 'Semua' ? 'selected' : '' }}>Semua Wilayah</option>
@@ -77,7 +78,7 @@
             <div>
                 <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
                     <i class="fa-solid fa-arrow-down-wide-short text-[10px]"></i>
-                    <span>Urutkan</span>
+                    <span data-i18n="catDestSort">Urutkan</span>
                 </label>
                 <select name="sort" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
                     <option value="popular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Rekomendasi Terbaik</option>
@@ -92,11 +93,11 @@
             <div class="mt-4 pt-3.5 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-xs text-stone-500">
                 <span class="flex items-center gap-1.5">
                     <i class="fa-solid fa-bolt text-amber-500 text-[11px]"></i>
-                    <span>Menampilkan hasil filter otomatis</span>
+                    <span data-i18n="autoFilterNotice">Menampilkan hasil filter otomatis</span>
                 </span>
                 <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-200 font-semibold transition-colors">
                     <i class="fa-solid fa-rotate-left text-[10px]"></i>
-                    <span>Reset Filter</span>
+                    <span data-i18n="catDestReset">Reset Filter</span>
                 </a>
             </div>
         @endif
@@ -151,10 +152,10 @@
 
                     <div class="mt-6 pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between gap-2">
                         <div>
-                            <span class="text-[10px] text-stone-400 uppercase tracking-wider block">Mulai dari</span>
-                            <p class="text-base font-serif font-bold text-stone-900 dark:text-white">{{ $dest->formatted_price }}<span class="text-[11px] font-sans font-normal text-stone-400">/org</span></p>
+                            <span data-i18n="cardStartingFrom" class="text-[10px] text-stone-400 uppercase tracking-wider block">Mulai dari</span>
+                            <p class="text-base font-serif font-bold text-stone-900 dark:text-white">{{ $dest->formatted_price }}<span data-i18n="cardPerPerson" class="text-[11px] font-sans font-normal text-stone-400">/org</span></p>
                         </div>
-                        <span class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 group-hover:bg-stone-900 group-hover:text-white dark:group-hover:bg-stone-100 dark:group-hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
+                        <span data-i18n="cardRouteNotes" class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 group-hover:bg-stone-900 group-hover:text-white dark:group-hover:bg-stone-100 dark:group-hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
                             Catatan Rute
                         </span>
                     </div>
@@ -179,10 +180,10 @@
     <div class="mt-16 pt-8 border-t border-stone-200 dark:border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
         <a href="{{ route('home') }}#destinasi" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
             <i class="fa-solid fa-arrow-left text-[10px]"></i>
-            <span>Kembali ke Beranda</span>
+            <span data-i18n="catDestBack">Kembali ke Beranda</span>
         </a>
         <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 text-xs font-semibold shadow-sm hover:opacity-90 transition-all">
-            <span>Lihat Paket Perjalanan Terkurasi (9 Paket)</span>
+            <span data-i18n="catDestToPkg">Lihat Paket Perjalanan Terkurasi (9 Paket)</span>
             <i class="fa-solid fa-arrow-right text-[10px]"></i>
         </a>
     </div>

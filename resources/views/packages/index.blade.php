@@ -9,19 +9,19 @@
     <div class="mb-6">
         <a href="{{ route('home') }}#paket" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all shadow-xs group">
             <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-0.5 transition-transform"></i>
-            <span>Kembali ke Beranda</span>
+            <span data-i18n="catPkgBack">Kembali ke Beranda</span>
         </a>
     </div>
 
     <div class="text-center max-w-2xl mx-auto mb-14">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-semibold mb-3 border border-stone-200/80 dark:border-stone-700">
             <i class="fa-solid fa-compass text-amber-600 dark:text-amber-400"></i>
-            <span>{{ $packages->count() }} Pilihan Paket Lengkap & All-Inclusive</span>
+            <span data-i18n="catPkgBadge">{{ $packages->count() }} Pilihan Paket Lengkap & All-Inclusive</span>
         </div>
-        <h1 class="font-serif text-3xl sm:text-5xl font-normal text-stone-950 dark:text-white">
+        <h1 data-i18n="catPkgTitle" class="font-serif text-3xl sm:text-5xl font-normal text-stone-950 dark:text-white">
             Koleksi Paket Perjalanan Terkurasi
         </h1>
-        <p class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
+        <p data-i18n="catPkgDesc" class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
             Menikmati keindahan alam nusantara tanpa repot. Kami mengatur transportasi privat, kabin kapal/villa terbaik, dan perizinan resmi.
         </p>
     </div>
@@ -32,13 +32,14 @@
             <div>
                 <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
                     <i class="fa-solid fa-magnifying-glass text-[10px]"></i>
-                    <span>Cari Paket / Penginapan</span>
+                    <span data-i18n="catPkgSearch">Cari Paket / Penginapan</span>
                 </label>
                 <input 
                     type="text" 
                     name="keyword" 
                     value="{{ request('keyword') }}" 
                     oninput="autoFilterPackages(this.form)"
+                    data-i18n-placeholder="catPkgSearchPlaceholder"
                     placeholder="Contoh: Phinisi, Bromo, Toraja, Villa..." 
                     class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none"
                 >
@@ -47,7 +48,7 @@
             <div>
                 <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
                     <i class="fa-regular fa-clock text-[10px]"></i>
-                    <span>Durasi Perjalanan</span>
+                    <span data-i18n="catPkgDuration">Durasi Perjalanan</span>
                 </label>
                 <select name="duration" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
                     <option value="Semua" {{ request('duration') == 'Semua' ? 'selected' : '' }}>Semua Durasi</option>
@@ -61,7 +62,7 @@
             <div>
                 <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
                     <i class="fa-solid fa-arrow-down-wide-short text-[10px]"></i>
-                    <span>Urutkan Paket</span>
+                    <span data-i18n="catPkgSort">Urutkan Paket</span>
                 </label>
                 <select name="sort" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
                     <option value="rekomendasi" {{ request('sort') == 'rekomendasi' ? 'selected' : '' }}>Rekomendasi Terbaik</option>
@@ -75,11 +76,11 @@
             <div class="mt-4 pt-3.5 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-xs text-stone-500">
                 <span class="flex items-center gap-1.5">
                     <i class="fa-solid fa-bolt text-amber-500 text-[11px]"></i>
-                    <span>Menampilkan paket hasil filter otomatis</span>
+                    <span data-i18n="autoFilterPkgNotice">Menampilkan paket hasil filter otomatis</span>
                 </span>
                 <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-200 font-semibold transition-colors">
                     <i class="fa-solid fa-rotate-left text-[10px]"></i>
-                    <span>Reset Filter</span>
+                    <span data-i18n="catPkgReset">Reset Filter</span>
                 </a>
             </div>
         @endif
@@ -114,11 +115,11 @@
                         @endif
                         <div class="flex items-baseline gap-1 mt-0.5">
                             <span class="font-serif text-2xl sm:text-3xl font-bold text-stone-950 dark:text-white">{{ $pkg->formatted_price }}</span>
-                            <span class="text-xs text-stone-400">/ tamu</span>
+                            <span data-i18n="cardPerPerson" class="text-xs text-stone-400">/ tamu</span>
                         </div>
                     </div>
 
-                    <span class="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-2.5">Sudah Termasuk:</span>
+                    <span data-i18n="pkgIncluded" class="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-2.5">Sudah Termasuk:</span>
                     <ul class="space-y-2 text-xs text-stone-600 dark:text-stone-300 mb-8">
                         @foreach($pkg->facilities ?? [] as $f)
                             <li class="flex items-start gap-2">
@@ -135,11 +136,11 @@
                         onclick="selectPackageCard(this, event); openBookingModal('{{ addslashes($pkg->name) }}');" 
                         class="package-btn w-full py-3 px-5 rounded-full {{ $idx === 0 ? 'bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 shadow-md' : 'border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 bg-transparent' }} font-semibold text-xs tracking-wide transition-all duration-300 flex items-center justify-center gap-1.5"
                     >
-                        <span>Pilih Paket Ini</span>
+                        <span data-i18n="pkgSelectBtn">Pilih Paket Ini</span>
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </button>
                     <a href="{{ route('packages.show', $pkg->slug) }}" class="block text-center text-xs text-stone-500 hover:text-stone-950 dark:hover:text-stone-100 transition-colors py-1">
-                        Lihat Selengkapnya <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i>
+                        <span data-i18n="pkgSeeMore">Lihat Selengkapnya</span> <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i>
                     </a>
                 </div>
             </div>
@@ -156,10 +157,10 @@
     <div class="mt-16 pt-8 border-t border-stone-200 dark:border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
         <a href="{{ route('home') }}#paket" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
             <i class="fa-solid fa-arrow-left text-[10px]"></i>
-            <span>Kembali ke Beranda</span>
+            <span data-i18n="catPkgBack">Kembali ke Beranda</span>
         </a>
         <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 text-xs font-semibold shadow-sm hover:opacity-90 transition-all">
-            <span>Jelajahi Seluruh Destinasi (20 Lokasi)</span>
+            <span data-i18n="catPkgToDest">Jelajahi Seluruh Destinasi (20 Lokasi)</span>
             <i class="fa-solid fa-arrow-right text-[10px]"></i>
         </a>
     </div>
