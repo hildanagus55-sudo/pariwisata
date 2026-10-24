@@ -26,8 +26,67 @@
         </p>
     </div>
 
+    <!-- Filter Form (Otomatis Filter Tanpa Tombol Submit) -->
+    <div class="bg-white dark:bg-stone-900 rounded-3xl p-5 mb-10 border border-stone-200/90 dark:border-stone-800 shadow-xs">
+        <form id="packageFilterForm" method="GET" action="{{ route('packages.index') }}" class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <div>
+                <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
+                    <i class="fa-solid fa-magnifying-glass text-[10px]"></i>
+                    <span>Cari Paket / Penginapan</span>
+                </label>
+                <input 
+                    type="text" 
+                    name="keyword" 
+                    value="{{ request('keyword') }}" 
+                    oninput="autoFilterPackages(this.form)"
+                    placeholder="Contoh: Phinisi, Bromo, Toraja, Villa..." 
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none"
+                >
+            </div>
+
+            <div>
+                <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
+                    <i class="fa-regular fa-clock text-[10px]"></i>
+                    <span>Durasi Perjalanan</span>
+                </label>
+                <select name="duration" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
+                    <option value="Semua" {{ request('duration') == 'Semua' ? 'selected' : '' }}>Semua Durasi</option>
+                    <option value="3 Hari" {{ request('duration') == '3 Hari' ? 'selected' : '' }}>3 Hari 2 Malam (Weekend Trip)</option>
+                    <option value="4 Hari" {{ request('duration') == '4 Hari' ? 'selected' : '' }}>4 Hari 3 Malam</option>
+                    <option value="5 Hari" {{ request('duration') == '5 Hari' ? 'selected' : '' }}>5 Hari 4 Malam</option>
+                    <option value="6 Hari" {{ request('duration') == '6 Hari' ? 'selected' : '' }}>6 Hari 5 Malam (Ekspedisi Panjang)</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-down-wide-short text-[10px]"></i>
+                    <span>Urutkan Paket</span>
+                </label>
+                <select name="sort" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
+                    <option value="rekomendasi" {{ request('sort') == 'rekomendasi' ? 'selected' : '' }}>Rekomendasi Terbaik</option>
+                    <option value="price-asc" {{ request('sort') == 'price-asc' ? 'selected' : '' }}>Tarif Terendah</option>
+                    <option value="price-desc" {{ request('sort') == 'price-desc' ? 'selected' : '' }}>Tarif Tertinggi</option>
+                </select>
+            </div>
+        </form>
+
+        @if(request('keyword') || (request('duration') && request('duration') !== 'Semua') || (request('sort') && request('sort') !== 'rekomendasi'))
+            <div class="mt-4 pt-3.5 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-xs text-stone-500">
+                <span class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-bolt text-amber-500 text-[11px]"></i>
+                    <span>Menampilkan paket hasil filter otomatis</span>
+                </span>
+                <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-200 font-semibold transition-colors">
+                    <i class="fa-solid fa-rotate-left text-[10px]"></i>
+                    <span>Reset Filter</span>
+                </a>
+            </div>
+        @endif
+    </div>
+
     <div id="packagesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        @foreach($packages as $idx => $pkg)
+        @forelse($packages as $idx => $pkg)
             <div 
                 onclick="selectPackageCard(this, event)"
                 class="package-card group bg-white dark:bg-stone-900 rounded-3xl border-2 {{ $idx === 0 ? 'border-stone-900 dark:border-stone-100 ring-2 ring-stone-900/10 dark:ring-stone-100/10 -translate-y-1 shadow-xl is-active' : 'border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700 shadow-xs translate-y-0' }} p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer"
@@ -84,7 +143,13 @@
                     </a>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="col-span-full py-14 text-center bg-white dark:bg-stone-900 rounded-3xl border border-stone-200 dark:border-stone-800 p-8">
+                <p class="text-sm font-serif text-stone-800 dark:text-stone-200">Belum ada paket wisata yang cocok dengan pencarian Anda</p>
+                <p class="text-xs text-stone-400 mt-1 mb-4">Coba atur ulang kata kunci atau lihat seluruh paket perjalanan.</p>
+                <a href="{{ route('packages.index') }}" class="px-4 py-2 rounded-full bg-stone-900 text-white text-xs font-semibold">Tampilkan Semua Paket</a>
+            </div>
+        @endforelse
     </div>
 
     <!-- Bottom Navigation & CTA -->
@@ -99,4 +164,16 @@
         </a>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    let pkgFilterTimer;
+    function autoFilterPackages(form) {
+        clearTimeout(pkgFilterTimer);
+        pkgFilterTimer = setTimeout(() => {
+            form.submit();
+        }, 450);
+    }
+</script>
+@endpush
 @endsection

@@ -126,27 +126,11 @@
                 </p>
             </div>
 
-            <!-- Search Input & Sort -->
-            <div class="flex flex-col sm:flex-row gap-2.5">
-                <div class="relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
-                    <input 
-                        type="text" 
-                        id="destinationKeyword" 
-                        oninput="filterAndRenderDestinations()" 
-                        placeholder="Cari nama lokasi..." 
-                        class="pl-9 pr-3.5 py-2 rounded-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-xs focus:ring-1 focus:ring-stone-900 focus:outline-none w-full sm:w-52"
-                    >
-                </div>
-                <select id="destinationSort" onchange="filterAndRenderDestinations()" class="px-3.5 py-2 rounded-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-xs font-medium focus:ring-1 focus:ring-stone-900 focus:outline-none">
-                    <option value="popular">Urutkan: Rekomendasi</option>
-                    <option value="price-asc">Biaya: Rendah ke Tinggi</option>
-                    <option value="price-desc">Biaya: Tinggi ke Rendah</option>
-                    <option value="rating">Ulasan Terbaik</option>
-                </select>
-                <a href="{{ route('destinations.index') }}" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-semibold transition-all whitespace-nowrap shadow-xs" title="Buka Halaman Lengkap Destinasi">
+            <!-- Tombol Lihat Halaman di Samping Judul -->
+            <div class="shrink-0">
+                <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:border-stone-900 dark:hover:border-stone-200 bg-white dark:bg-stone-900 hover:bg-stone-900 hover:text-white dark:hover:bg-stone-100 dark:hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all whitespace-nowrap shadow-xs group" title="Buka Halaman Lengkap Destinasi">
                     <span>Lihat Halaman Destinasi</span>
-                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
         </div>
@@ -240,18 +224,6 @@
                     </div>
                 </article>
             @endforeach
-        </div>
-
-        <!-- CTA Lihat Seluruh Halaman Destinasi -->
-        <div class="mt-14 text-center">
-            <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold text-sm hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all group shadow-md">
-                <i class="fa-solid fa-compass text-amber-300 dark:text-stone-700"></i>
-                <span>Lihat Seluruh Koleksi Destinasi ({{ $totalDestinationsCount ?? 20 }} Lokasi Lengkap)</span>
-                <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
-            </a>
-            <p class="text-xs text-stone-500 dark:text-stone-400 mt-2.5">
-                Buka halaman katalog lengkap untuk melihat seluruh 20 rute kaldera, pantai karst, rimba satwa, dan desa adat.
-            </p>
         </div>
     </section>
 
@@ -556,8 +528,11 @@
 
     function renderDestinationsGrid() {
         const grid = document.getElementById('destinationsGrid');
-        const keyword = document.getElementById('destinationKeyword').value.toLowerCase().trim();
-        const sortBy = document.getElementById('destinationSort').value;
+        if (!grid) return;
+        const kwElem = document.getElementById('destinationKeyword');
+        const keyword = kwElem ? kwElem.value.toLowerCase().trim() : '';
+        const sortElem = document.getElementById('destinationSort');
+        const sortBy = sortElem ? sortElem.value : 'popular';
 
         let filtered = destinationsDatabase.filter(item => {
             const matchCategory = activeCategory === 'Semua' || item.category === activeCategory;
@@ -672,7 +647,8 @@
     function resetAllFilters() {
         activeCategory = 'Semua';
         activeRegionFilter = 'Semua';
-        document.getElementById('destinationKeyword').value = '';
+        const kw = document.getElementById('destinationKeyword');
+        if (kw) kw.value = '';
         setCategory('Semua');
     }
 

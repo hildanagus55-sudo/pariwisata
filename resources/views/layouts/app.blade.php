@@ -146,8 +146,8 @@
             <!-- Desktop Navigation Links -->
             <nav class="hidden lg:flex items-center gap-1 text-xs font-semibold text-stone-600 dark:text-stone-300">
                 <a href="{{ route('home') }}#beranda" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Beranda</a>
-                <a href="{{ route('home') }}#destinasi" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Destinasi</a>
-                <a href="{{ route('home') }}#paket" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Paket Wisata</a>
+                <a href="{{ route('destinations.index') }}" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Destinasi</a>
+                <a href="{{ route('packages.index') }}" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Paket Wisata</a>
                 <a href="{{ route('home') }}#cerita" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Filosofi</a>
                 <a href="{{ route('home') }}#galeri" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Galeri</a>
                 <a href="{{ route('home') }}#testimoni" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Testimoni</a>
@@ -197,8 +197,8 @@
         <div id="mobileMenu" class="hidden lg:hidden max-w-6xl mx-auto mt-2 rounded-3xl bg-white/95 dark:bg-stone-900/95 backdrop-blur-xl border border-stone-200/90 dark:border-stone-800 p-5 space-y-3 shadow-xl animate-fadeIn">
             <div class="flex flex-col space-y-2 text-xs font-semibold text-stone-700 dark:text-stone-200">
                 <a href="{{ route('home') }}#beranda" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Beranda</a>
-                <a href="{{ route('home') }}#destinasi" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Destinasi</a>
-                <a href="{{ route('home') }}#paket" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Paket Wisata</a>
+                <a href="{{ route('destinations.index') }}" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Destinasi</a>
+                <a href="{{ route('packages.index') }}" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Paket Wisata</a>
                 <a href="{{ route('home') }}#cerita" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Filosofi</a>
                 <a href="{{ route('home') }}#galeri" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Galeri</a>
                 <a href="{{ route('home') }}#testimoni" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Testimoni</a>
@@ -260,8 +260,8 @@
                     <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-white mb-3.5">Eksplorasi</h4>
                     <ul class="space-y-2 text-xs text-stone-500 dark:text-stone-400">
                         <li><a href="{{ route('home') }}#beranda" class="hover:text-stone-900 dark:hover:text-white transition-colors">Beranda</a></li>
-                        <li><a href="{{ route('home') }}#destinasi" class="hover:text-stone-900 dark:hover:text-white transition-colors">Destinasi</a></li>
-                        <li><a href="{{ route('home') }}#paket" class="hover:text-stone-900 dark:hover:text-white transition-colors">Paket Wisata</a></li>
+                        <li><a href="{{ route('destinations.index') }}" class="hover:text-stone-900 dark:hover:text-white transition-colors">Destinasi</a></li>
+                        <li><a href="{{ route('packages.index') }}" class="hover:text-stone-900 dark:hover:text-white transition-colors">Paket Wisata</a></li>
                         <li><a href="{{ route('home') }}#cerita" class="hover:text-stone-900 dark:hover:text-white transition-colors">Filosofi Perjalanan</a></li>
                         <li><a href="{{ route('home') }}#galeri" class="hover:text-stone-900 dark:hover:text-white transition-colors">Galeri Dokumentasi</a></li>
                     </ul>

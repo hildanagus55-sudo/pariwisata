@@ -27,23 +27,30 @@
         </p>
     </div>
 
-    <!-- Filter Form -->
+    <!-- Filter Form (Otomatis Filter Tanpa Tombol Submit) -->
     <div class="bg-white dark:bg-stone-900 rounded-3xl p-5 mb-10 border border-stone-200/90 dark:border-stone-800 shadow-xs">
-        <form method="GET" action="{{ route('destinations.index') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+        <form id="destinationFilterForm" method="GET" action="{{ route('destinations.index') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
             <div>
-                <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1">Pencarian</label>
+                <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
+                    <i class="fa-solid fa-magnifying-glass text-[10px]"></i>
+                    <span>Pencarian Cepat</span>
+                </label>
                 <input 
                     type="text" 
                     name="keyword" 
                     value="{{ request('keyword') }}" 
-                    placeholder="Nama lokasi / wilayah..." 
-                    class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none"
+                    oninput="autoFilterDestinations(this.form)"
+                    placeholder="Ketik nama lokasi / wilayah..." 
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none"
                 >
             </div>
 
             <div>
-                <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1">Kategori</label>
-                <select name="category" class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
+                <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
+                    <i class="fa-solid fa-tags text-[10px]"></i>
+                    <span>Kategori</span>
+                </label>
+                <select name="category" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
                     <option value="Semua" {{ request('category') == 'Semua' ? 'selected' : '' }}>Semua Kategori</option>
                     <option value="Pantai" {{ request('category') == 'Pantai' ? 'selected' : '' }}>Pantai & Perairan Karst</option>
                     <option value="Pegunungan" {{ request('category') == 'Pegunungan' ? 'selected' : '' }}>Puncak & Kaldera</option>
@@ -53,8 +60,11 @@
             </div>
 
             <div>
-                <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1">Wilayah</label>
-                <select name="region" class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
+                <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
+                    <i class="fa-solid fa-map text-[10px]"></i>
+                    <span>Wilayah</span>
+                </label>
+                <select name="region" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
                     <option value="Semua" {{ request('region') == 'Semua' ? 'selected' : '' }}>Semua Wilayah</option>
                     <option value="Bali & Nusa Tenggara" {{ request('region') == 'Bali & Nusa Tenggara' ? 'selected' : '' }}>Bali & Nusa Tenggara</option>
                     <option value="Papua & Maluku" {{ request('region') == 'Papua & Maluku' ? 'selected' : '' }}>Papua & Maluku</option>
@@ -64,21 +74,32 @@
                 </select>
             </div>
 
-            <div class="flex items-end gap-2">
-                <div class="flex-1">
-                    <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1">Urutan</label>
-                    <select name="sort" class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
-                        <option value="popular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Rekomendasi</option>
-                        <option value="price-asc" {{ request('sort') == 'price-asc' ? 'selected' : '' }}>Biaya Terendah</option>
-                        <option value="price-desc" {{ request('sort') == 'price-desc' ? 'selected' : '' }}>Biaya Tertinggi</option>
-                        <option value="rating" {{ request('sort') == 'rating' ? 'selected' : '' }}>Ulasan Terbaik</option>
-                    </select>
-                </div>
-                <button type="submit" class="px-5 py-2 rounded-xl bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold h-[36px] transition-colors">
-                    Filter
-                </button>
+            <div>
+                <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-down-wide-short text-[10px]"></i>
+                    <span>Urutkan</span>
+                </label>
+                <select name="sort" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
+                    <option value="popular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Rekomendasi Terbaik</option>
+                    <option value="price-asc" {{ request('sort') == 'price-asc' ? 'selected' : '' }}>Biaya Terendah</option>
+                    <option value="price-desc" {{ request('sort') == 'price-desc' ? 'selected' : '' }}>Biaya Tertinggi</option>
+                    <option value="rating" {{ request('sort') == 'rating' ? 'selected' : '' }}>Ulasan Terbaik</option>
+                </select>
             </div>
         </form>
+
+        @if(request('keyword') || (request('category') && request('category') !== 'Semua') || (request('region') && request('region') !== 'Semua') || (request('sort') && request('sort') !== 'popular'))
+            <div class="mt-4 pt-3.5 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-xs text-stone-500">
+                <span class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-bolt text-amber-500 text-[11px]"></i>
+                    <span>Menampilkan hasil filter otomatis</span>
+                </span>
+                <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-200 font-semibold transition-colors">
+                    <i class="fa-solid fa-rotate-left text-[10px]"></i>
+                    <span>Reset Filter</span>
+                </a>
+            </div>
+        @endif
     </div>
 
     <!-- Destinations Grid -->
@@ -166,4 +187,16 @@
         </a>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    let destFilterTimer;
+    function autoFilterDestinations(form) {
+        clearTimeout(destFilterTimer);
+        destFilterTimer = setTimeout(() => {
+            form.submit();
+        }, 450);
+    }
+</script>
+@endpush
 @endsection
