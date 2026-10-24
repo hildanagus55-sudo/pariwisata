@@ -169,7 +169,10 @@
         <!-- Destinations Grid Container -->
         <div id="destinationsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($destinations as $dest)
-                <article class="group bg-white dark:bg-stone-900 rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:shadow-lg transition-all duration-300 flex flex-col">
+                <article 
+                    onclick="openDetailModal({{ $dest->id }})" 
+                    class="group bg-white dark:bg-stone-900 rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer"
+                >
                     <!-- Image Container with Natural Ratio -->
                     <div class="relative h-64 overflow-hidden bg-stone-100">
                         <img 
@@ -186,7 +189,7 @@
                         </span>
 
                         <!-- Wishlist Heart Button -->
-                        <button onclick="toggleWishlist({{ $dest->id }}, '{{ addslashes($dest->name) }}')" class="wishlist-btn absolute top-4 right-4 w-8 h-8 rounded-full bg-white/90 dark:bg-stone-900/90 text-stone-600 dark:text-stone-300 flex items-center justify-center hover:scale-110 transition-transform shadow-xs" data-id="{{ $dest->id }}" title="Simpan ke Jurnal">
+                        <button onclick="event.stopPropagation(); toggleWishlist({{ $dest->id }}, '{{ addslashes($dest->name) }}')" class="wishlist-btn absolute top-4 right-4 w-8 h-8 rounded-full bg-white/90 dark:bg-stone-900/90 text-stone-600 dark:text-stone-300 flex items-center justify-center hover:scale-110 transition-transform shadow-xs" data-id="{{ $dest->id }}" title="Simpan ke Jurnal">
                             <i class="fa-regular text-xs fa-heart"></i>
                         </button>
 
@@ -211,7 +214,7 @@
                                 <span>{{ $dest->reviews_count }} catatan perjalanan</span>
                             </div>
                             <h3 class="font-serif text-xl font-semibold text-stone-900 dark:text-white group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors leading-snug">
-                                <a href="{{ route('destinations.show', $dest->slug) }}">{{ $dest->name }}</a>
+                                {{ $dest->name }}
                             </h3>
                             <p class="mt-2 text-xs text-stone-600 dark:text-stone-400 line-clamp-2 leading-relaxed">
                                 {{ $dest->description }}
@@ -225,9 +228,9 @@
                                 <p class="text-base font-serif font-bold text-stone-900 dark:text-white">{{ $dest->formatted_price }}<span class="text-[11px] font-sans font-normal text-stone-400">/org</span></p>
                             </div>
                             <div class="flex items-center gap-2">
-                                <button onclick="openDetailModal({{ $dest->id }})" class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-colors">
+                                <span class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 group-hover:bg-stone-900 group-hover:text-white dark:group-hover:bg-stone-100 dark:group-hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
                                     Catatan Rute
-                                </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -551,7 +554,7 @@
             const isLiked = savedWishlist.has(dest.id);
             const safeName = dest.name.replace(/'/g, "\\'");
             return `
-                <article class="group bg-white dark:bg-stone-900 rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:shadow-lg transition-all duration-300 flex flex-col">
+                <article onclick="openDetailModal(${dest.id})" class="group bg-white dark:bg-stone-900 rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer">
                     <div class="relative h-64 overflow-hidden bg-stone-100">
                         <img 
                             src="${dest.image}" 
@@ -565,7 +568,7 @@
                             ${dest.category}
                         </span>
 
-                        <button onclick="toggleWishlist(${dest.id}, '${safeName}')" class="wishlist-btn absolute top-4 right-4 w-8 h-8 rounded-full bg-white/90 dark:bg-stone-900/90 text-stone-600 dark:text-stone-300 flex items-center justify-center hover:scale-110 transition-transform shadow-xs" data-id="${dest.id}" title="Simpan ke Jurnal">
+                        <button onclick="event.stopPropagation(); toggleWishlist(${dest.id}, '${safeName}')" class="wishlist-btn absolute top-4 right-4 w-8 h-8 rounded-full bg-white/90 dark:bg-stone-900/90 text-stone-600 dark:text-stone-300 flex items-center justify-center hover:scale-110 transition-transform shadow-xs" data-id="${dest.id}" title="Simpan ke Jurnal">
                             <i class="${isLiked ? 'fa-solid text-stone-900 dark:text-white' : 'fa-regular'} text-xs fa-heart"></i>
                         </button>
 
@@ -588,7 +591,7 @@
                                 <span>${dest.reviews_count} catatan</span>
                             </div>
                             <h3 class="font-serif text-xl font-semibold text-stone-900 dark:text-white group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors leading-snug">
-                                <a href="/destinasi/${dest.slug}">${dest.name}</a>
+                                ${dest.name}
                             </h3>
                             <p class="mt-2 text-xs text-stone-600 dark:text-stone-400 line-clamp-2 leading-relaxed">
                                 ${dest.description}
@@ -600,9 +603,9 @@
                                 <span class="text-[10px] text-stone-400 uppercase tracking-wider block">Mulai dari</span>
                                 <p class="text-base font-serif font-bold text-stone-900 dark:text-white">${formatRupiah(dest.price)}<span class="text-[11px] font-sans font-normal text-stone-400">/org</span></p>
                             </div>
-                            <button onclick="openDetailModal(${dest.id})" class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-colors">
+                            <span class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 group-hover:bg-stone-900 group-hover:text-white dark:group-hover:bg-stone-100 dark:group-hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
                                 Catatan Rute
-                            </button>
+                            </span>
                         </div>
                     </div>
                 </article>
