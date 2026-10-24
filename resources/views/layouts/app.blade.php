@@ -111,83 +111,85 @@
     <!-- Toast Notification Container -->
     <div id="toastContainer" class="fixed bottom-6 right-6 z-[100] flex flex-col gap-2.5 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
 
-    <!-- 1. Navigation Bar (Clean Editorial Minimalist) -->
-    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 clean-nav border-b border-stone-200/80 dark:border-stone-800 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Brand Logo -->
-                <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-stone-900 dark:bg-stone-100 dark:text-stone-900 flex items-center justify-center text-white transition-transform group-hover:scale-105">
-                        <i class="fa-solid fa-compass text-base"></i>
-                    </div>
-                    <div>
-                        <span class="text-lg font-serif font-semibold tracking-tight text-stone-950 dark:text-white">Nusantara<span class="italic font-normal text-stone-600 dark:text-stone-300">Wander</span></span>
-                        <p class="text-[10px] tracking-widest text-stone-600 dark:text-stone-300 uppercase font-medium">Boutique Travel Journal</p>
-                    </div>
+    <!-- ================= 1. FLOATING GLASS ISLAND NAVIGATION BAR ================= -->
+    <header id="navbar" class="fixed top-3 sm:top-5 left-0 right-0 z-50 px-3 sm:px-6 transition-all duration-300">
+        <div id="navContainer" class="max-w-6xl mx-auto rounded-full px-4 sm:px-6 py-2.5 sm:py-3 transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-xl border border-stone-200/90 dark:border-stone-800 bg-white/90 dark:bg-stone-900/90 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="{{ route('home') }}" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-full bg-stone-900 dark:bg-stone-100 text-amber-300 dark:text-stone-900 flex items-center justify-center text-sm shadow-xs group-hover:rotate-45 transition-transform duration-500 shrink-0">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <div class="flex items-baseline gap-1">
+                    <span class="text-base font-serif font-bold tracking-tight text-stone-950 dark:text-white">Nusantara<span class="italic font-normal text-stone-500 dark:text-stone-400">Wander</span></span>
+                    <span class="hidden sm:inline-block text-[9px] font-mono px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-stone-500 font-semibold tracking-wider">ID</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-1 text-xs font-semibold text-stone-600 dark:text-stone-300">
+                <a href="{{ route('home') }}#beranda" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Beranda</a>
+                <a href="{{ route('home') }}#destinasi" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Destinasi</a>
+                <a href="{{ route('home') }}#paket" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Paket Wisata</a>
+                <a href="{{ route('home') }}#cerita" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Filosofi</a>
+                <a href="{{ route('home') }}#galeri" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Galeri</a>
+                <a href="{{ route('home') }}#testimoni" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all">Testimoni</a>
+                <a href="{{ route('admin.bookings') }}" class="px-2.5 py-1 rounded-full text-[11px] text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 transition-colors flex items-center gap-1">
+                    <i class="fa-regular fa-folder-open text-[10px]"></i>
+                    <span>Admin</span>
+                </a>
+            </nav>
+
+            <!-- Actions: Wishlist, Theme Toggle, WhatsApp, CTA -->
+            <div class="hidden lg:flex items-center gap-2">
+                <!-- Wishlist Button -->
+                <button onclick="showSavedDestinations()" class="relative w-8 h-8 rounded-full border border-stone-200/80 dark:border-stone-700/80 flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-rose-500 transition-colors" title="Destinasi Tersimpan">
+                    <i class="fa-regular fa-heart text-xs"></i>
+                    <span id="wishlistBadge" class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-stone-900 text-white text-[9px] font-bold flex items-center justify-center shadow-xs">0</span>
+                </button>
+
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleTheme()" class="w-8 h-8 rounded-full border border-stone-200/80 dark:border-stone-700/80 flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors" title="Ubah Tema Tampilan">
+                    <i id="themeIcon" class="fa-solid fa-moon text-xs"></i>
+                </button>
+
+                <!-- WhatsApp Concierge Quick Link -->
+                <a href="https://wa.me/6281199887766" target="_blank" class="w-8 h-8 rounded-full border border-stone-200/80 dark:border-stone-700/80 flex items-center justify-center text-emerald-600 hover:bg-emerald-50 dark:hover:bg-stone-800 transition-colors" title="Hubungi WhatsApp Concierge">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
                 </a>
 
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-700 dark:text-stone-200">
-                    <a href="{{ route('home') }}#beranda" class="hover:text-stone-950 dark:hover:text-white transition-colors">Beranda</a>
-                    <a href="{{ route('home') }}#destinasi" class="hover:text-stone-950 dark:hover:text-white transition-colors">Destinasi</a>
-                    <a href="{{ route('home') }}#paket" class="hover:text-stone-950 dark:hover:text-white transition-colors">Paket Perjalanan</a>
-                    <a href="{{ route('home') }}#cerita" class="hover:text-stone-950 dark:hover:text-white transition-colors">Filosofi</a>
-                    <a href="{{ route('home') }}#galeri" class="hover:text-stone-950 dark:hover:text-white transition-colors">Galeri</a>
-                    <a href="{{ route('home') }}#testimoni" class="hover:text-stone-950 dark:hover:text-white transition-colors">Catatan Tamu</a>
-                    <a href="{{ route('admin.bookings') }}" class="text-xs px-2.5 py-1 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:text-stone-900 border border-stone-200/70 dark:border-stone-700 flex items-center gap-1.5 transition-colors">
-                        <i class="fa-regular fa-folder-open text-stone-500"></i>
-                        <span>Admin</span>
-                    </a>
-                </nav>
+                <!-- CTA Button -->
+                <button onclick="openBookingModal()" class="ml-1 px-4 sm:px-5 py-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95 flex items-center gap-1.5 group">
+                    <span>Rencanakan Trip</span>
+                    <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+                </button>
+            </div>
 
-                <!-- Actions: Wishlist, Theme Toggle, CTA -->
-                <div class="hidden lg:flex items-center gap-3">
-                    <button onclick="showSavedDestinations()" class="relative p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors" title="Destinasi Tersimpan">
-                        <i class="fa-regular fa-heart text-base"></i>
-                        <span id="wishlistBadge" class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-stone-900 text-white text-[10px] font-bold flex items-center justify-center">0</span>
-                    </button>
-
-                    <button onclick="toggleTheme()" class="p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors" title="Ubah Tema">
-                        <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
-                    </button>
-
-                    <a href="https://wa.me/6281199887766" target="_blank" class="px-3.5 py-2 rounded-full border border-stone-300 dark:border-stone-700 text-xs font-semibold hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors flex items-center gap-1.5 text-stone-700 dark:text-stone-200">
-                        <i class="fa-brands fa-whatsapp text-emerald-600"></i>
-                        <span>Konsultasi</span>
-                    </a>
-
-                    <button onclick="openBookingModal()" class="px-5 py-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95">
-                        Rencanakan Trip
-                    </button>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="flex items-center gap-2 lg:hidden">
-                    <button onclick="toggleTheme()" class="p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800">
-                        <i id="themeIconMobile" class="fa-solid fa-moon text-sm"></i>
-                    </button>
-                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2 rounded-xl text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 focus:outline-none">
-                        <i id="mobileMenuIcon" class="fa-solid fa-bars text-lg"></i>
-                    </button>
-                </div>
+            <!-- Mobile Controls -->
+            <div class="flex items-center gap-1.5 lg:hidden">
+                <button onclick="toggleTheme()" class="w-8 h-8 rounded-full border border-stone-200 dark:border-stone-700 flex items-center justify-center text-stone-600 dark:text-stone-300">
+                    <i id="themeIconMobile" class="fa-solid fa-moon text-xs"></i>
+                </button>
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="w-8 h-8 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 flex items-center justify-center focus:outline-none">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xs"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Mobile Drawer -->
-        <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 px-5 pt-3 pb-6 space-y-3 shadow-lg">
-            <div class="flex flex-col space-y-2 text-sm font-medium text-stone-700 dark:text-stone-200">
-                <a href="{{ route('home') }}#beranda" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Beranda</a>
-                <a href="{{ route('home') }}#destinasi" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Destinasi</a>
-                <a href="{{ route('home') }}#paket" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Paket Perjalanan</a>
-                <a href="{{ route('home') }}#cerita" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Filosofi Kami</a>
-                <a href="{{ route('home') }}#galeri" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Galeri Foto</a>
-                <a href="{{ route('home') }}#testimoni" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800">Catatan Tamu</a>
-                <a href="{{ route('admin.bookings') }}" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-900 dark:text-white font-semibold">Admin Reservasi</a>
+        <!-- Mobile Floating Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden max-w-6xl mx-auto mt-2 rounded-3xl bg-white/95 dark:bg-stone-900/95 backdrop-blur-xl border border-stone-200/90 dark:border-stone-800 p-5 space-y-3 shadow-xl animate-fadeIn">
+            <div class="flex flex-col space-y-2 text-xs font-semibold text-stone-700 dark:text-stone-200">
+                <a href="{{ route('home') }}#beranda" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Beranda</a>
+                <a href="{{ route('home') }}#destinasi" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Destinasi</a>
+                <a href="{{ route('home') }}#paket" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Paket Wisata</a>
+                <a href="{{ route('home') }}#cerita" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Filosofi</a>
+                <a href="{{ route('home') }}#galeri" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Galeri</a>
+                <a href="{{ route('home') }}#testimoni" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">Testimoni</a>
+                <a href="{{ route('admin.bookings') }}" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-900 dark:text-white">Admin Reservasi</a>
             </div>
             <div class="pt-3 border-t border-stone-200 dark:border-stone-800 flex flex-col gap-2">
-                <button onclick="toggleMobileMenu(); showSavedDestinations();" class="w-full py-2.5 px-4 rounded-xl border border-stone-200 dark:border-stone-700 font-medium text-xs flex items-center justify-center gap-2">
+                <button onclick="toggleMobileMenu(); showSavedDestinations();" class="w-full py-2.5 px-4 rounded-xl border border-stone-200 dark:border-stone-700 font-semibold text-xs flex items-center justify-center gap-2">
                     <i class="fa-regular fa-heart text-stone-500"></i>
-                    <span>Tersimpan (<span id="wishlistBadgeMobile">0</span>)</span>
+                    <span>Destinasi Tersimpan (<span id="wishlistBadgeMobile">0</span>)</span>
                 </button>
                 <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full py-3 px-4 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold text-xs shadow-sm">
                     Rencanakan Trip Sekarang
@@ -823,6 +825,20 @@
                 const nextWeek = new Date();
                 nextWeek.setDate(nextWeek.getDate() + 7);
                 dateInput.value = nextWeek.toISOString().split('T')[0];
+            }
+
+            // Dynamic Island Navbar Scroll Effect
+            const navContainer = document.getElementById('navContainer');
+            if (navContainer) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        navContainer.classList.add('shadow-[0_12px_40px_rgba(0,0,0,0.14)]', 'bg-white/95', 'dark:bg-stone-900/95');
+                        navContainer.classList.remove('bg-white/90', 'dark:bg-stone-900/90');
+                    } else {
+                        navContainer.classList.remove('shadow-[0_12px_40px_rgba(0,0,0,0.14)]', 'bg-white/95', 'dark:bg-stone-900/95');
+                        navContainer.classList.add('bg-white/90', 'dark:bg-stone-900/90');
+                    }
+                });
             }
         });
     </script>
