@@ -230,19 +230,23 @@
     <!-- ================= 3. PAKET PERJALANAN (CLEAN BOUTIQUE PACKAGES) ================= -->
     <section id="paket" class="py-20 bg-stone-50 dark:bg-stone-900/50 border-y border-stone-200/80 dark:border-stone-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-14">
-                <span data-i18n="pkgSubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
-                    Boutique Itinerary
-                </span>
-                <h2 data-i18n="pkgTitle" class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight">
-                    Paket Perjalanan Terkurasi
-                </h2>
-                <p data-i18n="pkgDesc" class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
-                    Sudah mencakup kabin/hotel yang bersih dan estetik, transportasi darat & laut privat, tiket kawasan konservasi, serta santap hidangan lokal segar.
-                </p>
-                <div class="mt-4 flex items-center justify-center">
-                    <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-200/70 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all group">
-                        <span data-i18n="pkgHeaderBtn">Buka Halaman Lengkap ({{ $totalPackagesCount ?? 9 }} Paket Wisata)</span>
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 pb-4 border-b border-stone-200/80 dark:border-stone-800">
+                <div>
+                    <span data-i18n="pkgSubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
+                        Boutique Itinerary
+                    </span>
+                    <h2 data-i18n="pkgTitle" class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight">
+                        Paket Perjalanan Terkurasi
+                    </h2>
+                    <p data-i18n="pkgDesc" class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm max-w-xl leading-relaxed">
+                        Sudah mencakup kabin/hotel yang bersih dan estetik, transportasi darat & laut privat, tiket kawasan konservasi, serta santap hidangan lokal segar.
+                    </p>
+                </div>
+
+                <!-- Tombol Lihat Halaman Paket di Samping Judul -->
+                <div class="shrink-0">
+                    <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:border-stone-900 dark:hover:border-stone-200 bg-white dark:bg-stone-900 hover:bg-stone-900 hover:text-white dark:hover:bg-stone-100 dark:hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all whitespace-nowrap shadow-xs group" title="Buka Halaman Lengkap Paket Wisata">
+                        <span data-i18n="pkgHeaderBtn">Lihat Seluruh Paket Wisata</span>
                         <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
@@ -309,18 +313,6 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
-
-            <!-- CTA Lihat Seluruh Halaman Paket Wisata -->
-            <div class="mt-14 text-center">
-                <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 font-semibold text-sm hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all group shadow-md">
-                    <i class="fa-solid fa-suitcase-rolling text-amber-300 dark:text-stone-700"></i>
-                    <span data-i18n="pkgBottomBtn">Lihat Seluruh Pilihan Paket Wisata ({{ $totalPackagesCount ?? 9 }} Rute Lengkap)</span>
-                    <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
-                </a>
-                <p data-i18n="pkgBottomSub" class="text-xs text-stone-500 dark:text-stone-400 mt-2.5">
-                    Halaman lengkap mencakup sailing phinisi privat, overland kawah, slow living, jalur rempah, dan glamping.
-                </p>
             </div>
         </div>
     </section>
