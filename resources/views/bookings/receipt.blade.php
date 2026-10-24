@@ -108,7 +108,7 @@
             <!-- Notes -->
             <div class="pt-3 text-[11px] text-stone-400 space-y-1 border-t border-stone-100 dark:border-stone-800 leading-relaxed">
                 <p>• Pemandu lokal kami akan menghubungi nomor WhatsApp Anda 24 jam sebelum jadwal keberangkatan untuk koordinasi penjemputan.</p>
-                <p>• Bantuan pertanyaan atau penyesuaian jadwal: WhatsApp Concierge +62 811-9988-7766.</p>
+                <p>• Bantuan pertanyaan atau penyesuaian jadwal: WhatsApp Concierge +62 895-1980-8548.</p>
             </div>
         </div>
 

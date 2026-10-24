@@ -169,7 +169,7 @@
                 </button>
 
                 <!-- WhatsApp Concierge Quick Link -->
-                <a href="https://wa.me/6281199887766" target="_blank" class="w-8 h-8 rounded-full border border-stone-200/80 flex items-center justify-center text-emerald-600 hover:bg-emerald-50 transition-colors" title="Hubungi WhatsApp Concierge">
+                <a href="https://wa.me/6289519808548" target="_blank" class="w-8 h-8 rounded-full border border-stone-200/80 flex items-center justify-center text-emerald-600 hover:bg-emerald-50 transition-colors" title="Hubungi WhatsApp Concierge">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                 </a>
 
@@ -247,7 +247,7 @@
                         Portal Pariwisata Indonesia terpercaya. Kami menemani Anda menjelajahi keindahan nusantara, ragam budaya, dan paket liburan impian terbaik dengan pengalaman berkesan.
                     </p>
                     <div class="flex items-center gap-2.5 text-xs text-stone-500">
-                        <a href="https://wa.me/6281199887766" target="_blank" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="WhatsApp Concierge">
+                        <a href="https://wa.me/6289519808548" target="_blank" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="WhatsApp Concierge">
                             <i class="fa-brands fa-whatsapp"></i>
                         </a>
                         <a href="#footer" onclick="showToast('Instagram: @anwisata.id', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="Instagram Resmi">
@@ -276,7 +276,7 @@
                     <h4 data-i18n="footerContact" class="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-white mb-3.5">Kontak Tim</h4>
                     <ul class="space-y-2 text-xs text-stone-500 dark:text-stone-400">
                         <li>Jakarta & Denpasar, Indonesia</li>
-                        <li><a href="https://wa.me/6281199887766" class="hover:underline">+62 811-9988-7766</a></li>
+                        <li><a href="https://wa.me/6289519808548" class="hover:underline">+62 895-1980-8548</a></li>
                         <li>halo@anwisata.id</li>
                         <li class="text-[11px] text-stone-400 pt-1">Balas cepat: 08.00 - 21.00 WIB</li>
                     </ul>

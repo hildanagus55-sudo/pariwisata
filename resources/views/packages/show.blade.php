@@ -89,7 +89,7 @@
                     <button onclick="openBookingModal('{{ addslashes($package->name) }}')" class="w-full py-3 px-5 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 text-xs font-semibold shadow-sm hover:opacity-90 transition-all">
                         Isi Rencana Perjalanan
                     </button>
-                    <a href="https://wa.me/6281199887766?text=Halo%20ANWISATA,%20saya%20tertarik%20dengan%20{{ urlencode($package->name) }}" target="_blank" class="w-full py-2.5 px-5 rounded-full border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-200 text-xs font-medium transition-colors flex items-center justify-center gap-2">
+                    <a href="https://wa.me/6289519808548?text=Halo%20ANWISATA,%20saya%20tertarik%20dengan%20{{ urlencode($package->name) }}" target="_blank" class="w-full py-2.5 px-5 rounded-full border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-200 text-xs font-medium transition-colors flex items-center justify-center gap-2">
                         <i class="fa-brands fa-whatsapp text-emerald-600"></i>
                         <span>Diskusi via WhatsApp</span>
                     </a>
