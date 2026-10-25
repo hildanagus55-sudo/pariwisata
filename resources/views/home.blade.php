@@ -6,36 +6,32 @@
 @section('content')
     <!-- ================= 2. HERO SECTION & INTERACTIVE SEARCH WIDGET (CINEMATIC PHOTO HERO) ================= -->
     <section id="beranda" class="relative min-h-[92vh] pt-28 pb-20 flex items-center justify-center overflow-hidden">
-        <!-- Background Video Loop (Otomatis memutar hero.mp4 jika sudah diletakkan di public/videos/) -->
-        @if(file_exists(public_path('videos/hero.mp4')))
-            <video 
-                autoplay 
-                muted 
-                loop 
-                playsinline 
-                poster="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85"
-                class="absolute inset-0 w-full h-full object-cover object-center scale-105"
-            >
+        <!-- Background Video Loop -->
+        <video 
+            id="heroVideo"
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            poster="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85"
+            class="absolute inset-0 w-full h-full object-cover object-center scale-105 pointer-events-none"
+        >
+            @if(file_exists(public_path('videos/hero.mp4')))
                 <source src="{{ asset('videos/hero.mp4') }}" type="video/mp4">
-            </video>
-        @else
-            <video 
-                autoplay 
-                muted 
-                loop 
-                playsinline 
-                poster="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85"
-                class="absolute inset-0 w-full h-full object-cover object-center scale-105"
+            @endif
+            @if(file_exists(public_path('videos/hero.webm')))
+                <source src="{{ asset('videos/hero.webm') }}" type="video/webm">
+            @endif
+            <source src="https://assets.mixkit.co/videos/51791/51791-720.mp4" type="video/mp4">
+            <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/8/82/Bromo_Java_Indonesia_20220820_055918.webm/Bromo_Java_Indonesia_20220820_055918.webm.1080p.vp9.webm" type="video/webm">
+            <img 
+                src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85" 
+                onerror="this.src='https://placehold.co/1920x1080/0e4437/ffffff?text=Pesona+Alam+Indonesia'"
+                alt="Pemandangan Alam Kepulauan Indonesia" 
+                class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
             >
-                <source src="{{ asset('videos/hero.mp4') }}" type="video/mp4">
-                <img 
-                    src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85" 
-                    onerror="this.src='https://placehold.co/1920x1080/0e4437/ffffff?text=Pesona+Alam+Indonesia'"
-                    alt="Pemandangan Alam Kepulauan Indonesia" 
-                    class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
-                >
-            </video>
-        @endif
+        </video>
         <div class="absolute inset-0 hero-gradient"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -685,6 +681,27 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        // Pastikan video hero berputar secara otomatis
+        const heroVid = document.getElementById('heroVideo');
+        if (heroVid) {
+            heroVid.muted = true;
+            const playPromise = heroVid.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Autoplay with sound or battery saver may defer, play on first user interaction
+                    const startPlay = () => {
+                        heroVid.play().catch(() => {});
+                        window.removeEventListener('click', startPlay);
+                        window.removeEventListener('touchstart', startPlay);
+                        window.removeEventListener('scroll', startPlay);
+                    };
+                    window.addEventListener('click', startPlay, { once: true });
+                    window.addEventListener('touchstart', startPlay, { once: true });
+                    window.addEventListener('scroll', startPlay, { once: true });
+                });
+            }
+        }
+
         initBookingOptions();
 
         const searchDate = document.getElementById('searchDate');
