@@ -7,7 +7,7 @@
     <div class="pt-24 sm:pt-28 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Navigation & Breadcrumb -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
-            <a href="{{ route('home') }}#destinasi" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all shadow-xs group w-fit">
+            <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all shadow-xs group w-fit">
                 <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-0.5 transition-transform"></i>
                 <span>Kembali ke Destinasi</span>
             </a>
@@ -16,7 +16,7 @@
             <nav class="flex items-center gap-2 text-xs text-stone-500 overflow-x-auto no-scrollbar py-1">
                 <a href="{{ route('home') }}" class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors shrink-0">Beranda</a>
                 <span class="text-stone-300 dark:text-stone-700">/</span>
-                <a href="{{ route('home') }}#destinasi" class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors shrink-0">Destinasi</a>
+                <a href="{{ route('destinations.index') }}" class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors shrink-0">Destinasi</a>
                 <span class="text-stone-300 dark:text-stone-700">/</span>
                 <span class="text-stone-900 dark:text-stone-100 font-medium truncate max-w-[160px] sm:max-w-xs">{{ $destination->name }}</span>
             </nav>
@@ -180,7 +180,7 @@
 
         <!-- Bottom Back & Action Bar -->
         <div class="mt-14 pt-8 border-t border-stone-200 dark:border-stone-800 flex flex-wrap items-center justify-between gap-4">
-            <a href="{{ route('home') }}#destinasi" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
+            <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all">
                 <i class="fa-solid fa-arrow-left text-[10px]"></i>
                 <span>Kembali ke Daftar Destinasi</span>
             </a>

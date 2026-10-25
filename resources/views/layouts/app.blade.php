@@ -175,9 +175,9 @@
 
             <!-- Desktop Navigation Links -->
             <nav class="hidden lg:flex items-center gap-1 text-xs font-semibold text-stone-600">
-                <a href="{{ route('home') }}#beranda" data-i18n="navHome" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Beranda</a>
-                <a href="{{ route('home') }}#destinasi" data-i18n="navDest" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Destinasi</a>
-                <a href="{{ route('home') }}#paket" data-i18n="navPkg" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Paket Wisata</a>
+                <a href="{{ route('home') }}#beranda" data-i18n="navHome" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all {{ request()->routeIs('home') ? 'text-stone-950 font-bold bg-stone-100/60' : '' }}">Beranda</a>
+                <a href="{{ route('destinations.index') }}" data-i18n="navDest" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all {{ request()->routeIs('destinations.*') ? 'text-stone-950 font-bold bg-stone-100/80' : '' }}">Destinasi</a>
+                <a href="{{ route('packages.index') }}" data-i18n="navPkg" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all {{ request()->routeIs('packages.*') ? 'text-stone-950 font-bold bg-stone-100/80' : '' }}">Paket Wisata</a>
                 <a href="{{ route('home') }}#cerita" data-i18n="navStory" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Filosofi</a>
                 <a href="{{ route('home') }}#galeri" data-i18n="navGallery" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Galeri</a>
                 <a href="{{ route('home') }}#testimoni" data-i18n="navTesti" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Testimoni</a>
@@ -225,15 +225,15 @@
         <!-- Mobile Floating Drawer -->
         <div id="mobileMenu" class="hidden lg:hidden max-w-6xl mx-auto mt-2 rounded-3xl bg-white/95 dark:bg-stone-900/95 backdrop-blur-2xl border border-stone-200/90 dark:border-stone-800 p-5 space-y-3 shadow-2xl animate-fadeIn">
             <div class="grid grid-cols-2 gap-2 text-xs font-semibold text-stone-700 dark:text-stone-200">
-                <a href="{{ route('home') }}#beranda" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2">
+                <a href="{{ route('home') }}#beranda" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2 {{ request()->routeIs('home') ? 'bg-stone-100 dark:bg-stone-800 text-stone-950 dark:text-white font-bold' : '' }}">
                     <i class="fa-solid fa-house text-stone-400"></i>
                     <span data-i18n="navHome">Beranda</span>
                 </a>
-                <a href="{{ route('home') }}#destinasi" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2">
+                <a href="{{ route('destinations.index') }}" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2 {{ request()->routeIs('destinations.*') ? 'bg-stone-100 dark:bg-stone-800 text-stone-950 dark:text-white font-bold' : '' }}">
                     <i class="fa-solid fa-compass text-stone-400"></i>
                     <span data-i18n="navDest">Destinasi</span>
                 </a>
-                <a href="{{ route('home') }}#paket" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2">
+                <a href="{{ route('packages.index') }}" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2 {{ request()->routeIs('packages.*') ? 'bg-stone-100 dark:bg-stone-800 text-stone-950 dark:text-white font-bold' : '' }}">
                     <i class="fa-solid fa-suitcase-rolling text-stone-400"></i>
                     <span data-i18n="navPkg">Paket Wisata</span>
                 </a>
@@ -617,11 +617,11 @@
     <!-- ================= FLOATING GLASS MOBILE DOCK (HP ONLY) ================= -->
     <nav id="mobileBottomDock" class="fixed bottom-3 inset-x-3 sm:hidden z-40 transition-all duration-300">
         <div class="mobile-bottom-dock max-w-md mx-auto rounded-2xl bg-white/92 dark:bg-stone-900/92 border border-stone-200/90 dark:border-stone-800 shadow-[0_12px_40px_rgba(0,0,0,0.18)] px-2.5 py-1.5 flex items-center justify-between">
-            <a href="{{ route('home') }}#beranda" class="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-stone-600 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white transition-colors active:scale-95 group">
+            <a href="{{ route('home') }}#beranda" class="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl {{ request()->routeIs('home') ? 'text-stone-950 dark:text-white font-bold' : 'text-stone-600 dark:text-stone-300' }} hover:text-stone-950 dark:hover:text-white transition-colors active:scale-95 group">
                 <i class="fa-solid fa-house text-base group-hover:scale-110 transition-transform"></i>
                 <span data-i18n="navHome" class="text-[10px] font-medium tracking-tight mt-0.5">Beranda</span>
             </a>
-            <a href="{{ route('destinations.index') }}" class="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-stone-600 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white transition-colors active:scale-95 group">
+            <a href="{{ route('destinations.index') }}" class="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl {{ request()->routeIs('destinations.*') ? 'text-stone-950 dark:text-white font-bold' : 'text-stone-600 dark:text-stone-300' }} hover:text-stone-950 dark:hover:text-white transition-colors active:scale-95 group">
                 <i class="fa-solid fa-compass text-base group-hover:scale-110 transition-transform"></i>
                 <span data-i18n="navDest" class="text-[10px] font-medium tracking-tight mt-0.5">Destinasi</span>
             </a>
@@ -629,7 +629,7 @@
             <button onclick="openBookingModal()" class="flex flex-col items-center justify-center -mt-6 p-3 rounded-full bg-gradient-to-tr from-stone-950 via-stone-850 to-stone-700 dark:from-stone-100 dark:via-stone-200 dark:to-stone-300 text-white dark:text-stone-900 shadow-lg shadow-stone-900/40 active:scale-90 transition-transform ring-4 ring-white dark:ring-stone-900" title="Rencanakan Trip">
                 <i class="fa-solid fa-paper-plane text-sm"></i>
             </button>
-            <a href="{{ route('packages.index') }}" class="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-stone-600 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white transition-colors active:scale-95 group">
+            <a href="{{ route('packages.index') }}" class="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl {{ request()->routeIs('packages.*') ? 'text-stone-950 dark:text-white font-bold' : 'text-stone-600 dark:text-stone-300' }} hover:text-stone-950 dark:hover:text-white transition-colors active:scale-95 group">
                 <i class="fa-solid fa-suitcase-rolling text-base group-hover:scale-110 transition-transform"></i>
                 <span data-i18n="navPkg" class="text-[10px] font-medium tracking-tight mt-0.5">Paket</span>
             </a>
