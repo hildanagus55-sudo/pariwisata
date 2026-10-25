@@ -72,47 +72,47 @@
             <div class="max-w-5xl mx-auto bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl border border-stone-200/80 dark:border-stone-800">
                 <form id="heroSearchForm" onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-end">
                     <!-- Lokasi Tujuan -->
-                    <div class="md:col-span-4">
+                    <div class="md:col-span-6 lg:col-span-4">
                         <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5 sm:mb-2">
                             <i class="fa-solid fa-location-dot text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldRegion">Lokasi Tujuan</span>
                         </label>
-                        <select id="searchLocation" class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
-                            <option value="Semua">Semua Destinasi Nusantara</option>
-                            <option value="Bali & Nusa Tenggara">Bali & Labuan Bajo (NTT)</option>
-                            <option value="Papua & Maluku">Raja Ampat, Papua Barat</option>
-                            <option value="Jawa">Bromo, Ijen & Borobudur (Jawa)</option>
-                            <option value="Sumatera">Danau Toba & Pulau Weh (Sumatera)</option>
-                            <option value="Kalimantan & Sulawesi">Derawan & Tana Toraja</option>
+                        <select id="searchLocation" class="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none transition-colors">
+                            <option value="Semua" data-i18n="heroLocAll">Semua Destinasi Nusantara</option>
+                            <option value="Bali & Nusa Tenggara" data-i18n="heroLocBali">Bali & Labuan Bajo (NTT)</option>
+                            <option value="Papua & Maluku" data-i18n="heroLocPapua">Raja Ampat, Papua Barat</option>
+                            <option value="Jawa" data-i18n="heroLocJava">Bromo, Ijen & Borobudur (Jawa)</option>
+                            <option value="Sumatera" data-i18n="heroLocSumatra">Danau Toba & Pulau Weh (Sumatera)</option>
+                            <option value="Kalimantan & Sulawesi" data-i18n="heroLocBorneo">Derawan & Tana Toraja</option>
                         </select>
                     </div>
 
                     <!-- Tanggal Keberangkatan -->
-                    <div class="md:col-span-3">
+                    <div class="md:col-span-6 lg:col-span-3">
                         <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5 sm:mb-2">
                             <i class="fa-regular fa-calendar-days text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldDate">Tanggal Berangkat</span>
                         </label>
-                        <input type="date" id="searchDate" required class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
+                        <input type="date" id="searchDate" required class="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none transition-colors">
                     </div>
 
                     <!-- Jumlah Peserta -->
-                    <div class="md:col-span-3">
+                    <div class="md:col-span-6 lg:col-span-3">
                         <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5 sm:mb-2">
                             <i class="fa-solid fa-user-group text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldPax">Jumlah Peserta</span>
                         </label>
-                        <select id="searchPax" class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
-                            <option value="1">1 Orang (Solo Traveler)</option>
-                            <option value="2" selected>2 Orang (Pasangan / Sahabat)</option>
-                            <option value="4">4 Orang (Keluarga Kecil)</option>
-                            <option value="6">6 Orang (Grup Privat)</option>
-                            <option value="10">10+ Orang (Rombongan)</option>
+                        <select id="searchPax" class="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none transition-colors">
+                            <option value="1" data-i18n="heroPax1">1 Orang (Solo Traveler)</option>
+                            <option value="2" data-i18n="heroPax2" selected>2 Orang (Pasangan / Sahabat)</option>
+                            <option value="4" data-i18n="heroPax4">4 Orang (Keluarga Kecil)</option>
+                            <option value="6" data-i18n="heroPax6">6 Orang (Grup Privat)</option>
+                            <option value="10" data-i18n="heroPax10">10+ Orang (Rombongan)</option>
                         </select>
                     </div>
 
                     <!-- Tombol Cari -->
-                    <div class="md:col-span-2">
-                        <button type="submit" class="w-full py-3 sm:py-3.5 px-5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-95">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <span data-i18n="heroBtnSearch">Cari Wisata</span>
+                    <div class="md:col-span-6 lg:col-span-2">
+                        <button type="submit" id="heroSearchBtn" class="group w-full h-11 sm:h-12 px-4 rounded-xl bg-gradient-to-r from-stone-950 via-stone-900 to-stone-800 hover:from-stone-900 hover:to-stone-700 dark:from-stone-100 dark:via-stone-200 dark:to-stone-300 text-white dark:text-stone-900 font-semibold text-xs sm:text-sm shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap cursor-pointer">
+                            <i class="fa-solid fa-magnifying-glass text-[11px] sm:text-xs text-amber-300 dark:text-amber-600 group-hover:scale-110 transition-transform"></i>
+                            <span data-i18n="heroBtnSearch" class="tracking-wide">Cari Wisata</span>
                         </button>
                     </div>
                 </form>

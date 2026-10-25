@@ -51,11 +51,11 @@
                     <span data-i18n="catPkgDuration">Durasi Perjalanan</span>
                 </label>
                 <select name="duration" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
-                    <option value="Semua" {{ request('duration') == 'Semua' ? 'selected' : '' }}>Semua Durasi</option>
-                    <option value="3 Hari" {{ request('duration') == '3 Hari' ? 'selected' : '' }}>3 Hari 2 Malam (Weekend Trip)</option>
-                    <option value="4 Hari" {{ request('duration') == '4 Hari' ? 'selected' : '' }}>4 Hari 3 Malam</option>
-                    <option value="5 Hari" {{ request('duration') == '5 Hari' ? 'selected' : '' }}>5 Hari 4 Malam</option>
-                    <option value="6 Hari" {{ request('duration') == '6 Hari' ? 'selected' : '' }}>6 Hari 5 Malam (Ekspedisi Panjang)</option>
+                    <option value="Semua" data-i18n="pkgOptAllDuration" {{ request('duration') == 'Semua' ? 'selected' : '' }}>Semua Durasi</option>
+                    <option value="3 Hari" data-i18n="pkgOpt3D" {{ request('duration') == '3 Hari' ? 'selected' : '' }}>3 Hari 2 Malam (Weekend Trip)</option>
+                    <option value="4 Hari" data-i18n="pkgOpt4D" {{ request('duration') == '4 Hari' ? 'selected' : '' }}>4 Hari 3 Malam</option>
+                    <option value="5 Hari" data-i18n="pkgOpt5D" {{ request('duration') == '5 Hari' ? 'selected' : '' }}>5 Hari 4 Malam</option>
+                    <option value="6 Hari" data-i18n="pkgOpt6D" {{ request('duration') == '6 Hari' ? 'selected' : '' }}>6 Hari 5 Malam (Ekspedisi Panjang)</option>
                 </select>
             </div>
 
@@ -65,9 +65,9 @@
                     <span data-i18n="catPkgSort">Urutkan Paket</span>
                 </label>
                 <select name="sort" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
-                    <option value="rekomendasi" {{ request('sort') == 'rekomendasi' ? 'selected' : '' }}>Rekomendasi Terbaik</option>
-                    <option value="price-asc" {{ request('sort') == 'price-asc' ? 'selected' : '' }}>Tarif Terendah</option>
-                    <option value="price-desc" {{ request('sort') == 'price-desc' ? 'selected' : '' }}>Tarif Tertinggi</option>
+                    <option value="rekomendasi" data-i18n="pkgOptSortRec" {{ request('sort') == 'rekomendasi' ? 'selected' : '' }}>Rekomendasi Terbaik</option>
+                    <option value="price-asc" data-i18n="pkgOptSortLow" {{ request('sort') == 'price-asc' ? 'selected' : '' }}>Tarif Terendah</option>
+                    <option value="price-desc" data-i18n="pkgOptSortHigh" {{ request('sort') == 'price-desc' ? 'selected' : '' }}>Tarif Tertinggi</option>
                 </select>
             </div>
         </form>

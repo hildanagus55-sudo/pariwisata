@@ -52,11 +52,11 @@
                     <span data-i18n="catDestCategory">Kategori</span>
                 </label>
                 <select name="category" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
-                    <option value="Semua" {{ request('category') == 'Semua' ? 'selected' : '' }}>Semua Kategori</option>
-                    <option value="Pantai" {{ request('category') == 'Pantai' ? 'selected' : '' }}>Pantai & Perairan Karst</option>
-                    <option value="Pegunungan" {{ request('category') == 'Pegunungan' ? 'selected' : '' }}>Puncak & Kaldera</option>
-                    <option value="Budaya" {{ request('category') == 'Budaya' ? 'selected' : '' }}>Desa & Sejarah Budaya</option>
-                    <option value="Alam" {{ request('category') == 'Alam' ? 'selected' : '' }}>Eksotisme Satwa & Rimba</option>
+                    <option value="Semua" data-i18n="catOptAllCat" {{ request('category') == 'Semua' ? 'selected' : '' }}>Semua Kategori</option>
+                    <option value="Pantai" data-i18n="catOptBeach" {{ request('category') == 'Pantai' ? 'selected' : '' }}>Pantai & Perairan Karst</option>
+                    <option value="Pegunungan" data-i18n="catOptMountain" {{ request('category') == 'Pegunungan' ? 'selected' : '' }}>Puncak & Kaldera</option>
+                    <option value="Budaya" data-i18n="catOptCulture" {{ request('category') == 'Budaya' ? 'selected' : '' }}>Desa & Sejarah Budaya</option>
+                    <option value="Alam" data-i18n="catOptNature" {{ request('category') == 'Alam' ? 'selected' : '' }}>Eksotisme Satwa & Rimba</option>
                 </select>
             </div>
 
@@ -66,12 +66,12 @@
                     <span data-i18n="catDestRegion">Wilayah</span>
                 </label>
                 <select name="region" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
-                    <option value="Semua" {{ request('region') == 'Semua' ? 'selected' : '' }}>Semua Wilayah</option>
-                    <option value="Bali & Nusa Tenggara" {{ request('region') == 'Bali & Nusa Tenggara' ? 'selected' : '' }}>Bali & Nusa Tenggara</option>
-                    <option value="Papua & Maluku" {{ request('region') == 'Papua & Maluku' ? 'selected' : '' }}>Papua & Maluku</option>
-                    <option value="Jawa" {{ request('region') == 'Jawa' ? 'selected' : '' }}>Jawa</option>
-                    <option value="Sumatera" {{ request('region') == 'Sumatera' ? 'selected' : '' }}>Sumatera</option>
-                    <option value="Kalimantan & Sulawesi" {{ request('region') == 'Kalimantan & Sulawesi' ? 'selected' : '' }}>Kalimantan & Sulawesi</option>
+                    <option value="Semua" data-i18n="catOptAllRegion" {{ request('region') == 'Semua' ? 'selected' : '' }}>Semua Wilayah</option>
+                    <option value="Bali & Nusa Tenggara" data-i18n="catOptBali" {{ request('region') == 'Bali & Nusa Tenggara' ? 'selected' : '' }}>Bali & Nusa Tenggara</option>
+                    <option value="Papua & Maluku" data-i18n="catOptPapua" {{ request('region') == 'Papua & Maluku' ? 'selected' : '' }}>Papua & Maluku</option>
+                    <option value="Jawa" data-i18n="catOptJava" {{ request('region') == 'Jawa' ? 'selected' : '' }}>Jawa</option>
+                    <option value="Sumatera" data-i18n="catOptSumatra" {{ request('region') == 'Sumatera' ? 'selected' : '' }}>Sumatera</option>
+                    <option value="Kalimantan & Sulawesi" data-i18n="catOptBorneo" {{ request('region') == 'Kalimantan & Sulawesi' ? 'selected' : '' }}>Kalimantan & Sulawesi</option>
                 </select>
             </div>
 
@@ -81,10 +81,10 @@
                     <span data-i18n="catDestSort">Urutkan</span>
                 </label>
                 <select name="sort" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none cursor-pointer">
-                    <option value="popular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Rekomendasi Terbaik</option>
-                    <option value="price-asc" {{ request('sort') == 'price-asc' ? 'selected' : '' }}>Biaya Terendah</option>
-                    <option value="price-desc" {{ request('sort') == 'price-desc' ? 'selected' : '' }}>Biaya Tertinggi</option>
-                    <option value="rating" {{ request('sort') == 'rating' ? 'selected' : '' }}>Ulasan Terbaik</option>
+                    <option value="popular" data-i18n="catOptSortPopular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Rekomendasi Terbaik</option>
+                    <option value="price-asc" data-i18n="catOptSortPriceAsc" {{ request('sort') == 'price-asc' ? 'selected' : '' }}>Biaya Terendah</option>
+                    <option value="price-desc" data-i18n="catOptSortPriceDesc" {{ request('sort') == 'price-desc' ? 'selected' : '' }}>Biaya Tertinggi</option>
+                    <option value="rating" data-i18n="catOptSortRating" {{ request('sort') == 'rating' ? 'selected' : '' }}>Ulasan Terbaik</option>
                 </select>
             </div>
         </form>

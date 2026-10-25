@@ -706,6 +706,19 @@
                 heroBtnSearch: 'Cari Wisata',
                 heroPopSearch: 'Pencarian Populer:',
 
+                heroLocAll: 'Semua Destinasi Nusantara',
+                heroLocBali: 'Bali & Labuan Bajo (NTT)',
+                heroLocPapua: 'Raja Ampat, Papua Barat',
+                heroLocJava: 'Bromo, Ijen & Borobudur (Jawa)',
+                heroLocSumatra: 'Danau Toba & Pulau Weh (Sumatera)',
+                heroLocBorneo: 'Derawan & Tana Toraja',
+
+                heroPax1: '1 Orang (Solo Traveler)',
+                heroPax2: '2 Orang (Pasangan / Sahabat)',
+                heroPax4: '4 Orang (Keluarga Kecil)',
+                heroPax6: '6 Orang (Grup Privat)',
+                heroPax10: '10+ Orang (Rombongan)',
+
                 // Destinations Section
                 destSubtitle: 'Jurnal Destinasi',
                 destTitle: 'Tempat-Tempat Istimewa di Bumi Pertiwi',
@@ -824,6 +837,34 @@
                 autoFilterNotice: 'Menampilkan hasil filter otomatis',
                 autoFilterPkgNotice: 'Menampilkan paket hasil filter otomatis',
 
+                catOptAllCat: 'Semua Kategori',
+                catOptBeach: 'Pantai & Perairan Karst',
+                catOptMountain: 'Puncak & Kaldera',
+                catOptCulture: 'Desa & Sejarah Budaya',
+                catOptNature: 'Eksotisme Satwa & Rimba',
+
+                catOptAllRegion: 'Semua Wilayah',
+                catOptBali: 'Bali & Nusa Tenggara',
+                catOptPapua: 'Papua & Maluku',
+                catOptJava: 'Jawa',
+                catOptSumatra: 'Sumatera',
+                catOptBorneo: 'Kalimantan & Sulawesi',
+
+                catOptSortPopular: 'Rekomendasi Terbaik',
+                catOptSortPriceAsc: 'Biaya Terendah',
+                catOptSortPriceDesc: 'Biaya Tertinggi',
+                catOptSortRating: 'Ulasan Terbaik',
+
+                pkgOptAllDuration: 'Semua Durasi',
+                pkgOpt3D: '3 Hari 2 Malam (Weekend Trip)',
+                pkgOpt4D: '4 Hari 3 Malam',
+                pkgOpt5D: '5 Hari 4 Malam',
+                pkgOpt6D: '6 Hari 5 Malam (Ekspedisi Panjang)',
+
+                pkgOptSortRec: 'Rekomendasi Terbaik',
+                pkgOptSortLow: 'Tarif Terendah',
+                pkgOptSortHigh: 'Tarif Tertinggi',
+
                 toastLangChanged: 'Bahasa diubah ke Bahasa Indonesia'
             },
             en: {
@@ -850,8 +891,21 @@
                 heroFieldRegion: 'Target Region',
                 heroFieldDate: 'Departure Date',
                 heroFieldPax: 'Guest Count',
-                heroBtnSearch: 'Search Journeys',
+                heroBtnSearch: 'Search Trips',
                 heroPopSearch: 'Popular Searches:',
+
+                heroLocAll: 'All Destinations (Archipelago)',
+                heroLocBali: 'Bali & Labuan Bajo (NTT)',
+                heroLocPapua: 'Raja Ampat, West Papua',
+                heroLocJava: 'Bromo, Ijen & Borobudur (Java)',
+                heroLocSumatra: 'Lake Toba & Weh Island (Sumatra)',
+                heroLocBorneo: 'Derawan & Tana Toraja',
+
+                heroPax1: '1 Guest (Solo Traveler)',
+                heroPax2: '2 Guests (Couple / Friends)',
+                heroPax4: '4 Guests (Small Family)',
+                heroPax6: '6 Guests (Private Group)',
+                heroPax10: '10+ Guests (Tour Group)',
 
                 // Destinations Section
                 destSubtitle: 'Travel Journal',
@@ -971,6 +1025,34 @@
                 autoFilterNotice: 'Displaying instant filtered results',
                 autoFilterPkgNotice: 'Displaying instant filtered packages',
 
+                catOptAllCat: 'All Categories',
+                catOptBeach: 'Beaches & Karst Waters',
+                catOptMountain: 'Peaks & Calderas',
+                catOptCulture: 'Heritage & Culture',
+                catOptNature: 'Wildlife & Rainforest',
+
+                catOptAllRegion: 'All Regions',
+                catOptBali: 'Bali & Nusa Tenggara',
+                catOptPapua: 'Papua & Maluku',
+                catOptJava: 'Java',
+                catOptSumatra: 'Sumatra',
+                catOptBorneo: 'Borneo & Sulawesi',
+
+                catOptSortPopular: 'Top Recommended',
+                catOptSortPriceAsc: 'Lowest Price',
+                catOptSortPriceDesc: 'Highest Price',
+                catOptSortRating: 'Highest Rated',
+
+                pkgOptAllDuration: 'All Durations',
+                pkgOpt3D: '3 Days 2 Nights (Weekend Trip)',
+                pkgOpt4D: '4 Days 3 Nights',
+                pkgOpt5D: '5 Days 4 Nights',
+                pkgOpt6D: '6 Days 5 Nights (Long Expedition)',
+
+                pkgOptSortRec: 'Top Recommended',
+                pkgOptSortLow: 'Lowest Price',
+                pkgOptSortHigh: 'Highest Price',
+
                 toastLangChanged: 'Language changed to English'
             }
         };
@@ -991,7 +1073,11 @@
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (dict[key]) {
-                    el.innerHTML = dict[key];
+                    if (el.tagName === 'OPTION') {
+                        el.textContent = dict[key];
+                    } else {
+                        el.innerHTML = dict[key];
+                    }
                 }
             });
 
