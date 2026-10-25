@@ -6,13 +6,36 @@
 @section('content')
     <!-- ================= 2. HERO SECTION & INTERACTIVE SEARCH WIDGET (CINEMATIC PHOTO HERO) ================= -->
     <section id="beranda" class="relative min-h-[92vh] pt-28 pb-20 flex items-center justify-center overflow-hidden">
-        <!-- Background Image with Fallback -->
-        <img 
-            src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85" 
-            onerror="this.src='https://placehold.co/1920x1080/0e4437/ffffff?text=Pesona+Alam+Indonesia'"
-            alt="Pemandangan Alam Kepulauan Indonesia" 
-            class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
-        >
+        <!-- Background Video Loop (Otomatis memutar hero.mp4 jika sudah diletakkan di public/videos/) -->
+        @if(file_exists(public_path('videos/hero.mp4')))
+            <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                poster="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85"
+                class="absolute inset-0 w-full h-full object-cover object-center scale-105"
+            >
+                <source src="{{ asset('videos/hero.mp4') }}" type="video/mp4">
+            </video>
+        @else
+            <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                poster="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85"
+                class="absolute inset-0 w-full h-full object-cover object-center scale-105"
+            >
+                <source src="{{ asset('videos/hero.mp4') }}" type="video/mp4">
+                <img 
+                    src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85" 
+                    onerror="this.src='https://placehold.co/1920x1080/0e4437/ffffff?text=Pesona+Alam+Indonesia'"
+                    alt="Pemandangan Alam Kepulauan Indonesia" 
+                    class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
+                >
+            </video>
+        @endif
         <div class="absolute inset-0 hero-gradient"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
