@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Koleksi Paket Wisata Nusantara — ANWISATA')
-@section('meta_description', 'Paket perjalanan terkurasi ke Labuan Bajo, Bromo, Ijen, dan Bali resmi di ANWISATA Portal Pariwisata Indonesia.')
+@section('title', 'DANWISATA | Koleksi Paket Wisata Nusantara')
+@section('meta_description', 'DANWISATA | Paket perjalanan terkurasi ke Labuan Bajo, Bromo, Ijen, dan Bali resmi di Portal Pariwisata Indonesia.')
 
 @section('content')
 <div class="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'ANWISATA — Portal Pariwisata Indonesia')
-@section('meta_description', 'Portal Pariwisata Indonesia resmi dan terpercaya. Jelajahi keindahan destinasi wisata alam, budaya nusantara, dan paket liburan impian terbaik.')
+@section('title', 'DANWISATA | Portal Pariwisata Indonesia')
+@section('meta_description', 'DANWISATA | Portal Pariwisata Indonesia resmi dan terpercaya. Jelajahi keindahan destinasi wisata alam, budaya nusantara, dan paket liburan impian terbaik.')
 
 @section('content')
     <!-- ================= 2. HERO SECTION & INTERACTIVE SEARCH WIDGET (CINEMATIC PHOTO HERO) ================= -->
@@ -351,7 +351,7 @@
                         <p data-i18n="storyQuote" class="font-serif italic text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
                             "Pariwisata yang baik bukan sekadar meninggalkan jejak langkah, melainkan membawa pulang rasa hormat pada tanah dan manusianya."
                         </p>
-                        <span data-i18n="storyPrinciple" class="block text-[11px] text-stone-400 mt-2">— Prinsip Perjalanan ANWISATA</span>
+                        <span data-i18n="storyPrinciple" class="block text-[11px] text-stone-400 mt-2">— Prinsip Perjalanan DANWISATA</span>
                     </div>
                 </div>
             </div>
@@ -368,7 +368,7 @@
                 </div>
 
                 <p data-i18n="storyDesc" class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
-                    Kami mendirikan ANWISATA sebagai portal pariwisata Indonesia untuk menghadirkan rute perjalanan yang autentik, menghormati alam, dan mendekatkan Anda dengan kehangatan warga lokal.
+                    Kami mendirikan DANWISATA sebagai portal pariwisata Indonesia untuk menghadirkan rute perjalanan yang autentik, menghormati alam, dan mendekatkan Anda dengan kehangatan warga lokal.
                 </p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">

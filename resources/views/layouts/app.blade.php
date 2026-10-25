@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'ANWISATA — Portal Pariwisata Indonesia')</title>
-    <meta name="description" content="@yield('meta_description', 'ANWISATA — Portal Pariwisata Indonesia resmi dan terpercaya untuk menjelajahi keindahan destinasi wisata alam, budaya, dan paket liburan terbaik di Nusantara.')">
+    <title>@yield('title', 'DANWISATA | Portal Pariwisata Indonesia')</title>
+    <meta name="description" content="@yield('meta_description', 'DANWISATA | Portal Pariwisata Indonesia resmi dan terpercaya untuk menjelajahi keindahan destinasi wisata alam, budaya, dan paket liburan terbaik di Nusantara.')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
@@ -139,9 +139,9 @@
     <!-- ================= 1. FLOATING GLASS ISLAND NAVIGATION BAR ================= -->
     <header id="navbar" class="fixed top-3 sm:top-5 left-0 right-0 z-50 px-3 sm:px-6 transition-all duration-300">
         <div id="navContainer" class="max-w-6xl mx-auto rounded-full px-4 sm:px-6 py-2.5 sm:py-3 transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl border border-stone-200/90 dark:border-stone-800 bg-white/85 dark:bg-stone-900/85 flex items-center justify-between">
-            <!-- Brand Logo: ANWISATA -->
+            <!-- Brand Logo: DANWISATA -->
             <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
-                <img src="{{ asset('images/logo.png') }}" alt="ANWISATA — Portal Pariwisata Indonesia" class="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <img src="{{ asset('images/logo.png') }}" alt="DANWISATA | Portal Pariwisata Indonesia" class="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
             </a>
 
             <!-- Desktop Navigation Links -->
@@ -241,7 +241,7 @@
                 <!-- Col 1: Bio -->
                 <div class="lg:col-span-5">
                     <div class="flex items-center gap-2.5 mb-3.5">
-                        <img src="{{ asset('images/logo.png') }}" alt="ANWISATA — Portal Pariwisata Indonesia" class="h-9 w-auto object-contain">
+                        <img src="{{ asset('images/logo.png') }}" alt="DANWISATA | Portal Pariwisata Indonesia" class="h-9 w-auto object-contain">
                     </div>
                     <p data-i18n="footerDesc" class="text-xs leading-relaxed text-stone-500 dark:text-stone-400 max-w-sm mb-5">
                         Portal Pariwisata Indonesia terpercaya. Kami menemani Anda menjelajahi keindahan nusantara, ragam budaya, dan paket liburan impian terbaik dengan pengalaman berkesan.
@@ -250,10 +250,10 @@
                         <a href="https://wa.me/6289519808548" target="_blank" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="WhatsApp Concierge">
                             <i class="fa-brands fa-whatsapp"></i>
                         </a>
-                        <a href="#footer" onclick="showToast('Instagram: @anwisata.id', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="Instagram Resmi">
+                        <a href="#footer" onclick="showToast('Instagram: @danwisata.id', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="Instagram Resmi">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="#footer" onclick="showToast('YouTube: ANWISATA Portal Pariwisata', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="YouTube Resmi">
+                        <a href="#footer" onclick="showToast('YouTube: DANWISATA Portal Pariwisata', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="YouTube Resmi">
                             <i class="fa-brands fa-youtube"></i>
                         </a>
                     </div>
@@ -277,7 +277,7 @@
                     <ul class="space-y-2 text-xs text-stone-500 dark:text-stone-400">
                         <li>Jakarta & Denpasar, Indonesia</li>
                         <li><a href="https://wa.me/6289519808548" class="hover:underline">+62 895-1980-8548</a></li>
-                        <li>halo@anwisata.id</li>
+                        <li>halo@danwisata.id</li>
                         <li class="text-[11px] text-stone-400 pt-1">Balas cepat: 08.00 - 21.00 WIB</li>
                     </ul>
                 </div>
@@ -648,9 +648,9 @@
                 // Story / Philosophy
                 storySubtitle: 'Kenapa Berkelana Bersama Kami?',
                 storyTitle: 'Sebuah Perjalanan yang Bernapas, Menghargai Waktu & Warga Lokal',
-                storyDesc: 'Kami mendirikan ANWISATA sebagai portal pariwisata Indonesia untuk menghadirkan rute perjalanan yang autentik, menghormati alam, dan mendekatkan Anda dengan kehangatan warga lokal.',
+                storyDesc: 'Kami mendirikan DANWISATA sebagai portal pariwisata Indonesia untuk menghadirkan rute perjalanan yang autentik, menghormati alam, dan mendekatkan Anda dengan kehangatan warga lokal.',
                 storyQuote: '"Pariwisata yang baik bukan sekadar meninggalkan jejak langkah, melainkan membawa pulang rasa hormat pada tanah dan manusianya."',
-                storyPrinciple: '— Prinsip Perjalanan ANWISATA',
+                storyPrinciple: '— Prinsip Perjalanan DANWISATA',
 
                 // Gallery
                 gallerySubtitle: 'Dokumentasi Asli',
@@ -674,7 +674,7 @@
                 footerGazette: 'Warta Perjalanan',
                 footerGazetteDesc: 'Kirimkan alamat surel Anda untuk menerima catatan destinasi baru dan promo open trip berkala.',
                 footerSubBtn: 'Daftar',
-                footerCopyright: '© 2026 PT ANWISATA Indonesia — Portal Pariwisata Indonesia. Hak cipta dilindungi.',
+                footerCopyright: '© 2026 PT DANWISATA Indonesia — Portal Pariwisata Indonesia. Hak cipta dilindungi.',
 
                 // Modals
                 modalDetailTitle: 'Catatan Destinasi & Panduan Musim',
@@ -794,9 +794,9 @@
                 // Story / Philosophy
                 storySubtitle: 'Why Travel With Us?',
                 storyTitle: 'A Breathing Journey that Honors Time and Local Communities',
-                storyDesc: 'We founded ANWISATA as the official Indonesian tourism portal to craft authentic journeys that honor nature and connect you with local communities.',
+                storyDesc: 'We founded DANWISATA as the official Indonesian tourism portal to craft authentic journeys that honor nature and connect you with local communities.',
                 storyQuote: '"True travel does not merely leave footprints; it brings home heartfelt respect for the land and its people."',
-                storyPrinciple: '— ANWISATA Travel Principles',
+                storyPrinciple: '— DANWISATA Travel Principles',
 
                 // Gallery
                 gallerySubtitle: 'Authentic Moments',
@@ -820,7 +820,7 @@
                 footerGazette: 'Travel Gazette',
                 footerGazetteDesc: 'Enter your email to receive newly curated secret routes and seasonal promotions.',
                 footerSubBtn: 'Subscribe',
-                footerCopyright: '© 2026 PT ANWISATA Indonesia — Indonesia Tourism Portal. All rights reserved.',
+                footerCopyright: '© 2026 PT DANWISATA Indonesia — Indonesia Tourism Portal. All rights reserved.',
 
                 // Modals
                 modalDetailTitle: 'Destination Notes & Seasonal Guide',
