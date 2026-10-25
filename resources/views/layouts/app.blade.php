@@ -706,6 +706,12 @@
                 heroBtnSearch: 'Cari Wisata',
                 heroPopSearch: 'Pencarian Populer:',
 
+                heroLocPlaceholder: 'Ketik atau pilih wilayah / destinasi...',
+                heroLocHint: 'Bisa ketik nama wilayah',
+                heroLocAllHeader: 'Wilayah di Seluruh Indonesia',
+                heroLocNoMatch: 'Tidak ada wilayah yang cocok dengan',
+                heroLocShowAll: 'Tampilkan Semua Wilayah',
+
                 heroLocAll: 'Semua Destinasi Nusantara',
                 heroLocBali: 'Bali & Labuan Bajo (NTT)',
                 heroLocPapua: 'Raja Ampat, Papua Barat',
@@ -893,6 +899,12 @@
                 heroFieldPax: 'Guest Count',
                 heroBtnSearch: 'Search Trips',
                 heroPopSearch: 'Popular Searches:',
+
+                heroLocPlaceholder: 'Type or select a region / destination...',
+                heroLocHint: 'You can type any region name',
+                heroLocAllHeader: 'Regions Across Indonesia',
+                heroLocNoMatch: 'No regions matching',
+                heroLocShowAll: 'Show All Regions',
 
                 heroLocAll: 'All Destinations (Archipelago)',
                 heroLocBali: 'Bali & Labuan Bajo (NTT)',

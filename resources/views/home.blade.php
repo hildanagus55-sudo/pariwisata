@@ -71,19 +71,70 @@
             <!-- Interactive Search Widget Card -->
             <div class="max-w-5xl mx-auto bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl border border-stone-200/80 dark:border-stone-800">
                 <form id="heroSearchForm" onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-end">
-                    <!-- Lokasi Tujuan -->
-                    <div class="md:col-span-6 lg:col-span-4">
-                        <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5 sm:mb-2">
-                            <i class="fa-solid fa-location-dot text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldRegion">Lokasi Tujuan</span>
+                    <!-- Lokasi Tujuan (Searchable Combobox with Full Indonesia Regions) -->
+                    <div class="md:col-span-6 lg:col-span-4 relative" id="locationComboboxWrapper">
+                        <label for="searchLocationInput" class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5 sm:mb-2 flex items-center justify-between">
+                            <span>
+                                <i class="fa-solid fa-location-dot text-stone-800 dark:text-stone-200 mr-1.5"></i>
+                                <span data-i18n="heroFieldRegion">Lokasi Tujuan</span>
+                            </span>
+                            <span class="text-[10px] font-normal normal-case text-stone-400 dark:text-stone-500" data-i18n="heroLocHint">Bisa ketik nama wilayah</span>
                         </label>
-                        <select id="searchLocation" class="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none transition-colors">
-                            <option value="Semua" data-i18n="heroLocAll">Semua Destinasi Nusantara</option>
-                            <option value="Bali & Nusa Tenggara" data-i18n="heroLocBali">Bali & Labuan Bajo (NTT)</option>
-                            <option value="Papua & Maluku" data-i18n="heroLocPapua">Raja Ampat, Papua Barat</option>
-                            <option value="Jawa" data-i18n="heroLocJava">Bromo, Ijen & Borobudur (Jawa)</option>
-                            <option value="Sumatera" data-i18n="heroLocSumatra">Danau Toba & Pulau Weh (Sumatera)</option>
-                            <option value="Kalimantan & Sulawesi" data-i18n="heroLocBorneo">Derawan & Tana Toraja</option>
-                        </select>
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                id="searchLocationInput"
+                                autocomplete="off"
+                                spellcheck="false"
+                                data-i18n-placeholder="heroLocPlaceholder"
+                                placeholder="Ketik atau pilih wilayah / destinasi..."
+                                class="w-full h-11 sm:h-12 pl-10 pr-14 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:bg-white dark:focus:bg-stone-900 focus:outline-none transition-all shadow-2xs"
+                                onfocus="openLocationDropdown()"
+                                oninput="handleLocationInput(event)"
+                                onkeydown="handleLocationKeydown(event)"
+                            >
+                            <input type="hidden" id="searchLocation" value="">
+                            <!-- Pin Search Icon on Left -->
+                            <span class="absolute inset-y-0 left-3.5 flex items-center pointer-events-none text-stone-400 dark:text-stone-500">
+                                <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                            </span>
+
+                            <!-- Action Icons on Right: Clear & Dropdown Toggle -->
+                            <div class="absolute inset-y-0 right-2 flex items-center gap-0.5">
+                                <button 
+                                    type="button" 
+                                    id="clearLocationBtn"
+                                    onclick="clearLocationInput(event)"
+                                    class="hidden w-6 h-6 rounded-full hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 items-center justify-center transition-colors"
+                                    title="Hapus input"
+                                >
+                                    <i class="fa-solid fa-xmark text-xs"></i>
+                                </button>
+                                <button 
+                                    type="button"
+                                    id="toggleLocationBtn"
+                                    onclick="toggleLocationDropdown(event)"
+                                    class="w-7 h-7 rounded-lg hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 flex items-center justify-center transition-colors"
+                                    title="Pilih dari daftar wilayah"
+                                >
+                                    <i id="locationDropdownChevron" class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Floating Searchable Suggestions Dropdown -->
+                        <div 
+                            id="locationDropdownList" 
+                            class="hidden absolute left-0 right-0 top-full mt-2 z-50 bg-white dark:bg-stone-900 rounded-2xl shadow-2xl border border-stone-200/90 dark:border-stone-800 max-h-72 overflow-y-auto no-scrollbar p-2 animate-fadeIn"
+                        >
+                            <div class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 border-b border-stone-100 dark:border-stone-800 mb-1 flex items-center justify-between">
+                                <span data-i18n="heroLocAllHeader">Wilayah di Seluruh Indonesia</span>
+                                <span id="locationCountBadge" class="font-mono text-[9px] px-1.5 py-0.5 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400">28 Wilayah</span>
+                            </div>
+                            <div id="locationOptionsContainer" class="space-y-1">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Tanggal Keberangkatan -->
@@ -538,6 +589,198 @@
         `).join('');
     }
 
+    // Comprehensive List of All 28 Distinct Regions Across Indonesia
+    const INDONESIA_REGIONS = [
+        { id: 'Semua', name: 'Semua Wilayah Nusantara', en: 'All Indonesian Archipelago', icon: 'fa-earth-asia', sub: 'Seluruh 38 Provinsi & 17.000+ Pulau', keywords: 'semua all indonesia nusantara' },
+        { id: 'Bali', name: 'Bali', en: 'Bali Island', icon: 'fa-umbrella-beach', sub: 'Nusa Penida, Ubud, Kuta, Uluwatu, Kintamani', keywords: 'bali nusa penida ubud kuta kelingking sanur canggu' },
+        { id: 'Lombok', name: 'Lombok & NTB', en: 'Lombok & West Nusa Tenggara', icon: 'fa-volcano', sub: 'Gunung Rinjani, Gili Trawangan, Mandalika, Sumbawa', keywords: 'lombok ntb nusa tenggara barat rinjani gili mandalika sumbawa segara anak' },
+        { id: 'Labuan Bajo', name: 'Labuan Bajo & Flores (NTT)', en: 'Labuan Bajo & Flores (NTT)', icon: 'fa-ship', sub: 'Taman Nasional Komodo, Pulau Padar, Wae Rebo', keywords: 'labuan bajo flores ntt komodo padar wae rebo nusa tenggara timur phinisi' },
+        { id: 'Sumba', name: 'Sumba (NTT)', en: 'Sumba Island (NTT)', icon: 'fa-mountain-sun', sub: 'Bukit Wairinding, Savana Puru Kambera, Danau Weekuri', keywords: 'sumba wairinding puru kambera weekuri ntt nusa tenggara timur' },
+        { id: 'Yogyakarta', name: 'D.I. Yogyakarta & Solo', en: 'Yogyakarta & Solo', icon: 'fa-landmark', sub: 'Malioboro, Kraton, Candi Prambanan, Kaliurang', keywords: 'jogja yogyakarta solo diy malioboro prambanan kraton' },
+        { id: 'Jawa Tengah', name: 'Jawa Tengah', en: 'Central Java', icon: 'fa-place-of-worship', sub: 'Candi Borobudur, Dataran Tinggi Dieng, Karimunjawa', keywords: 'jawa tengah borobudur dieng karimunjawa magelang wonosobo jepara semarang' },
+        { id: 'Jawa Timur', name: 'Jawa Timur', en: 'East Java', icon: 'fa-mountain', sub: 'Kaldera Bromo, Kawah Ijen, Malang, Banyuwangi', keywords: 'jawa timur jatim bromo ijen banyuwangi malang surabaya semeru' },
+        { id: 'Jawa Barat', name: 'Jawa Barat & Banten', en: 'West Java & Banten', icon: 'fa-tree', sub: 'Bandung, Puncak, Kawah Putih, Ujung Kulon', keywords: 'jawa barat jabar bandung banten bogor ujung kulon ciletuh' },
+        { id: 'Jakarta', name: 'DKI Jakarta & Kep. Seribu', en: 'Jakarta & Thousand Islands', icon: 'fa-city', sub: 'Kota Tua, Monas, Pulau Macan, Pulau Pari', keywords: 'jakarta dki kepulauan seribu kota tua monas' },
+        { id: 'Sumatera Utara', name: 'Sumatera Utara', en: 'North Sumatra', icon: 'fa-water', sub: 'Danau Toba, Pulau Samosir, Lembah Bakkara, Medan', keywords: 'sumatera utara sumut toba samosir medan bakkara berastagi' },
+        { id: 'Sumatera Barat', name: 'Sumatera Barat', en: 'West Sumatra', icon: 'fa-mountain-city', sub: 'Lembah Harau, Bukittinggi, Ngarai Sianok, Padang', keywords: 'sumatera barat sumbar harau bukittinggi sianok padang mandeh' },
+        { id: 'Aceh', name: 'Aceh & Pulau Weh', en: 'Aceh & Weh Island', icon: 'fa-compass', sub: 'Sabang, Titik 0 KM, Pantai Iboih, Banda Aceh', keywords: 'aceh sabang weh iboih nol kilometer sumatera' },
+        { id: 'Bangka Belitung', name: 'Bangka Belitung', en: 'Bangka Belitung Islands', icon: 'fa-gem', sub: 'Pantai Tanjung Tinggi, Belitung, Pulau Lengkuas', keywords: 'bangka belitung babel tanjung tinggi lengkuas laskar pelangi' },
+        { id: 'Riau & Kepri', name: 'Kepulauan Riau & Riau', en: 'Riau & Riau Islands', icon: 'fa-anchor', sub: 'Pulau Bintan, Batam, Natuna, Kepulauan Anambas', keywords: 'kepri riau bintan batam natuna anambas' },
+        { id: 'Sumatera Selatan & Lampung', name: 'Sumatera Selatan & Lampung', en: 'South Sumatra & Lampung', icon: 'fa-sun', sub: 'Palembang, Jembatan Ampera, TN Way Kambas, Pahawang', keywords: 'sumatera selatan lampung palembang way kambas pahawang' },
+        { id: 'Kalimantan Timur', name: 'Kalimantan Timur', en: 'East Kalimantan', icon: 'fa-fish-fins', sub: 'Kepulauan Derawan, Pulau Maratua, Danau Kakaban, Berau', keywords: 'kalimantan timur kaltim derawan maratua kakaban berau ikn samarinda' },
+        { id: 'Kalimantan Tengah', name: 'Kalimantan Tengah', en: 'Central Kalimantan', icon: 'fa-leaf', sub: 'TN Tanjung Puting, Sungai Sekonyer, Camp Leakey', keywords: 'kalimantan tengah kalteng tanjung puting sekonyer orangutan pangkalan bun' },
+        { id: 'Kalimantan Barat & Selatan', name: 'Kalimantan Barat & Selatan', en: 'West & South Kalimantan', icon: 'fa-person-boating', sub: 'Pasar Terapung Lok Baintan, Singkawang, Pontianak', keywords: 'kalimantan barat kalbar kalsel banjarmasin pontianak singkawang' },
+        { id: 'Sulawesi Selatan', name: 'Sulawesi Selatan', en: 'South Sulawesi', icon: 'fa-house-chimney', sub: 'Tana Toraja, Lolai Negeri di Atas Awan, Makassar, Bira', keywords: 'sulawesi selatan sulsel toraja lolai makassar bira tanjung bira' },
+        { id: 'Sulawesi Utara', name: 'Sulawesi Utara', en: 'North Sulawesi', icon: 'fa-mask-snorkel', sub: 'Taman Nasional Bunaken, Manado, Likupang, Siladen', keywords: 'sulawesi utara sulut bunaken manado likupang siladen bunaken' },
+        { id: 'Sulawesi Tenggara & Tengah', name: 'Sulawesi Tenggara & Tengah', en: 'Southeast & Central Sulawesi', icon: 'fa-water', sub: 'Taman Nasional Wakatobi, Labengki, Sombori, Kep. Togean', keywords: 'sulawesi tenggara sultra wakatobi labengki togean sombori bau-bau kendari' },
+        { id: 'Maluku', name: 'Kepulauan Maluku & Banda Neira', en: 'Maluku & Banda Neira', icon: 'fa-monument', sub: 'Banda Neira, Benteng Belgica, Gunung Api Banda, Ambon', keywords: 'maluku banda neira belgica ambon pala rempah' },
+        { id: 'Maluku Tenggara', name: 'Maluku Tenggara & Kei', en: 'Southeast Maluku & Kei Islands', icon: 'fa-feather', sub: 'Pantai Ngurbloat Pasir Halus, Pulau Bair, Tual', keywords: 'maluku tenggara kei ngurbloat pasir putih tual' },
+        { id: 'Maluku Utara', name: 'Maluku Utara', en: 'North Maluku', icon: 'fa-volcano', sub: 'Ternate, Tidore, Pulau Morotai, Halmahera', keywords: 'maluku utara malut ternate tidore morotai halmahera' },
+        { id: 'Papua Barat Daya', name: 'Papua Barat & Raja Ampat', en: 'West Papua & Raja Ampat', icon: 'fa-crown', sub: 'Kepulauan Wayag, Piaynemo, Misool, Sorong', keywords: 'papua barat daya raja ampat wayag piaynemo misool sorong' },
+        { id: 'Papua Pegunungan', name: 'Papua Pegunungan & Lembah Baliem', en: 'Highland Papua & Baliem Valley', icon: 'fa-campground', sub: 'Lembah Baliem, Wamena, Suku Dani', keywords: 'papua pegunungan baliem wamena dani papua' },
+        { id: 'Papua & Papua Tengah', name: 'Papua & Papua Tengah', en: 'Papua & Central Papua', icon: 'fa-dove', sub: 'Danau Sentani, Jayapura, Teluk Cenderawasih', keywords: 'papua sentani jayapura cenderawasih timika nabire' }
+    ];
+
+    function renderLocationDropdown(filterText = '') {
+        const container = document.getElementById('locationOptionsContainer');
+        const badge = document.getElementById('locationCountBadge');
+        if (!container) return;
+
+        const isEnglish = (typeof currentLang !== 'undefined' && currentLang === 'en');
+        const query = filterText.toLowerCase().trim();
+
+        const filtered = INDONESIA_REGIONS.filter(item => {
+            if (!query) return true;
+            return item.name.toLowerCase().includes(query) ||
+                   item.en.toLowerCase().includes(query) ||
+                   item.sub.toLowerCase().includes(query) ||
+                   item.keywords.toLowerCase().includes(query);
+        });
+
+        if (badge) {
+            badge.textContent = `${filtered.length} ${isEnglish ? 'Regions' : 'Wilayah'}`;
+        }
+
+        if (filtered.length === 0) {
+            const noMatchMsg = (typeof i18nDictionary !== 'undefined' && i18nDictionary[currentLang] && i18nDictionary[currentLang].heroLocNoMatch) 
+                ? i18nDictionary[currentLang].heroLocNoMatch 
+                : 'Tidak ada wilayah yang cocok dengan';
+            const showAllText = (typeof i18nDictionary !== 'undefined' && i18nDictionary[currentLang] && i18nDictionary[currentLang].heroLocShowAll) 
+                ? i18nDictionary[currentLang].heroLocShowAll 
+                : 'Tampilkan Semua Wilayah';
+
+            container.innerHTML = `
+                <div class="p-3.5 text-center text-xs text-stone-500">
+                    <p>${noMatchMsg} "<strong>${filterText}</strong>"</p>
+                    <button type="button" onclick="clearLocationInput(event)" class="mt-2 text-[11px] font-semibold text-stone-900 dark:text-stone-100 underline hover:opacity-80">
+                        ${showAllText}
+                    </button>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = filtered.map(item => {
+            const title = isEnglish ? item.en : item.name;
+            const safeName = item.id === 'Semua' ? '' : title.replace(/'/g, "\\'");
+            return `
+                <div 
+                    onclick="selectLocationItem('${safeName}', '${item.id}')"
+                    class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors cursor-pointer flex items-start gap-2.5 group"
+                >
+                    <div class="w-7 h-7 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-stone-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-stone-900 transition-colors">
+                        <i class="fa-solid ${item.icon} text-xs"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-xs font-semibold text-stone-900 dark:text-white truncate group-hover:text-stone-950 dark:group-hover:text-stone-100">${title}</h4>
+                            ${item.id === 'Semua' ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 font-semibold uppercase">Semua</span>' : ''}
+                        </div>
+                        <p class="text-[10px] text-stone-500 dark:text-stone-400 truncate mt-0.5">${item.sub}</p>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function openLocationDropdown() {
+        const list = document.getElementById('locationDropdownList');
+        const chevron = document.getElementById('locationDropdownChevron');
+        const input = document.getElementById('searchLocationInput');
+        if (!list) return;
+
+        renderLocationDropdown(input ? input.value : '');
+        list.classList.remove('hidden');
+        if (chevron) chevron.style.transform = 'rotate(180deg)';
+    }
+
+    function closeLocationDropdown() {
+        const list = document.getElementById('locationDropdownList');
+        const chevron = document.getElementById('locationDropdownChevron');
+        if (!list) return;
+
+        list.classList.add('hidden');
+        if (chevron) chevron.style.transform = 'rotate(0deg)';
+    }
+
+    function toggleLocationDropdown(e) {
+        if (e) e.stopPropagation();
+        const list = document.getElementById('locationDropdownList');
+        if (list && list.classList.contains('hidden')) {
+            openLocationDropdown();
+            const input = document.getElementById('searchLocationInput');
+            if (input) input.focus();
+        } else {
+            closeLocationDropdown();
+        }
+    }
+
+    function handleLocationInput(e) {
+        const val = e.target.value;
+        const clearBtn = document.getElementById('clearLocationBtn');
+        if (clearBtn) {
+            if (val.trim()) {
+                clearBtn.classList.remove('hidden');
+                clearBtn.classList.add('flex');
+            } else {
+                clearBtn.classList.add('hidden');
+                clearBtn.classList.remove('flex');
+            }
+        }
+        openLocationDropdown();
+    }
+
+    function handleLocationKeydown(e) {
+        if (e.key === 'Escape') {
+            closeLocationDropdown();
+        } else if (e.key === 'Enter') {
+            closeLocationDropdown();
+        }
+    }
+
+    function selectLocationItem(displayName, regionId) {
+        const input = document.getElementById('searchLocationInput');
+        const hiddenInput = document.getElementById('searchLocation');
+        const clearBtn = document.getElementById('clearLocationBtn');
+
+        if (input) {
+            input.value = displayName;
+        }
+        if (hiddenInput) {
+            hiddenInput.value = regionId;
+        }
+        if (clearBtn) {
+            if (displayName) {
+                clearBtn.classList.remove('hidden');
+                clearBtn.classList.add('flex');
+            } else {
+                clearBtn.classList.add('hidden');
+                clearBtn.classList.remove('flex');
+            }
+        }
+        closeLocationDropdown();
+    }
+
+    function clearLocationInput(e) {
+        if (e) e.stopPropagation();
+        const input = document.getElementById('searchLocationInput');
+        const hiddenInput = document.getElementById('searchLocation');
+        const clearBtn = document.getElementById('clearLocationBtn');
+
+        if (input) {
+            input.value = '';
+            input.focus();
+        }
+        if (hiddenInput) {
+            hiddenInput.value = '';
+        }
+        if (clearBtn) {
+            clearBtn.classList.add('hidden');
+            clearBtn.classList.remove('flex');
+        }
+        renderLocationDropdown('');
+    }
+
     function renderDestinationsGrid() {
         const grid = document.getElementById('destinationsGrid');
         if (!grid) return;
@@ -548,7 +791,27 @@
 
         let filtered = destinationsDatabase.filter(item => {
             const matchCategory = activeCategory === 'Semua' || item.category === activeCategory;
-            const matchRegion = activeRegionFilter === 'Semua' || item.region === activeRegionFilter;
+            
+            let matchRegion = false;
+            if (!activeRegionFilter || activeRegionFilter === 'Semua' || activeRegionFilter === 'Semua Wilayah Nusantara' || activeRegionFilter === 'All Indonesian Archipelago') {
+                matchRegion = true;
+            } else {
+                const q = activeRegionFilter.toLowerCase().trim();
+                matchRegion = item.name.toLowerCase().includes(q) || 
+                              item.location.toLowerCase().includes(q) ||
+                              item.region.toLowerCase().includes(q) ||
+                              (item.description && item.description.toLowerCase().includes(q));
+
+                if (!matchRegion) {
+                    const words = q.split(/[\s,&()/-]+/).filter(w => w.length > 2);
+                    matchRegion = words.some(word => 
+                        item.name.toLowerCase().includes(word) ||
+                        item.location.toLowerCase().includes(word) ||
+                        item.region.toLowerCase().includes(word)
+                    );
+                }
+            }
+
             const matchKeyword = item.name.toLowerCase().includes(keyword) || 
                                  item.location.toLowerCase().includes(keyword) ||
                                  (item.description && item.description.toLowerCase().includes(keyword));
@@ -661,27 +924,49 @@
         activeRegionFilter = 'Semua';
         const kw = document.getElementById('destinationKeyword');
         if (kw) kw.value = '';
+        const locInput = document.getElementById('searchLocationInput');
+        if (locInput) locInput.value = '';
+        const clearBtn = document.getElementById('clearLocationBtn');
+        if (clearBtn) {
+            clearBtn.classList.add('hidden');
+            clearBtn.classList.remove('flex');
+        }
         setCategory('Semua');
     }
 
     function handleHeroSearch(e) {
         e.preventDefault();
-        const loc = document.getElementById('searchLocation').value;
+        closeLocationDropdown();
+
+        const inputLoc = document.getElementById('searchLocationInput');
+        const hiddenLoc = document.getElementById('searchLocation');
+        const loc = (inputLoc ? inputLoc.value.trim() : '') || (hiddenLoc ? hiddenLoc.value.trim() : '');
         const date = document.getElementById('searchDate').value;
         const pax = document.getElementById('searchPax').value;
 
-        activeRegionFilter = loc;
+        activeRegionFilter = loc || 'Semua';
         setCategory('Semua');
 
         if (document.getElementById('bookDate')) document.getElementById('bookDate').value = date;
         if (document.getElementById('bookPax')) document.getElementById('bookPax').value = pax;
 
         document.getElementById('destinasi').scrollIntoView({ behavior: 'smooth' });
-        showToast(`Mencari destinasi di ${loc}`, 'success');
+        showToast(loc ? `Mencari destinasi di ${loc}` : 'Menampilkan seluruh destinasi Nusantara', 'success');
         renderDestinationsGrid();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        // Inisialisasi daftar wilayah untuk combobox
+        renderLocationDropdown('');
+
+        // Tutup dropdown wilayah saat klik di luar combobox
+        document.addEventListener('click', (e) => {
+            const wrapper = document.getElementById('locationComboboxWrapper');
+            if (wrapper && !wrapper.contains(e.target)) {
+                closeLocationDropdown();
+            }
+        });
+
         // Pastikan video hero berputar secara otomatis
         const heroVid = document.getElementById('heroVideo');
         if (heroVid) {

@@ -21,7 +21,12 @@ class DestinationController extends Controller
         }
 
         if ($region && $region !== 'Semua') {
-            $query->where('region', $region);
+            $query->where(function ($q) use ($region) {
+                $q->where('region', $region)
+                  ->orWhere('region', 'like', "%{$region}%")
+                  ->orWhere('location', 'like', "%{$region}%")
+                  ->orWhere('name', 'like', "%{$region}%");
+            });
         }
 
         if ($keyword) {
