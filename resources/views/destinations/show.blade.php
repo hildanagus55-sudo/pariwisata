@@ -4,26 +4,26 @@
 @section('meta_description', Str::limit(strip_tags($destination->description), 160))
 
 @section('content')
-    <div class="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="pt-24 sm:pt-28 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Navigation & Breadcrumb -->
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <a href="{{ route('home') }}#destinasi" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all shadow-xs group">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+            <a href="{{ route('home') }}#destinasi" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all shadow-xs group w-fit">
                 <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-0.5 transition-transform"></i>
                 <span>Kembali ke Destinasi</span>
             </a>
 
             <!-- Breadcrumb -->
-            <nav class="flex items-center gap-2 text-xs text-stone-500">
-                <a href="{{ route('home') }}" class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors">Beranda</a>
+            <nav class="flex items-center gap-2 text-xs text-stone-500 overflow-x-auto no-scrollbar py-1">
+                <a href="{{ route('home') }}" class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors shrink-0">Beranda</a>
                 <span class="text-stone-300 dark:text-stone-700">/</span>
-                <a href="{{ route('home') }}#destinasi" class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors">Destinasi</a>
+                <a href="{{ route('home') }}#destinasi" class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors shrink-0">Destinasi</a>
                 <span class="text-stone-300 dark:text-stone-700">/</span>
-                <span class="text-stone-900 dark:text-stone-100 font-medium truncate max-w-[180px] sm:max-w-xs">{{ $destination->name }}</span>
+                <span class="text-stone-900 dark:text-stone-100 font-medium truncate max-w-[160px] sm:max-w-xs">{{ $destination->name }}</span>
             </nav>
         </div>
 
         <!-- Destination Hero Banner -->
-        <div class="relative h-[360px] sm:h-[480px] rounded-3xl overflow-hidden shadow-sm mb-12 bg-stone-100">
+        <div class="relative h-[280px] sm:h-[480px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm mb-8 sm:mb-12 bg-stone-100">
             <img 
                 src="{{ $destination->image }}" 
                 alt="{{ $destination->name }}" 
@@ -31,9 +31,9 @@
             >
             <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent"></div>
 
-            <div class="absolute bottom-8 left-6 sm:left-10 right-6 sm:right-10 text-white">
-                <div class="flex flex-wrap items-center gap-2.5 mb-2.5">
-                    <span class="px-3 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-xs font-medium">
+            <div class="absolute bottom-5 sm:bottom-8 left-4 sm:left-10 right-4 sm:right-10 text-white">
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <span class="px-2.5 sm:px-3 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[11px] sm:text-xs font-medium">
                         {{ $destination->category }}
                     </span>
                     <span class="text-xs text-stone-200 flex items-center gap-1">
@@ -42,10 +42,10 @@
                     </span>
                 </div>
 
-                <h1 class="font-serif text-3xl sm:text-5xl font-medium leading-tight">
+                <h1 class="font-serif text-2xl sm:text-5xl font-medium leading-tight">
                     {{ $destination->name }}
                 </h1>
-                <p class="text-xs sm:text-sm text-stone-200 mt-2 flex items-center gap-1.5">
+                <p class="text-xs sm:text-sm text-stone-200 mt-1 sm:mt-2 flex items-center gap-1.5">
                     <i class="fa-solid fa-location-dot text-xs text-stone-300"></i>
                     <span>{{ $destination->location }}</span>
                 </p>

@@ -4,9 +4,9 @@
 @section('meta_description', 'DANWISATA | Jelajahi pilihan lengkap destinasi wisata alam dan budaya Indonesia resmi di Portal Pariwisata.')
 
 @section('content')
-<div class="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="pt-24 sm:pt-28 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Top Navigation -->
-    <div class="mb-6">
+    <div class="mb-4 sm:mb-6">
         <a href="{{ route('home') }}#destinasi" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all shadow-xs group">
             <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-0.5 transition-transform"></i>
             <span data-i18n="catDestBack">Kembali ke Beranda</span>
@@ -14,21 +14,21 @@
     </div>
 
     <!-- Header -->
-    <div class="mb-10 text-center max-w-3xl mx-auto">
+    <div class="mb-8 sm:mb-10 text-center max-w-3xl mx-auto">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-semibold mb-3 border border-stone-200/80 dark:border-stone-700">
             <i class="fa-solid fa-map-location-dot text-amber-600 dark:text-amber-400"></i>
             <span data-i18n="catDestBadge">{{ $destinations->total() }} Destinasi Terkurasi di 6 Wilayah Nusantara</span>
         </div>
-        <h1 data-i18n="catDestTitle" class="font-serif text-3xl sm:text-5xl font-normal text-stone-950 dark:text-white">
+        <h1 data-i18n="catDestTitle" class="font-serif text-2xl sm:text-5xl font-normal text-stone-950 dark:text-white">
             Eksplorasi Seluruh Penjuru Nusantara
         </h1>
-        <p data-i18n="catDestDesc" class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
+        <p data-i18n="catDestDesc" class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed px-2">
             Pilih perjalanan sesuai musim dan minat Anda: dari perairan tenang kepulauan timur hingga kaldera sejuk pegunungan Jawa.
         </p>
     </div>
 
     <!-- Filter Form (Otomatis Filter Tanpa Tombol Submit) -->
-    <div class="bg-white dark:bg-stone-900 rounded-3xl p-5 mb-10 border border-stone-200/90 dark:border-stone-800 shadow-xs">
+    <div class="bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl p-4 sm:p-5 mb-8 sm:mb-10 border border-stone-200/90 dark:border-stone-800 shadow-xs">
         <form id="destinationFilterForm" method="GET" action="{{ route('destinations.index') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
             <div>
                 <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
@@ -104,13 +104,13 @@
     </div>
 
     <!-- Destinations Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
         @forelse($destinations as $dest)
             <article 
                 onclick="openDetailModal({{ $dest->id }})" 
-                class="group bg-white dark:bg-stone-900 rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer"
+                class="group bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer active:scale-98"
             >
-                <div class="relative h-64 overflow-hidden bg-stone-100">
+                <div class="relative h-52 sm:h-64 overflow-hidden bg-stone-100">
                     <img 
                         src="{{ $dest->image }}" 
                         onerror="this.src='https://placehold.co/600x400/262019/ffffff?text={{ urlencode($dest->name) }}'"

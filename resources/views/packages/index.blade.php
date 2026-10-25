@@ -4,30 +4,30 @@
 @section('meta_description', 'DANWISATA | Paket perjalanan terkurasi ke Labuan Bajo, Bromo, Ijen, dan Bali resmi di Portal Pariwisata Indonesia.')
 
 @section('content')
-<div class="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="pt-24 sm:pt-28 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Top Navigation -->
-    <div class="mb-6">
+    <div class="mb-4 sm:mb-6">
         <a href="{{ route('home') }}#paket" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-950 dark:hover:text-white transition-all shadow-xs group">
             <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-0.5 transition-transform"></i>
             <span data-i18n="catPkgBack">Kembali ke Beranda</span>
         </a>
     </div>
 
-    <div class="text-center max-w-2xl mx-auto mb-14">
+    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-semibold mb-3 border border-stone-200/80 dark:border-stone-700">
             <i class="fa-solid fa-compass text-amber-600 dark:text-amber-400"></i>
             <span data-i18n="catPkgBadge">{{ $packages->count() }} Pilihan Paket Lengkap & All-Inclusive</span>
         </div>
-        <h1 data-i18n="catPkgTitle" class="font-serif text-3xl sm:text-5xl font-normal text-stone-950 dark:text-white">
+        <h1 data-i18n="catPkgTitle" class="font-serif text-2xl sm:text-5xl font-normal text-stone-950 dark:text-white">
             Koleksi Paket Perjalanan Terkurasi
         </h1>
-        <p data-i18n="catPkgDesc" class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
+        <p data-i18n="catPkgDesc" class="mt-2.5 text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed px-2">
             Menikmati keindahan alam nusantara tanpa repot. Kami mengatur transportasi privat, kabin kapal/villa terbaik, dan perizinan resmi.
         </p>
     </div>
 
     <!-- Filter Form (Otomatis Filter Tanpa Tombol Submit) -->
-    <div class="bg-white dark:bg-stone-900 rounded-3xl p-5 mb-10 border border-stone-200/90 dark:border-stone-800 shadow-xs">
+    <div class="bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl p-4 sm:p-5 mb-8 sm:mb-10 border border-stone-200/90 dark:border-stone-800 shadow-xs">
         <form id="packageFilterForm" method="GET" action="{{ route('packages.index') }}" class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div>
                 <label class="block font-bold uppercase tracking-wider text-stone-400 mb-1.5 flex items-center gap-1.5">
@@ -86,11 +86,11 @@
         @endif
     </div>
 
-    <div id="packagesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div id="packagesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
         @forelse($packages as $idx => $pkg)
             <div 
                 onclick="selectPackageCard(this, event)"
-                class="package-card group bg-white dark:bg-stone-900 rounded-3xl border-2 {{ $idx === 0 ? 'border-stone-900 dark:border-stone-100 ring-2 ring-stone-900/10 dark:ring-stone-100/10 -translate-y-1 shadow-xl is-active' : 'border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700 shadow-xs translate-y-0' }} p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer"
+                class="package-card group bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl border-2 {{ $idx === 0 ? 'border-stone-900 dark:border-stone-100 ring-2 ring-stone-900/10 dark:ring-stone-100/10 -translate-y-1 shadow-xl is-active' : 'border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700 shadow-xs translate-y-0' }} p-5 sm:p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer active:scale-98"
             >
                 <div>
                     <div class="flex items-center justify-between gap-2 mb-4">

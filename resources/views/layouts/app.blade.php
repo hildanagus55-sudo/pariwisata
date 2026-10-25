@@ -120,6 +120,35 @@
         .dark .blur-mask-curtain {
             background: linear-gradient(to bottom, rgba(12, 10, 9, 0.78) 0%, rgba(12, 10, 9, 0.40) 65%, rgba(12, 10, 9, 0) 100%);
         }
+        /* Mobile Bottom Dock & Touch Optimization */
+        .mobile-bottom-dock {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            #mobileBottomDock {
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+            body {
+                padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+            }
+        }
+        @media (min-width: 640px) {
+            body {
+                padding-bottom: 0 !important;
+            }
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
         @media (prefers-reduced-motion: reduce) {
             #scrollBlurVeil, #navContainer {
                 transition: none !important;
@@ -128,10 +157,10 @@
     </style>
     @stack('styles')
 </head>
-<body class="bg-white text-stone-900 dark:bg-stone-950 dark:text-stone-100 font-sans antialiased selection:bg-stone-900 selection:text-white transition-colors duration-200">
+<body class="bg-white text-stone-900 dark:bg-stone-950 dark:text-stone-100 font-sans antialiased selection:bg-stone-900 selection:text-white transition-colors duration-200 pb-20 sm:pb-0">
 
     <!-- Toast Notification Container -->
-    <div id="toastContainer" class="fixed bottom-6 right-6 z-[100] flex flex-col gap-2.5 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+    <div id="toastContainer" class="fixed bottom-24 sm:bottom-6 right-4 sm:right-6 left-4 sm:left-auto z-[100] flex flex-col gap-2.5 max-w-sm w-auto sm:w-full pointer-events-none"></div>
 
     <!-- ================= TOP PROGRESSIVE SCROLL BLUR CURTAIN (EFEK BUREM WAKTU SCROLL) ================= -->
     <div id="scrollBlurVeil" class="fixed top-0 left-0 right-0 h-28 sm:h-32 pointer-events-none z-40 blur-mask-curtain transition-opacity duration-300 opacity-0"></div>
@@ -181,42 +210,66 @@
             </div>
 
             <!-- Mobile Controls -->
-            <div class="flex items-center gap-1.5 lg:hidden">
+            <div class="flex items-center gap-2 lg:hidden">
                 <!-- Mobile Language Switcher Button -->
-                <button onclick="toggleLanguage()" id="langToggleBtnMobile" class="h-8 px-2.5 rounded-full border border-stone-200 bg-stone-50 text-stone-700 text-[11px] font-semibold flex items-center gap-1 shadow-xs font-mono" title="Ganti Bahasa / Switch Language">
+                <button onclick="toggleLanguage()" id="langToggleBtnMobile" class="h-8 px-2.5 rounded-full border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-700 dark:text-stone-200 text-[11px] font-semibold flex items-center gap-1 shadow-xs font-mono active:scale-95 transition-all" title="Ganti Bahasa / Switch Language">
                     <i class="fa-solid fa-globe text-xs"></i>
                     <span id="langLabelMobile">ID</span>
                 </button>
-                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="w-8 h-8 rounded-full bg-stone-900 text-white flex items-center justify-center focus:outline-none">
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="w-8 h-8 rounded-full bg-stone-900 dark:bg-white text-white dark:text-stone-900 flex items-center justify-center focus:outline-none active:scale-95 transition-transform shadow-xs" aria-label="Menu Navigasi">
                     <i id="mobileMenuIcon" class="fa-solid fa-bars text-xs"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Floating Drawer -->
-        <div id="mobileMenu" class="hidden lg:hidden max-w-6xl mx-auto mt-2 rounded-3xl bg-white/95 backdrop-blur-xl border border-stone-200/90 p-5 space-y-3 shadow-xl animate-fadeIn">
-            <div class="flex flex-col space-y-2 text-xs font-semibold text-stone-700">
-                <a href="{{ route('home') }}#beranda" onclick="toggleMobileMenu()" data-i18n="navHome" class="px-3 py-2 rounded-xl hover:bg-stone-100">Beranda</a>
-                <a href="{{ route('home') }}#destinasi" onclick="toggleMobileMenu()" data-i18n="navDest" class="px-3 py-2 rounded-xl hover:bg-stone-100">Destinasi</a>
-                <a href="{{ route('home') }}#paket" onclick="toggleMobileMenu()" data-i18n="navPkg" class="px-3 py-2 rounded-xl hover:bg-stone-100">Paket Wisata</a>
-                <a href="{{ route('home') }}#cerita" onclick="toggleMobileMenu()" data-i18n="navStory" class="px-3 py-2 rounded-xl hover:bg-stone-100">Filosofi</a>
-                <a href="{{ route('home') }}#galeri" onclick="toggleMobileMenu()" data-i18n="navGallery" class="px-3 py-2 rounded-xl hover:bg-stone-100">Galeri</a>
-                <a href="{{ route('home') }}#testimoni" onclick="toggleMobileMenu()" data-i18n="navTesti" class="px-3 py-2 rounded-xl hover:bg-stone-100">Testimoni</a>
+        <div id="mobileMenu" class="hidden lg:hidden max-w-6xl mx-auto mt-2 rounded-3xl bg-white/95 dark:bg-stone-900/95 backdrop-blur-2xl border border-stone-200/90 dark:border-stone-800 p-5 space-y-3 shadow-2xl animate-fadeIn">
+            <div class="grid grid-cols-2 gap-2 text-xs font-semibold text-stone-700 dark:text-stone-200">
+                <a href="{{ route('home') }}#beranda" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2">
+                    <i class="fa-solid fa-house text-stone-400"></i>
+                    <span data-i18n="navHome">Beranda</span>
+                </a>
+                <a href="{{ route('home') }}#destinasi" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2">
+                    <i class="fa-solid fa-compass text-stone-400"></i>
+                    <span data-i18n="navDest">Destinasi</span>
+                </a>
+                <a href="{{ route('home') }}#paket" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2">
+                    <i class="fa-solid fa-suitcase-rolling text-stone-400"></i>
+                    <span data-i18n="navPkg">Paket Wisata</span>
+                </a>
+                <a href="{{ route('home') }}#cerita" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2">
+                    <i class="fa-solid fa-book-open text-stone-400"></i>
+                    <span data-i18n="navStory">Filosofi</span>
+                </a>
+                <a href="{{ route('home') }}#galeri" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2">
+                    <i class="fa-solid fa-images text-stone-400"></i>
+                    <span data-i18n="navGallery">Galeri</span>
+                </a>
+                <a href="{{ route('home') }}#testimoni" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2">
+                    <i class="fa-solid fa-star text-stone-400"></i>
+                    <span data-i18n="navTesti">Testimoni</span>
+                </a>
             </div>
-            <div class="pt-3 border-t border-stone-200 flex flex-col gap-2">
+            <div class="pt-3 border-t border-stone-200 dark:border-stone-800 flex flex-col gap-2">
                 <!-- Mobile Language Selector Row -->
-                <button onclick="toggleLanguage()" class="w-full py-2.5 px-4 rounded-xl border border-stone-200 font-semibold text-xs flex items-center justify-between text-stone-700 bg-stone-50">
+                <button onclick="toggleLanguage()" class="w-full py-2.5 px-4 rounded-xl border border-stone-200 dark:border-stone-700 font-semibold text-xs flex items-center justify-between text-stone-700 dark:text-stone-200 bg-stone-50 dark:bg-stone-800">
                     <span class="flex items-center gap-2">
                         <i class="fa-solid fa-globe text-stone-500"></i>
                         <span>Bahasa / Language</span>
                     </span>
-                    <span id="langDrawerLabel" class="px-2 py-0.5 rounded-md bg-stone-200 font-mono font-bold text-[10px]">ID (Bahasa Indonesia)</span>
+                    <span id="langDrawerLabel" class="px-2 py-0.5 rounded-md bg-stone-200 dark:bg-stone-700 font-mono font-bold text-[10px]">ID (Bahasa Indonesia)</span>
                 </button>
-                <button onclick="toggleMobileMenu(); showSavedDestinations();" class="w-full py-2.5 px-4 rounded-xl border border-stone-200 font-semibold text-xs flex items-center justify-center gap-2">
-                    <i class="fa-regular fa-heart text-stone-500"></i>
-                    <span><span data-i18n="wishlistSavedTitle">Destinasi Tersimpan</span> (<span id="wishlistBadgeMobile">0</span>)</span>
-                </button>
-                <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full py-3 px-4 rounded-full bg-stone-900 text-white font-semibold text-xs shadow-sm">
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="toggleMobileMenu(); showSavedDestinations();" class="w-full py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 font-semibold text-xs flex items-center justify-center gap-1.5 text-stone-700 dark:text-stone-200">
+                        <i class="fa-regular fa-heart text-rose-500"></i>
+                        <span class="truncate"><span data-i18n="wishlistSavedTitle">Tersimpan</span> (<span id="wishlistBadgeMobile">0</span>)</span>
+                    </button>
+                    <a href="https://wa.me/6289519808548" target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 text-white font-semibold text-xs flex items-center justify-center gap-1.5">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+                <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full py-3 px-4 rounded-full bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-semibold text-xs shadow-sm active:scale-98 transition-transform">
                     <span data-i18n="navPlanTrip">Rencanakan Trip Sekarang</span>
                 </button>
             </div>
@@ -315,10 +368,13 @@
         </div>
     </footer>
 
-    <!-- MODAL 1: DETAIL DESTINASI (CLEAN WHITE CARD) -->
-    <div id="detailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-stone-950/60 backdrop-blur-xs overflow-y-auto">
-        <div class="bg-white dark:bg-stone-900 rounded-3xl max-w-2xl w-full overflow-hidden shadow-xl border border-stone-200 dark:border-stone-800 my-8 animate-fadeIn">
-            <div class="relative h-64 sm:h-72">
+    <!-- MODAL 1: DETAIL DESTINASI (CLEAN WHITE CARD / BOTTOM SHEET ON MOBILE) -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center p-0 sm:p-4 bg-stone-950/60 backdrop-blur-xs overflow-y-auto">
+        <div class="bg-white dark:bg-stone-900 rounded-t-3xl sm:rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-stone-200 dark:border-stone-800 my-0 sm:my-8 animate-fadeIn max-h-[90dvh] flex flex-col">
+            <!-- Mobile Pull Drag Bar Indicator -->
+            <div class="w-12 h-1.5 rounded-full bg-stone-300 dark:bg-stone-700 mx-auto my-2.5 sm:hidden shrink-0"></div>
+
+            <div class="relative h-56 sm:h-72 shrink-0">
                 <img id="modalDestImage" src="" alt="Detail Destinasi" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent"></div>
                 
@@ -383,10 +439,13 @@
         </div>
     </div>
 
-    <!-- MODAL 2: FORMULIR PEMESANAN (NATURAL & CLEAN) -->
-    <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-stone-950/60 backdrop-blur-xs overflow-y-auto">
-        <div class="bg-white dark:bg-stone-900 rounded-3xl max-w-xl w-full overflow-hidden shadow-xl border border-stone-200 dark:border-stone-800 my-8">
-            <div class="px-6 py-4 bg-stone-900 text-white dark:bg-stone-800 flex items-center justify-between">
+    <!-- MODAL 2: FORMULIR PEMESANAN (NATURAL & CLEAN / BOTTOM SHEET ON MOBILE) -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center p-0 sm:p-4 bg-stone-950/60 backdrop-blur-xs overflow-y-auto">
+        <div class="bg-white dark:bg-stone-900 rounded-t-3xl sm:rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border border-stone-200 dark:border-stone-800 my-0 sm:my-8 max-h-[92dvh] flex flex-col">
+            <!-- Mobile Pull Drag Bar Indicator -->
+            <div class="w-12 h-1.5 rounded-full bg-stone-300 dark:bg-stone-700 mx-auto my-2.5 sm:hidden shrink-0"></div>
+
+            <div class="px-6 py-4 bg-stone-900 text-white dark:bg-stone-800 flex items-center justify-between shrink-0">
                 <div>
                     <span data-i18n="modalBookConcierge" class="text-[10px] uppercase tracking-widest text-stone-400 font-medium">Boutique Booking Concierge</span>
                     <h3 data-i18n="modalBookTitle" class="font-serif text-lg font-semibold">Rencanakan Perjalanan Anda</h3>
@@ -555,6 +614,33 @@
         </div>
     </div>
 
+    <!-- ================= FLOATING GLASS MOBILE DOCK (HP ONLY) ================= -->
+    <nav id="mobileBottomDock" class="fixed bottom-3 inset-x-3 sm:hidden z-40 transition-all duration-300">
+        <div class="mobile-bottom-dock max-w-md mx-auto rounded-2xl bg-white/92 dark:bg-stone-900/92 border border-stone-200/90 dark:border-stone-800 shadow-[0_12px_40px_rgba(0,0,0,0.18)] px-2.5 py-1.5 flex items-center justify-between">
+            <a href="{{ route('home') }}#beranda" class="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-stone-600 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white transition-colors active:scale-95 group">
+                <i class="fa-solid fa-house text-base group-hover:scale-110 transition-transform"></i>
+                <span data-i18n="navHome" class="text-[10px] font-medium tracking-tight mt-0.5">Beranda</span>
+            </a>
+            <a href="{{ route('destinations.index') }}" class="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-stone-600 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white transition-colors active:scale-95 group">
+                <i class="fa-solid fa-compass text-base group-hover:scale-110 transition-transform"></i>
+                <span data-i18n="navDest" class="text-[10px] font-medium tracking-tight mt-0.5">Destinasi</span>
+            </a>
+            <!-- Central Action: Quick Trip Planner -->
+            <button onclick="openBookingModal()" class="flex flex-col items-center justify-center -mt-6 p-3 rounded-full bg-gradient-to-tr from-stone-950 via-stone-850 to-stone-700 dark:from-stone-100 dark:via-stone-200 dark:to-stone-300 text-white dark:text-stone-900 shadow-lg shadow-stone-900/40 active:scale-90 transition-transform ring-4 ring-white dark:ring-stone-900" title="Rencanakan Trip">
+                <i class="fa-solid fa-paper-plane text-sm"></i>
+            </button>
+            <a href="{{ route('packages.index') }}" class="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-stone-600 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white transition-colors active:scale-95 group">
+                <i class="fa-solid fa-suitcase-rolling text-base group-hover:scale-110 transition-transform"></i>
+                <span data-i18n="navPkg" class="text-[10px] font-medium tracking-tight mt-0.5">Paket</span>
+            </a>
+            <button onclick="showSavedDestinations()" class="relative flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-stone-600 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white transition-colors active:scale-95 group" title="Destinasi Tersimpan">
+                <i class="fa-regular fa-heart text-base group-hover:scale-110 transition-transform"></i>
+                <span id="wishlistBadgeDock" class="absolute top-0 right-2 w-3.5 h-3.5 rounded-full bg-rose-500 text-white text-[8px] font-bold flex items-center justify-center">0</span>
+                <span data-i18n="navWishlist" class="text-[10px] font-medium tracking-tight mt-0.5">Favorit</span>
+            </button>
+        </div>
+    </nav>
+
     <!-- Global Application Scripts -->
     <script>
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -603,6 +689,7 @@
                 navTesti: 'Testimoni',
                 navAdmin: 'Admin Reservasi',
                 navPlanTrip: 'Rencanakan Trip',
+                navWishlist: 'Favorit',
                 wishlistSavedTitle: 'Destinasi Tersimpan',
                 langDrawerName: 'ID (Bahasa Indonesia)',
 
@@ -749,6 +836,7 @@
                 navTesti: 'Reviews',
                 navAdmin: 'Bookings Admin',
                 navPlanTrip: 'Plan a Trip',
+                navWishlist: 'Saved',
                 wishlistSavedTitle: 'Saved Destinations',
                 langDrawerName: 'EN (English)',
 
@@ -947,6 +1035,7 @@
         function updateWishlistBadges() {
             if (document.getElementById('wishlistBadge')) document.getElementById('wishlistBadge').textContent = savedWishlist.size;
             if (document.getElementById('wishlistBadgeMobile')) document.getElementById('wishlistBadgeMobile').textContent = savedWishlist.size;
+            if (document.getElementById('wishlistBadgeDock')) document.getElementById('wishlistBadgeDock').textContent = savedWishlist.size;
             localStorage.setItem('nw_wishlist', JSON.stringify(Array.from(savedWishlist)));
         }
 

@@ -5,7 +5,7 @@
 
 @section('content')
     <!-- ================= 2. HERO SECTION & INTERACTIVE SEARCH WIDGET (CINEMATIC PHOTO HERO) ================= -->
-    <section id="beranda" class="relative min-h-[92vh] pt-28 pb-20 flex items-center justify-center overflow-hidden">
+    <section id="beranda" class="relative min-h-[88dvh] sm:min-h-[92vh] pt-24 sm:pt-28 pb-14 sm:pb-20 flex items-center justify-center overflow-hidden">
         <!-- Background Video Loop -->
         <video 
             id="heroVideo"
@@ -37,46 +37,46 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="max-w-3xl mx-auto text-center text-white">
                 <!-- Pill Badge with Ping Indicator -->
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-xs sm:text-sm font-medium mb-6 animate-float">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    <span data-i18n="heroBadge">Eksplorasi 17.000+ Pulau Eksotis di Zamrud Khatulistiwa</span>
+                <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[11px] sm:text-sm font-medium mb-4 sm:mb-6 animate-float max-w-[92vw] truncate">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
+                    <span data-i18n="heroBadge" class="truncate">Eksplorasi 17.000+ Pulau Eksotis di Zamrud Khatulistiwa</span>
                 </div>
 
                 <!-- Inspiring Headline -->
-                <h1 data-i18n="heroTitle" class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+                <h1 data-i18n="heroTitle" class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-3 sm:mb-6">
                     Temukan Surga Tersembunyi di <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 italic">Bumi Nusantara</span>
                 </h1>
 
-                <p data-i18n="heroDesc" class="text-base sm:text-lg text-slate-200/90 leading-relaxed mb-10 max-w-2xl mx-auto">
+                <p data-i18n="heroDesc" class="text-xs sm:text-lg text-slate-200/90 leading-relaxed mb-6 sm:mb-10 max-w-2xl mx-auto px-2">
                     Dari birunya perairan Raja Ampat, megahnya kabut pagi Borobudur, hingga hangatnya senja di Labuan Bajo. Wujudkan perjalanan impian Anda bersama pemandu lokal terbaik.
                 </p>
 
                 <!-- Quick Stats Counter -->
-                <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-12 text-center">
-                    <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
-                        <p class="text-xl sm:text-2xl font-extrabold text-emerald-300">120+</p>
-                        <p data-i18n="heroStatDest" class="text-xs text-slate-200">Destinasi Unggulan</p>
+                <div class="grid grid-cols-3 gap-2 sm:gap-4 max-w-lg mx-auto mb-8 sm:mb-12 text-center">
+                    <div class="p-2 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
+                        <p class="text-lg sm:text-2xl font-extrabold text-emerald-300">120+</p>
+                        <p data-i18n="heroStatDest" class="text-[10px] sm:text-xs text-slate-200 truncate">Destinasi Unggulan</p>
                     </div>
-                    <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
-                        <p class="text-xl sm:text-2xl font-extrabold text-amber-300">4.9/5</p>
-                        <p data-i18n="heroStatGuide" class="text-xs text-slate-200">Rating Wisatawan</p>
+                    <div class="p-2 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
+                        <p class="text-lg sm:text-2xl font-extrabold text-amber-300">4.9/5</p>
+                        <p data-i18n="heroStatGuide" class="text-[10px] sm:text-xs text-slate-200 truncate">Rating Wisatawan</p>
                     </div>
-                    <div class="p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
-                        <p class="text-xl sm:text-2xl font-extrabold text-teal-300">45K+</p>
-                        <p data-i18n="heroStatSat" class="text-xs text-slate-200">Pelanggan Puas</p>
+                    <div class="p-2 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
+                        <p class="text-lg sm:text-2xl font-extrabold text-teal-300">45K+</p>
+                        <p data-i18n="heroStatSat" class="text-[10px] sm:text-xs text-slate-200 truncate">Pelanggan Puas</p>
                     </div>
                 </div>
             </div>
 
             <!-- Interactive Search Widget Card -->
-            <div class="max-w-5xl mx-auto bg-white dark:bg-stone-900 rounded-3xl p-4 sm:p-6 shadow-2xl border border-stone-200/80 dark:border-stone-800">
-                <form id="heroSearchForm" onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+            <div class="max-w-5xl mx-auto bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl border border-stone-200/80 dark:border-stone-800">
+                <form id="heroSearchForm" onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-end">
                     <!-- Lokasi Tujuan -->
                     <div class="md:col-span-4">
-                        <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+                        <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5 sm:mb-2">
                             <i class="fa-solid fa-location-dot text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldRegion">Lokasi Tujuan</span>
                         </label>
-                        <select id="searchLocation" class="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
+                        <select id="searchLocation" class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
                             <option value="Semua">Semua Destinasi Nusantara</option>
                             <option value="Bali & Nusa Tenggara">Bali & Labuan Bajo (NTT)</option>
                             <option value="Papua & Maluku">Raja Ampat, Papua Barat</option>
@@ -88,18 +88,18 @@
 
                     <!-- Tanggal Keberangkatan -->
                     <div class="md:col-span-3">
-                        <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+                        <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5 sm:mb-2">
                             <i class="fa-regular fa-calendar-days text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldDate">Tanggal Berangkat</span>
                         </label>
-                        <input type="date" id="searchDate" required class="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
+                        <input type="date" id="searchDate" required class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
                     </div>
 
                     <!-- Jumlah Peserta -->
                     <div class="md:col-span-3">
-                        <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+                        <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5 sm:mb-2">
                             <i class="fa-solid fa-user-group text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldPax">Jumlah Peserta</span>
                         </label>
-                        <select id="searchPax" class="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
+                        <select id="searchPax" class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none">
                             <option value="1">1 Orang (Solo Traveler)</option>
                             <option value="2" selected>2 Orang (Pasangan / Sahabat)</option>
                             <option value="4">4 Orang (Keluarga Kecil)</option>
@@ -110,34 +110,34 @@
 
                     <!-- Tombol Cari -->
                     <div class="md:col-span-2">
-                        <button type="submit" class="w-full py-3.5 px-5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-95">
+                        <button type="submit" class="w-full py-3 sm:py-3.5 px-5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-95">
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <span data-i18n="heroBtnSearch">Cari Wisata</span>
                         </button>
                     </div>
                 </form>
 
-                <!-- Popular Quick Tags -->
-                <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 flex flex-wrap items-center gap-2 text-xs text-stone-500 dark:text-stone-400">
-                    <span data-i18n="heroPopSearch" class="font-semibold">Pencarian Populer:</span>
-                    <button onclick="quickFilter('Pantai')" data-i18n="heroPopRajaAmpat" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🏝️ Kepulauan Raja Ampat</button>
-                    <button onclick="quickFilter('Pegunungan')" data-i18n="heroPopBromo" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🌋 Sunrise Gunung Bromo</button>
-                    <button onclick="quickFilter('Budaya')" data-i18n="heroPopBorobudur" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🛕 Candi Borobudur</button>
-                    <button onclick="quickFilter('Alam')" data-i18n="heroPopKomodo" class="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors">🐉 Taman Nasional Komodo</button>
+                <!-- Popular Quick Tags (Swipeable on Mobile) -->
+                <div class="mt-3.5 pt-3 border-t border-stone-100 dark:border-stone-800 flex items-center gap-2 text-xs text-stone-500 dark:text-stone-400 overflow-x-auto no-scrollbar pb-1">
+                    <span data-i18n="heroPopSearch" class="font-semibold shrink-0 text-[11px] sm:text-xs">Pencarian Populer:</span>
+                    <button onclick="quickFilter('Pantai')" data-i18n="heroPopRajaAmpat" class="shrink-0 px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-[11px] sm:text-xs transition-colors whitespace-nowrap">🏝️ Kepulauan Raja Ampat</button>
+                    <button onclick="quickFilter('Pegunungan')" data-i18n="heroPopBromo" class="shrink-0 px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-[11px] sm:text-xs transition-colors whitespace-nowrap">🌋 Sunrise Gunung Bromo</button>
+                    <button onclick="quickFilter('Budaya')" data-i18n="heroPopBorobudur" class="shrink-0 px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-[11px] sm:text-xs transition-colors whitespace-nowrap">🛕 Candi Borobudur</button>
+                    <button onclick="quickFilter('Alam')" data-i18n="heroPopKomodo" class="shrink-0 px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-[11px] sm:text-xs transition-colors whitespace-nowrap">🐉 Taman Nasional Komodo</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================= 2. DESTINASI POPULER (CLEAN WHITE EDITORIAL CARDS) ================= -->
-    <section id="destinasi" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="destinasi" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5 pb-6 border-b border-stone-200/80 dark:border-stone-800">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4 sm:gap-5 pb-5 sm:pb-6 border-b border-stone-200/80 dark:border-stone-800">
             <div>
                 <span data-i18n="destSubtitle" class="text-xs font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wider block mb-1">
                     Jurnal Destinasi
                 </span>
-                <h2 data-i18n="destTitle" class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight">
+                <h2 data-i18n="destTitle" class="font-serif text-2xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight">
                     Tempat-Tempat Istimewa di Bumi Pertiwi
                 </h2>
                 <p data-i18n="destDesc" class="mt-2 text-stone-600 dark:text-stone-400 max-w-xl text-xs sm:text-sm leading-relaxed">
@@ -147,41 +147,41 @@
 
             <!-- Tombol Lihat Halaman di Samping Judul -->
             <div class="shrink-0">
-                <a href="{{ route('destinations.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:border-stone-900 dark:hover:border-stone-200 bg-white dark:bg-stone-900 hover:bg-stone-900 hover:text-white dark:hover:bg-stone-100 dark:hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all whitespace-nowrap shadow-xs group" title="Buka Halaman Lengkap Destinasi">
+                <a href="{{ route('destinations.index') }}" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:border-stone-900 dark:hover:border-stone-200 bg-white dark:bg-stone-900 hover:bg-stone-900 hover:text-white dark:hover:bg-stone-100 dark:hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all whitespace-nowrap shadow-xs group" title="Buka Halaman Lengkap Destinasi">
                     <span data-i18n="destBtnViewAll">Lihat Halaman Destinasi</span>
                     <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
         </div>
 
-        <!-- Category Filter Pills -->
-        <div id="categoryButtons" class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar text-xs">
-            <button onclick="setCategory('Semua')" data-cat="Semua" data-i18n="catAll" class="cat-btn px-4 py-2 rounded-full font-semibold transition-all whitespace-nowrap bg-stone-900 text-white dark:bg-white dark:text-stone-900 shadow-sm">
+        <!-- Category Filter Pills (Horizontal Momentum Scroll on Mobile) -->
+        <div id="categoryButtons" class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 sm:mb-8 no-scrollbar text-xs -mx-4 px-4 sm:mx-0 sm:px-0">
+            <button onclick="setCategory('Semua')" data-cat="Semua" data-i18n="catAll" class="cat-btn shrink-0 px-4 py-2 rounded-full font-semibold transition-all whitespace-nowrap bg-stone-900 text-white dark:bg-white dark:text-stone-900 shadow-sm active:scale-95">
                 Semua Koleksi
             </button>
-            <button onclick="setCategory('Pantai')" data-cat="Pantai" data-i18n="catBeach" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
+            <button onclick="setCategory('Pantai')" data-cat="Pantai" data-i18n="catBeach" class="cat-btn shrink-0 px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400 active:scale-95">
                 Pantai & Perairan Karst
             </button>
-            <button onclick="setCategory('Pegunungan')" data-cat="Pegunungan" data-i18n="catMountain" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
+            <button onclick="setCategory('Pegunungan')" data-cat="Pegunungan" data-i18n="catMountain" class="cat-btn shrink-0 px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400 active:scale-95">
                 Puncak & Kaldera Dingin
             </button>
-            <button onclick="setCategory('Budaya')" data-cat="Budaya" data-i18n="catCulture" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
+            <button onclick="setCategory('Budaya')" data-cat="Budaya" data-i18n="catCulture" class="cat-btn shrink-0 px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400 active:scale-95">
                 Sejarah & Perkampungan Adat
             </button>
-            <button onclick="setCategory('Alam')" data-cat="Alam" data-i18n="catNature" class="cat-btn px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400">
+            <button onclick="setCategory('Alam')" data-cat="Alam" data-i18n="catNature" class="cat-btn shrink-0 px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800 hover:border-stone-400 active:scale-95">
                 Eksotisme Rimba & Satwa
             </button>
         </div>
 
         <!-- Destinations Grid Container -->
-        <div id="destinationsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="destinationsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
             @foreach($destinations as $dest)
                 <article 
                     onclick="openDetailModal({{ $dest->id }})" 
-                    class="group bg-white dark:bg-stone-900 rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer"
+                    class="group bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer"
                 >
                     <!-- Image Container with Natural Ratio -->
-                    <div class="relative h-64 overflow-hidden bg-stone-100">
+                    <div class="relative h-56 sm:h-64 overflow-hidden bg-stone-100">
                         <img 
                             src="{{ $dest->image }}" 
                             onerror="this.src='https://placehold.co/600x400/262019/ffffff?text={{ urlencode($dest->name) }}'"
@@ -213,7 +213,7 @@
                     </div>
 
                     <!-- Card Body -->
-                    <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-2 text-[11px] text-stone-400 mb-1.5">
                                 <span><i class="fa-regular fa-clock mr-1"></i> {{ $dest->duration }}</span>
@@ -247,14 +247,15 @@
     </section>
 
     <!-- ================= 3. PAKET PERJALANAN (CLEAN BOUTIQUE PACKAGES) ================= -->
-    <section id="paket" class="py-20 bg-stone-50 dark:bg-stone-900/50 border-y border-stone-200/80 dark:border-stone-800">
+    <!-- ================= 3. PAKET WISATA (BOUTIQUE ITINERARY) ================= -->
+    <section id="paket" class="py-12 sm:py-20 bg-stone-50 dark:bg-stone-900/50 border-y border-stone-200/80 dark:border-stone-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 pb-4 border-b border-stone-200/80 dark:border-stone-800">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4 pb-4 border-b border-stone-200/80 dark:border-stone-800">
                 <div>
                     <span data-i18n="pkgSubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
                         Boutique Itinerary
                     </span>
-                    <h2 data-i18n="pkgTitle" class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight">
+                    <h2 data-i18n="pkgTitle" class="font-serif text-2xl sm:text-4xl font-normal text-stone-950 dark:text-white tracking-tight">
                         Paket Perjalanan Terkurasi
                     </h2>
                     <p data-i18n="pkgDesc" class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm max-w-xl leading-relaxed">
@@ -264,7 +265,7 @@
 
                 <!-- Tombol Lihat Halaman Paket di Samping Judul -->
                 <div class="shrink-0">
-                    <a href="{{ route('packages.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:border-stone-900 dark:hover:border-stone-200 bg-white dark:bg-stone-900 hover:bg-stone-900 hover:text-white dark:hover:bg-stone-100 dark:hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all whitespace-nowrap shadow-xs group" title="Buka Halaman Lengkap Paket Wisata">
+                    <a href="{{ route('packages.index') }}" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 hover:border-stone-900 dark:hover:border-stone-200 bg-white dark:bg-stone-900 hover:bg-stone-900 hover:text-white dark:hover:bg-stone-100 dark:hover:text-stone-900 text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all whitespace-nowrap shadow-xs group" title="Buka Halaman Lengkap Paket Wisata">
                         <span data-i18n="pkgHeaderBtn">Lihat Seluruh Paket Wisata</span>
                         <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                     </a>
@@ -272,7 +273,7 @@
             </div>
 
             <!-- Packages Grid -->
-            <div id="packagesGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div id="packagesGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-8">
                 @foreach($packages as $idx => $pkg)
                     <div 
                         onclick="selectPackageCard(this, event)"
@@ -417,12 +418,12 @@
     </section>
 
     <!-- ================= 5. GALERI MIKRO-DOKUMENTASI ================= -->
-    <section id="galeri" class="py-20 bg-stone-100/70 dark:bg-stone-900 border-t border-stone-200/80 dark:border-stone-800">
+    <section id="galeri" class="py-12 sm:py-20 bg-stone-100/70 dark:bg-stone-900 border-t border-stone-200/80 dark:border-stone-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-3">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-3">
                 <div>
                     <span data-i18n="gallerySubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">Lensa Perjalanan</span>
-                    <h2 data-i18n="galleryTitle" class="font-serif text-3xl font-normal text-stone-950 dark:text-white">
+                    <h2 data-i18n="galleryTitle" class="font-serif text-2xl sm:text-3xl font-normal text-stone-950 dark:text-white">
                         Momen-Momen yang Tertangkap
                     </h2>
                 </div>
@@ -431,17 +432,17 @@
                 </p>
             </div>
 
-            <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5">
                 @foreach($gallery as $item)
-                    <div onclick="openLightbox('{{ $item->image_url }}', '{{ addslashes($item->title) }}', '{{ addslashes($item->sub_title) }}')" class="group relative h-64 rounded-2xl overflow-hidden cursor-pointer bg-stone-200 dark:bg-stone-800">
+                    <div onclick="openLightbox('{{ $item->image_url }}', '{{ addslashes($item->title) }}', '{{ addslashes($item->sub_title) }}')" class="group relative h-44 sm:h-64 rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer bg-stone-200 dark:bg-stone-800 active:scale-95 transition-transform">
                         <img 
                             src="{{ $item->image_url }}" 
                             alt="{{ $item->title }}" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         >
-                        <div class="absolute inset-0 bg-stone-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
-                            <span class="text-xs font-serif font-semibold">{{ $item->title }}</span>
-                            <span class="text-[11px] text-stone-300 mt-0.5">{{ $item->sub_title }}</span>
+                        <div class="absolute inset-0 bg-stone-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3 sm:p-4 text-white">
+                            <span class="text-xs font-serif font-semibold truncate">{{ $item->title }}</span>
+                            <span class="text-[10px] sm:text-[11px] text-stone-300 mt-0.5 truncate">{{ $item->sub_title }}</span>
                         </div>
                     </div>
                 @endforeach
@@ -450,12 +451,12 @@
     </section>
 
     <!-- ================= 6. TESTIMONI CATATAN TAMU ================= -->
-    <section id="testimoni" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-12">
+    <section id="testimoni" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
             <span data-i18n="testiSubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
                 Catatan Tamu
             </span>
-            <h2 data-i18n="testiTitle" class="font-serif text-3xl sm:text-4xl font-normal text-stone-950 dark:text-white">
+            <h2 data-i18n="testiTitle" class="font-serif text-2xl sm:text-4xl font-normal text-stone-950 dark:text-white">
                 Cerita dari Mereka yang Pernah Ikut
             </h2>
             <p data-i18n="testiDesc" class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
@@ -463,9 +464,9 @@
             </p>
         </div>
 
-        <div id="testimonialGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div id="testimonialGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             @foreach($testimonials as $t)
-                <div class="p-6 rounded-3xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-xs flex flex-col justify-between">
+                <div class="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-xs flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-3.5">
                             <span class="text-amber-400 text-xs flex gap-0.5">
@@ -482,11 +483,11 @@
                         </p>
                     </div>
 
-                    <div class="flex items-center gap-3 mt-6 pt-4 border-t border-stone-100 dark:border-stone-800">
+                    <div class="flex items-center gap-3 mt-5 pt-3.5 border-t border-stone-100 dark:border-stone-800">
                         <img 
                             src="{{ $t->avatar }}" 
                             alt="{{ $t->name }}" 
-                            class="w-10 h-10 rounded-full object-cover"
+                            class="w-9 sm:w-10 h-9 sm:h-10 rounded-full object-cover shrink-0"
                         >
                         <div>
                             <h4 class="font-semibold text-xs text-stone-900 dark:text-white">{{ $t->name }}</h4>
@@ -498,21 +499,21 @@
         </div>
 
         <!-- Banner Bersahabat -->
-        <div class="mt-14 rounded-3xl bg-stone-900 text-white p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+        <div class="mt-10 sm:mt-14 rounded-2xl sm:rounded-3xl bg-stone-900 text-white p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
             <div class="max-w-xl text-center sm:text-left">
-                <span data-i18n="promoHeader" class="text-[11px] uppercase tracking-wider text-stone-400 font-medium">Rencana Liburan Bareng Sahabat atau Keluarga?</span>
-                <h3 data-i18n="promoTitle" class="font-serif text-2xl font-normal mt-1.5">
+                <span data-i18n="promoHeader" class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-400 font-medium">Rencana Liburan Bareng Sahabat atau Keluarga?</span>
+                <h3 data-i18n="promoTitle" class="font-serif text-xl sm:text-2xl font-normal mt-1.5">
                     Gunakan Kode Voucher <span class="underline decoration-stone-500 font-mono text-amber-200">PESONAID</span> untuk Diskon 15%
                 </h3>
                 <p data-i18n="promoDesc" class="text-stone-400 text-xs mt-1 leading-relaxed">
                     Berlaku untuk simulasi dan pemesanan seluruh rute private tour dan open trip kami bulan ini.
                 </p>
             </div>
-            <div class="flex items-center gap-3 shrink-0">
-                <button onclick="copyVoucherCode()" data-i18n="promoCopy" class="px-4 py-2.5 rounded-full border border-stone-700 hover:bg-stone-800 text-xs font-medium transition-colors">
+            <div class="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 w-full sm:w-auto shrink-0">
+                <button onclick="copyVoucherCode()" data-i18n="promoCopy" class="w-full sm:w-auto px-4 py-2.5 rounded-full border border-stone-700 hover:bg-stone-800 text-xs font-medium transition-colors text-center active:scale-95">
                     Salin Kode
                 </button>
-                <button onclick="openBookingModal('Sailing Phinisi Labuan Bajo (Private Cabin)')" data-i18n="promoPlan" class="px-5 py-2.5 rounded-full bg-white text-stone-900 hover:bg-stone-100 text-xs font-semibold shadow-sm transition-all">
+                <button onclick="openBookingModal('Sailing Phinisi Labuan Bajo (Private Cabin)')" data-i18n="promoPlan" class="w-full sm:w-auto px-5 py-2.5 rounded-full bg-white text-stone-900 hover:bg-stone-100 text-xs font-semibold shadow-sm transition-all text-center active:scale-95">
                     Rencanakan Trip
                 </button>
             </div>
@@ -574,8 +575,8 @@
             const isLiked = savedWishlist.has(dest.id);
             const safeName = dest.name.replace(/'/g, "\\'");
             return `
-                <article onclick="openDetailModal(${dest.id})" class="group bg-white dark:bg-stone-900 rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer">
-                    <div class="relative h-64 overflow-hidden bg-stone-100">
+                <article onclick="openDetailModal(${dest.id})" class="group bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer">
+                    <div class="relative h-56 sm:h-64 overflow-hidden bg-stone-100">
                         <img 
                             src="${dest.image}" 
                             onerror="this.src='https://placehold.co/600x400/262019/ffffff?text=${encodeURIComponent(dest.name)}'"
@@ -603,7 +604,7 @@
                         </div>
                     </div>
 
-                    <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-2 text-[11px] text-stone-400 mb-1.5">
                                 <span><i class="fa-regular fa-clock mr-1"></i> ${dest.duration}</span>
