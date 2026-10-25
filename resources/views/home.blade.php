@@ -100,8 +100,8 @@
                             <i class="fa-solid fa-user-group text-stone-800 dark:text-stone-200 mr-1.5"></i> <span data-i18n="heroFieldPax">Jumlah Peserta</span>
                         </label>
                         <select id="searchPax" class="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 font-medium text-xs sm:text-sm focus:ring-2 focus:ring-stone-900 focus:outline-none transition-colors">
-                            <option value="1" data-i18n="heroPax1">1 Orang (Solo Traveler)</option>
-                            <option value="2" data-i18n="heroPax2" selected>2 Orang (Pasangan / Sahabat)</option>
+                            <option value="1" data-i18n="heroPax1" selected>1 Orang (Solo Traveler)</option>
+                            <option value="2" data-i18n="heroPax2">2 Orang (Pasangan / Sahabat)</option>
                             <option value="4" data-i18n="heroPax4">4 Orang (Keluarga Kecil)</option>
                             <option value="6" data-i18n="heroPax6">6 Orang (Grup Privat)</option>
                             <option value="10" data-i18n="heroPax10">10+ Orang (Rombongan)</option>

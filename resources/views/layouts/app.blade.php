@@ -484,7 +484,7 @@
                     </div>
                     <div>
                         <label data-i18n="modalBookPaxLabel" class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Jumlah Peserta</label>
-                        <input type="number" id="bookPax" name="pax" min="1" max="40" value="2" oninput="calculateSimulatedPrice()" required class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 font-semibold focus:ring-1 focus:ring-stone-900 focus:outline-none">
+                        <input type="number" id="bookPax" name="pax" min="1" max="40" value="1" oninput="calculateSimulatedPrice()" required class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 font-semibold focus:ring-1 focus:ring-stone-900 focus:outline-none">
                     </div>
                 </div>
 
@@ -521,7 +521,7 @@
                 <!-- Estimasi Ringkasan -->
                 <div class="p-3.5 rounded-xl bg-stone-50 dark:bg-stone-800/80 border border-stone-200/70 dark:border-stone-700 space-y-1.5">
                     <div class="flex justify-between text-stone-500">
-                        <span>Biaya Pokok (<span id="summaryPaxCount">2</span> Peserta)</span>
+                        <span>Biaya Pokok (<span id="summaryPaxCount">1</span> Peserta)</span>
                         <span id="summaryBasePrice" class="font-medium text-stone-800 dark:text-white">Rp 0</span>
                     </div>
                     <div class="flex justify-between text-stone-500">
@@ -1305,6 +1305,10 @@
                         break;
                     }
                 }
+            }
+            const paxInput = document.getElementById('bookPax');
+            if (paxInput && (!paxInput.value || paxInput.value === '2')) {
+                paxInput.value = '1';
             }
             calculateSimulatedPrice();
             const modal = document.getElementById('bookingModal');
