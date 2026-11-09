@@ -363,7 +363,7 @@
                 <div class="flex items-center gap-4">
                     <button onclick="showToast('Mitra terdaftar: ASITA & Komunitas Pemandu Lokal HPI', 'info')" class="hover:underline">Mitra Pemandu Lokal</button>
                     <button onclick="showToast('Kebijakan Privasi: Data Anda aman dan tidak pernah dijual.', 'info')" class="hover:underline">Privasi & Etika Perjalanan</button>
-                    <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-1 text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors" title="Panel Concierge Admin">
+                    <a href="{{ env('ADMIN_URL', 'http://localhost:8001') }}" target="_blank" class="inline-flex items-center gap-1 text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors" title="Panel Concierge Admin (D:\admin pariwisata)">
                         <i class="fa-solid fa-lock text-[10px]"></i>
                         <span>Admin</span>
                     </a>
