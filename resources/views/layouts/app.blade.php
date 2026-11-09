@@ -360,9 +360,13 @@
             <!-- Bottom -->
             <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-600 dark:text-stone-300 gap-3">
                 <p data-i18n="footerCopyright">&copy; {{ date('Y') }} PT Nusantara Wander Indonesia. Dikurasi dengan cinta di Bumi Nusantara.</p>
-                <div class="flex gap-4">
+                <div class="flex items-center gap-4">
                     <button onclick="showToast('Mitra terdaftar: ASITA & Komunitas Pemandu Lokal HPI', 'info')" class="hover:underline">Mitra Pemandu Lokal</button>
                     <button onclick="showToast('Kebijakan Privasi: Data Anda aman dan tidak pernah dijual.', 'info')" class="hover:underline">Privasi & Etika Perjalanan</button>
+                    <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-1 text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors" title="Panel Concierge Admin">
+                        <i class="fa-solid fa-lock text-[10px]"></i>
+                        <span>Admin</span>
+                    </a>
                 </div>
             </div>
         </div>
