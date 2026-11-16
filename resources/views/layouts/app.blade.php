@@ -183,27 +183,28 @@
                 <a href="{{ route('home') }}#testimoni" data-i18n="navTesti" class="px-3.5 py-1.5 rounded-full hover:bg-stone-100 hover:text-stone-950 transition-all">Testimoni</a>
             </nav>
 
-            <!-- Actions: Wishlist, Language Switcher (ID/EN), WhatsApp, CTA -->
+            <!-- Actions: Wishlist, Language Switcher (ID/EN), Admin Login, CTA (WhatsApp icon removed) -->
             <div class="hidden lg:flex items-center gap-2">
                 <!-- Wishlist Button -->
-                <button onclick="showSavedDestinations()" class="relative w-8 h-8 rounded-full border border-stone-200/80 flex items-center justify-center text-stone-600 hover:bg-stone-100 hover:text-rose-500 transition-colors" title="Destinasi Tersimpan">
+                <button onclick="showSavedDestinations()" class="relative w-8 h-8 rounded-full border border-stone-200/80 flex items-center justify-center text-stone-600 hover:bg-stone-100 hover:text-rose-500 transition-colors cursor-pointer" title="Destinasi Tersimpan">
                     <i class="fa-regular fa-heart text-xs"></i>
                     <span id="wishlistBadge" class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-stone-900 text-white text-[9px] font-bold flex items-center justify-center shadow-xs">0</span>
                 </button>
 
                 <!-- Language Switcher Button (ID / EN) -->
-                <button onclick="toggleLanguage()" id="langToggleBtn" class="h-8 px-2.5 rounded-full border border-stone-200 hover:border-stone-400 bg-stone-50 hover:bg-stone-100 text-stone-700 text-[11px] font-semibold transition-all flex items-center gap-1.5 shadow-xs" title="Ganti Bahasa / Switch Language (ID / EN)">
+                <button onclick="toggleLanguage()" id="langToggleBtn" class="h-8 px-2.5 rounded-full border border-stone-200 hover:border-stone-400 bg-stone-50 hover:bg-stone-100 text-stone-700 text-[11px] font-semibold transition-all flex items-center gap-1.5 shadow-xs cursor-pointer" title="Ganti Bahasa / Switch Language (ID / EN)">
                     <i class="fa-solid fa-globe text-stone-500 text-xs"></i>
                     <span id="langLabel" class="tracking-wider font-mono">ID</span>
                 </button>
 
-                <!-- WhatsApp Concierge Quick Link -->
-                <a href="https://wa.me/6289519808548" target="_blank" class="w-8 h-8 rounded-full border border-stone-200/80 flex items-center justify-center text-emerald-600 hover:bg-emerald-50 transition-colors" title="Hubungi WhatsApp Concierge">
-                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                <!-- Admin Login Button -->
+                <a href="{{ env('ADMIN_URL', 'http://localhost:8001') }}/login" target="_blank" class="h-8 px-3 rounded-full border border-stone-200 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-700 hover:text-stone-950 text-[11px] font-semibold transition-all flex items-center gap-1.5 shadow-2xs" title="Masuk ke Panel Admin (SkyTour Concierge)">
+                    <i class="fa-solid fa-shield-halved text-stone-500 text-xs"></i>
+                    <span>Masuk</span>
                 </a>
 
                 <!-- CTA Button -->
-                <button onclick="openBookingModal()" class="ml-1 px-4 sm:px-5 py-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95 flex items-center gap-1.5 group">
+                <button onclick="openBookingModal()" class="ml-1 px-4 sm:px-5 py-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95 flex items-center gap-1.5 group cursor-pointer">
                     <span data-i18n="navPlanTrip">Rencanakan Trip</span>
                     <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
                 </button>
@@ -250,6 +251,7 @@
                     <span data-i18n="navTesti">Testimoni</span>
                 </a>
             </div>
+
             <div class="pt-3 border-t border-stone-200 dark:border-stone-800 flex flex-col gap-2">
                 <!-- Mobile Language Selector Row -->
                 <button onclick="toggleLanguage()" class="w-full py-2.5 px-4 rounded-xl border border-stone-200 dark:border-stone-700 font-semibold text-xs flex items-center justify-between text-stone-700 dark:text-stone-200 bg-stone-50 dark:bg-stone-800">
@@ -259,19 +261,19 @@
                     </span>
                     <span id="langDrawerLabel" class="px-2 py-0.5 rounded-md bg-stone-200 dark:bg-stone-700 font-mono font-bold text-[10px]">ID (Bahasa Indonesia)</span>
                 </button>
-                <div class="grid grid-cols-2 gap-2">
-                    <button onclick="toggleMobileMenu(); showSavedDestinations();" class="w-full py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 font-semibold text-xs flex items-center justify-center gap-1.5 text-stone-700 dark:text-stone-200">
+                <div class="grid grid-cols-1 gap-2">
+                    <button onclick="toggleMobileMenu(); showSavedDestinations();" class="w-full py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 font-semibold text-xs flex items-center justify-center gap-1.5 text-stone-700 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
                         <i class="fa-regular fa-heart text-rose-500"></i>
                         <span class="truncate"><span data-i18n="wishlistSavedTitle">Tersimpan</span> (<span id="wishlistBadgeMobile">0</span>)</span>
                     </button>
-                    <a href="https://wa.me/6289519808548" target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 text-white font-semibold text-xs flex items-center justify-center gap-1.5">
-                        <i class="fa-brands fa-whatsapp text-sm"></i>
-                        <span>WhatsApp</span>
-                    </a>
                 </div>
                 <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full py-3 px-4 rounded-full bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-semibold text-xs shadow-sm active:scale-98 transition-transform">
                     <span data-i18n="navPlanTrip">Rencanakan Trip Sekarang</span>
                 </button>
+                <a href="{{ env('ADMIN_URL', 'http://localhost:8001') }}/login" target="_blank" onclick="toggleMobileMenu()" class="w-full py-2.5 px-4 rounded-full border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 font-semibold text-xs flex items-center justify-center gap-2 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
+                    <i class="fa-solid fa-shield-halved text-xs"></i>
+                    <span>Masuk ke Panel Admin</span>
+                </a>
             </div>
         </div>
     </header>
@@ -300,8 +302,8 @@
                         Portal Pariwisata Indonesia terpercaya. Kami menemani Anda menjelajahi keindahan nusantara, ragam budaya, dan paket liburan impian terbaik dengan pengalaman berkesan.
                     </p>
                     <div class="flex items-center gap-2.5 text-xs text-stone-500">
-                        <a href="https://wa.me/6289519808548" target="_blank" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="WhatsApp Concierge">
-                            <i class="fa-brands fa-whatsapp"></i>
+                        <a href="mailto:halo@danwisata.id" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="Kirim Pesan / Email">
+                            <i class="fa-regular fa-envelope"></i>
                         </a>
                         <a href="#footer" onclick="showToast('Instagram: @danwisata.id', 'info')" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700 hover:bg-stone-900 hover:text-white flex items-center justify-center transition-colors" title="Instagram Resmi">
                             <i class="fa-brands fa-instagram"></i>
@@ -329,9 +331,8 @@
                     <h4 data-i18n="footerContact" class="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-white mb-3.5">Kontak Tim</h4>
                     <ul class="space-y-2 text-xs text-stone-500 dark:text-stone-400">
                         <li>Jakarta & Denpasar, Indonesia</li>
-                        <li><a href="https://wa.me/6289519808548" class="hover:underline">+62 895-1980-8548</a></li>
                         <li>halo@danwisata.id</li>
-                        <li class="text-[11px] text-stone-400 pt-1">Balas cepat: 08.00 - 21.00 WIB</li>
+                        <li class="text-[11px] text-stone-400 pt-1">Layanan tamu: 08.00 - 21.00 WIB</li>
                     </ul>
                 </div>
 
@@ -688,6 +689,10 @@
                 navHome: 'Beranda',
                 navDest: 'Destinasi',
                 navPkg: 'Paket Wisata',
+                navAbout: 'Tentang',
+                navAboutUs: 'Tentang Kami',
+                navVisiMisi: 'Visi & Misi',
+                navArticle: 'Artikel & Tips',
                 navStory: 'Filosofi',
                 navGallery: 'Galeri',
                 navTesti: 'Testimoni',
@@ -883,6 +888,10 @@
                 navHome: 'Home',
                 navDest: 'Destinations',
                 navPkg: 'Tour Packages',
+                navAbout: 'About',
+                navAboutUs: 'About Us',
+                navVisiMisi: 'Vision & Mission',
+                navArticle: 'Articles & Tips',
                 navStory: 'Philosophy',
                 navGallery: 'Gallery',
                 navTesti: 'Reviews',

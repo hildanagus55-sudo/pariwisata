@@ -485,7 +485,7 @@
                         </div>
                         <h3 class="font-serif font-semibold text-sm text-stone-900 dark:text-white mb-1">Konsultasi Nyaman Tanpa Tekanan</h3>
                         <p class="text-xs text-stone-500 leading-relaxed">
-                            Bebas bertanya rute, opsi bawa anak/orang tua, atau request menu makanan lewat WhatsApp kapan pun.
+                            Bebas bertanya rute, opsi bawa anak/orang tua, atau request preferensi khusus kapan pun kepada tim concierge kami.
                         </p>
                     </div>
                 </div>
