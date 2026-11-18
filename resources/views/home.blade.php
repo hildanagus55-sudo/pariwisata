@@ -66,7 +66,7 @@
             </div>
 
             <!-- Interactive Search Widget Card -->
-            <div class="max-w-5xl mx-auto bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl border border-stone-200/80 dark:border-stone-800">
+            <div data-aos="fade-up" data-aos-delay="200" class="max-w-5xl mx-auto bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl border border-stone-200/80 dark:border-stone-800">
                 <form id="heroSearchForm" onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-end">
                     <!-- Lokasi Tujuan (Searchable Combobox for 38 Indonesian Provinces) -->
                     <div class="md:col-span-6 lg:col-span-4 relative" id="locationComboboxWrapper">
@@ -205,7 +205,7 @@
     <!-- ================= 2. DESTINASI POPULER (CLEAN WHITE EDITORIAL CARDS) ================= -->
     <section id="destinasi" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4 sm:gap-5 pb-5 sm:pb-6 border-b border-stone-200/80 dark:border-stone-800">
+        <div data-aos="fade-up" class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4 sm:gap-5 pb-5 sm:pb-6 border-b border-stone-200/80 dark:border-stone-800">
             <div>
                 <span data-i18n="destSubtitle" class="text-xs font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wider block mb-1">
                     Jurnal Destinasi
@@ -228,7 +228,7 @@
         </div>
 
         <!-- Category Filter Pills (Horizontal Momentum Scroll on Mobile) -->
-        <div id="categoryButtons" class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 sm:mb-8 no-scrollbar text-xs -mx-4 px-4 sm:mx-0 sm:px-0">
+        <div data-aos="fade-up" data-aos-delay="100" id="categoryButtons" class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 sm:mb-8 no-scrollbar text-xs -mx-4 px-4 sm:mx-0 sm:px-0">
             <button onclick="setCategory('Semua')" data-cat="Semua" data-i18n="catAll" class="cat-btn shrink-0 px-4 py-2 rounded-full font-semibold transition-all whitespace-nowrap bg-stone-900 text-white dark:bg-white dark:text-stone-900 shadow-sm active:scale-95">
                 Semua Koleksi
             </button>
@@ -250,6 +250,8 @@
         <div id="destinationsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
             @foreach($destinations as $dest)
                 <article 
+                    data-aos="fade-up" 
+                    data-aos-delay="{{ ($loop->index % 3 + 1) * 100 }}"
                     onclick="openDetailModal({{ $dest->id }})" 
                     class="group bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer"
                 >
@@ -323,7 +325,7 @@
     <!-- ================= 3. PAKET WISATA (BOUTIQUE ITINERARY) ================= -->
     <section id="paket" class="py-12 sm:py-20 bg-stone-50 dark:bg-stone-900/50 border-y border-stone-200/80 dark:border-stone-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4 pb-4 border-b border-stone-200/80 dark:border-stone-800">
+            <div data-aos="fade-up" class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4 pb-4 border-b border-stone-200/80 dark:border-stone-800">
                 <div>
                     <span data-i18n="pkgSubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
                         Boutique Itinerary
@@ -349,6 +351,8 @@
             <div id="packagesGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-8">
                 @foreach($packages as $idx => $pkg)
                     <div 
+                        data-aos="fade-up"
+                        data-aos-delay="{{ ($idx + 1) * 100 }}"
                         onclick="selectPackageCard(this, event)"
                         class="package-card group bg-white dark:bg-stone-900 rounded-3xl border-2 {{ $idx === 0 ? 'border-stone-900 dark:border-stone-100 ring-2 ring-stone-900/10 dark:ring-stone-100/10 -translate-y-1 shadow-xl is-active' : 'border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700 shadow-xs translate-y-0' }} p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer"
                     >
@@ -414,7 +418,7 @@
     <section id="cerita" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <!-- Left Photo Canvas -->
-            <div class="lg:col-span-5 relative">
+            <div data-aos="fade-right" data-aos-duration="850" class="lg:col-span-5 relative">
                 <div class="rounded-3xl overflow-hidden shadow-md border border-stone-200 dark:border-stone-800">
                     <video 
                         autoplay 
@@ -437,7 +441,7 @@
             </div>
 
             <!-- Right Story Content -->
-            <div class="lg:col-span-7 space-y-6">
+            <div data-aos="fade-left" data-aos-duration="850" class="lg:col-span-7 space-y-6">
                 <div>
                     <span data-i18n="storySubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
                         Kenapa Berkelana Bersama Kami?
@@ -499,7 +503,7 @@
     <!-- ================= 5. GALERI MIKRO-DOKUMENTASI ================= -->
     <section id="galeri" class="py-12 sm:py-20 bg-stone-100/70 dark:bg-stone-900 border-t border-stone-200/80 dark:border-stone-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-3">
+            <div data-aos="fade-up" class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-3">
                 <div>
                     <span data-i18n="gallerySubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">Lensa Perjalanan</span>
                     <h2 data-i18n="galleryTitle" class="font-serif text-2xl sm:text-3xl font-normal text-stone-950 dark:text-white">
@@ -513,7 +517,7 @@
 
             <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5">
                 @foreach($gallery as $item)
-                    <div onclick="openLightbox('{{ $item->image_url }}', '{{ addslashes($item->title) }}', '{{ addslashes($item->sub_title) }}')" class="group relative h-44 sm:h-64 rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer bg-stone-200 dark:bg-stone-800 active:scale-95 transition-transform">
+                    <div data-aos="fade-up" data-aos-delay="{{ ($loop->index % 4 + 1) * 75 }}" onclick="openLightbox('{{ $item->image_url }}', '{{ addslashes($item->title) }}', '{{ addslashes($item->sub_title) }}')" class="group relative h-44 sm:h-64 rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer bg-stone-200 dark:bg-stone-800 active:scale-95 transition-transform">
                         <img 
                             src="{{ $item->image_url }}" 
                             alt="{{ $item->title }}" 
@@ -531,7 +535,7 @@
 
     <!-- ================= 6. TESTIMONI CATATAN TAMU ================= -->
     <section id="testimoni" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+        <div data-aos="fade-up" class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
             <span data-i18n="testiSubtitle" class="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
                 Catatan Tamu
             </span>
@@ -545,7 +549,7 @@
 
         <div id="testimonialGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             @foreach($testimonials as $t)
-                <div class="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-xs flex flex-col justify-between">
+                <div data-aos="fade-up" data-aos-delay="{{ ($loop->index + 1) * 100 }}" class="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-xs flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-3.5">
                             <span class="text-amber-400 text-xs flex gap-0.5">
@@ -578,7 +582,7 @@
         </div>
 
         <!-- Banner Bersahabat -->
-        <div class="mt-10 sm:mt-14 rounded-2xl sm:rounded-3xl bg-stone-900 text-white p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+        <div data-aos="zoom-in" data-aos-duration="850" class="mt-10 sm:mt-14 rounded-2xl sm:rounded-3xl bg-stone-900 text-white p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
             <div class="max-w-xl text-center sm:text-left">
                 <span data-i18n="promoHeader" class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-400 font-medium">Rencana Liburan Bareng Sahabat atau Keluarga?</span>
                 <h3 data-i18n="promoTitle" class="font-serif text-xl sm:text-2xl font-normal mt-1.5">
@@ -1098,11 +1102,11 @@
             return;
         }
 
-        grid.innerHTML = filtered.map(dest => {
+        grid.innerHTML = filtered.map((dest, idx) => {
             const isLiked = savedWishlist.has(dest.id);
             const safeName = dest.name.replace(/'/g, "\\'");
             return `
-                <article onclick="openDetailModal(${dest.id})" class="group bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer">
+                <article data-aos="fade-up" data-aos-delay="${(idx % 3 + 1) * 75}" onclick="openDetailModal(${dest.id})" class="group bg-white dark:bg-stone-900 rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer">
                     <div class="relative h-56 sm:h-64 overflow-hidden bg-stone-100">
                         <img 
                             src="${dest.image}" 
@@ -1159,6 +1163,10 @@
                 </article>
             `;
         }).join('');
+
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
     }
 
     function filterAndRenderDestinations() {

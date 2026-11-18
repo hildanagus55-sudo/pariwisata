@@ -19,6 +19,9 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -1542,6 +1545,22 @@
 
             window.addEventListener('scroll', handleNavbarScroll, { passive: true });
             handleNavbarScroll();
+        });
+    </script>
+
+    <!-- AOS (Animate On Scroll) JS & Initialization -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 750,
+                    easing: 'ease-out-cubic',
+                    once: true,
+                    offset: 50,
+                    delay: 50,
+                });
+            }
         });
     </script>
     @stack('scripts')
