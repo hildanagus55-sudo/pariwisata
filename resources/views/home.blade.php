@@ -1225,7 +1225,7 @@
         if (heroVid) {
             const heroPlaylist = [
                 "{{ asset('images/231170_medium.mp4') }}",
-                "{{ asset('images/13021388_1920_1080_25fps.mp4') }}"
+                "{{ asset('images/16694704_2560_1440_30fps.mp4') }}"
             ];
             let currentVidIdx = 0;
 
