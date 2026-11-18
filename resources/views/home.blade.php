@@ -18,6 +18,14 @@
             <source src="{{ asset('images/231170_medium.mp4') }}" type="video/mp4">
             Browser Anda tidak mendukung tag video latar belakang.
         </video>
+
+        <!-- Cinematic Mist & Fog Transition Curtain (Kabut & Awan Nusantara) -->
+        <div id="heroMistOverlay" class="absolute inset-0 pointer-events-none opacity-0 z-[2] transition-opacity duration-700 ease-in-out overflow-hidden">
+            <div class="absolute inset-0 bg-white/40 dark:bg-stone-950/50 backdrop-blur-md"></div>
+            <div class="mist-layer mist-layer-1"></div>
+            <div class="mist-layer mist-layer-2"></div>
+        </div>
+
         <div class="absolute inset-0 hero-gradient"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -1220,28 +1228,54 @@
             }
         });
 
-        // Playlist otomatis untuk video beranda utama (berpindah ke video berikutnya saat selesai)
+        // Playlist otomatis untuk video beranda utama dengan animasi kabut & awan sinematik
         const heroVid = document.getElementById('heroVideo');
+        const heroMist = document.getElementById('heroMistOverlay');
         if (heroVid) {
             const heroPlaylist = [
                 "{{ asset('images/231170_medium.mp4') }}",
                 "{{ asset('images/16694704_2560_1440_30fps.mp4') }}"
             ];
             let currentVidIdx = 0;
+            let isSwitching = false;
 
-            heroVid.addEventListener('ended', () => {
-                heroVid.classList.add('opacity-0');
+            const triggerMistTransition = () => {
+                if (isSwitching) return;
+                isSwitching = true;
+
+                // 1. Gulungan kabut & awan pegunungan masuk menutupi video
+                if (heroMist) {
+                    heroMist.classList.remove('opacity-0');
+                    heroMist.classList.add('opacity-100');
+                }
+
+                // 2. Ganti video saat kabut sedang tebal
                 setTimeout(() => {
                     currentVidIdx = (currentVidIdx + 1) % heroPlaylist.length;
                     heroVid.src = heroPlaylist[currentVidIdx];
                     heroVid.load();
                     heroVid.play().then(() => {
-                        heroVid.classList.remove('opacity-0');
+                        // 3. Kabut perlahan menipis & berarak pergi mengungkap pemandangan baru
+                        setTimeout(() => {
+                            if (heroMist) {
+                                heroMist.classList.remove('opacity-100');
+                                heroMist.classList.add('opacity-0');
+                            }
+                            isSwitching = false;
+                        }, 250);
                     }).catch(() => {
-                        heroVid.classList.remove('opacity-0');
+                        if (heroMist) {
+                            heroMist.classList.remove('opacity-100');
+                            heroMist.classList.add('opacity-0');
+                        }
+                        isSwitching = false;
                     });
-                }, 400);
-            });
+                }, 550);
+            };
+
+            heroVid.addEventListener('ended', triggerMistTransition);
+            // Helper untuk preview langsung dari konsol atau tombol bila diperlukan
+            window.previewMistTransition = triggerMistTransition;
         }
 
         initBookingOptions();

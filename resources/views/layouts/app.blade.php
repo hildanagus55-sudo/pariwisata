@@ -120,6 +120,37 @@
         .dark .blur-mask-curtain {
             background: linear-gradient(to bottom, rgba(12, 10, 9, 0.78) 0%, rgba(12, 10, 9, 0.40) 65%, rgba(12, 10, 9, 0) 100%);
         }
+        /* Cinematic Nusantara Mist / Cloud Drift Transition */
+        @keyframes mistDrift {
+            0% { transform: scale(1) translate(-2%, 2%); }
+            50% { transform: scale(1.08) translate(3%, -3%); }
+            100% { transform: scale(1.02) translate(-1%, 1%); }
+        }
+        .mist-layer {
+            position: absolute;
+            inset: -15%;
+            pointer-events-none;
+        }
+        .mist-layer-1 {
+            background: radial-gradient(ellipse 65% 50% at 30% 65%, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 70%),
+                        radial-gradient(ellipse 75% 60% at 70% 35%, rgba(240,248,245,0.65) 0%, rgba(240,248,245,0) 70%);
+            filter: blur(32px);
+            animation: mistDrift 7s ease-in-out infinite alternate;
+        }
+        .mist-layer-2 {
+            background: radial-gradient(ellipse 80% 55% at 50% 85%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%),
+                        radial-gradient(ellipse 55% 45% at 20% 25%, rgba(230,245,240,0.6) 0%, rgba(230,245,240,0) 65%);
+            filter: blur(40px);
+            animation: mistDrift 10s ease-in-out infinite alternate-reverse;
+        }
+        .dark .mist-layer-1 {
+            background: radial-gradient(ellipse 65% 50% at 30% 65%, rgba(15,23,42,0.8) 0%, rgba(15,23,42,0) 70%),
+                        radial-gradient(ellipse 75% 60% at 70% 35%, rgba(20,30,45,0.7) 0%, rgba(20,30,45,0) 70%);
+        }
+        .dark .mist-layer-2 {
+            background: radial-gradient(ellipse 80% 55% at 50% 85%, rgba(12,18,28,0.9) 0%, rgba(12,18,28,0) 70%),
+                        radial-gradient(ellipse 55% 45% at 20% 25%, rgba(16,24,36,0.7) 0%, rgba(16,24,36,0) 65%);
+        }
         /* Mobile Bottom Dock & Touch Optimization */
         .mobile-bottom-dock {
             backdrop-filter: blur(20px);
