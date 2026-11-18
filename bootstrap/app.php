@@ -11,6 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->appendToGroup('web', [
+            \App\Http\Middleware\TrackVisitor::class,
+        ]);
+
         $middleware->validateCsrfTokens(except: [
             'booking',
             'newsletter',
