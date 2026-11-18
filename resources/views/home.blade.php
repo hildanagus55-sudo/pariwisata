@@ -6,15 +6,14 @@
 @section('content')
     <!-- ================= 2. HERO SECTION & INTERACTIVE SEARCH WIDGET (CINEMATIC PHOTO HERO) ================= -->
     <section id="beranda" class="relative min-h-[88dvh] sm:min-h-[92vh] pt-24 sm:pt-28 pb-14 sm:pb-20 flex items-center justify-center overflow-hidden">
-        <!-- Background Video Loop -->
+        <!-- Background Video Loop / Playlist -->
         <video 
             id="heroVideo"
             autoplay 
             muted 
-            loop 
             playsinline 
             preload="auto"
-            class="absolute inset-0 w-full h-full object-cover object-center scale-105 pointer-events-none"
+            class="absolute inset-0 w-full h-full object-cover object-center scale-105 pointer-events-none transition-opacity duration-700 ease-in-out"
         >
             <source src="{{ asset('images/231170_medium.mp4') }}" type="video/mp4">
             Browser Anda tidak mendukung tag video latar belakang.
@@ -1220,6 +1219,30 @@
                 closeLocationDropdown();
             }
         });
+
+        // Playlist otomatis untuk video beranda utama (berpindah ke video berikutnya saat selesai)
+        const heroVid = document.getElementById('heroVideo');
+        if (heroVid) {
+            const heroPlaylist = [
+                "{{ asset('images/231170_medium.mp4') }}",
+                "{{ asset('images/13021388_1920_1080_25fps.mp4') }}"
+            ];
+            let currentVidIdx = 0;
+
+            heroVid.addEventListener('ended', () => {
+                heroVid.classList.add('opacity-0');
+                setTimeout(() => {
+                    currentVidIdx = (currentVidIdx + 1) % heroPlaylist.length;
+                    heroVid.src = heroPlaylist[currentVidIdx];
+                    heroVid.load();
+                    heroVid.play().then(() => {
+                        heroVid.classList.remove('opacity-0');
+                    }).catch(() => {
+                        heroVid.classList.remove('opacity-0');
+                    });
+                }, 400);
+            });
+        }
 
         initBookingOptions();
 
