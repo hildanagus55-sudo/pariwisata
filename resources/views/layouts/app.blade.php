@@ -263,11 +263,68 @@
                     <span id="langLabel" class="tracking-wider font-mono">ID</span>
                 </button>
 
-                <!-- Admin Login Button -->
-                <a href="{{ env('ADMIN_URL', 'http://localhost:8001') }}/login" target="_blank" class="h-8 px-3 rounded-full border border-stone-200 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-700 hover:text-stone-950 text-[11px] font-semibold transition-all flex items-center gap-1.5 shadow-2xs" title="Masuk ke Panel Admin (SkyTour Concierge)">
-                    <i class="fa-solid fa-shield-halved text-stone-500 text-xs"></i>
-                    <span>Masuk</span>
-                </a>
+                <!-- User / Auth Menu -->
+                @guest
+                    <!-- Guest: Tombol Masuk Portal Wisatawan -->
+                    <a href="{{ route('login') }}" class="h-8 px-3.5 rounded-full border border-stone-200 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-700 hover:text-stone-950 text-[11px] font-semibold transition-all flex items-center gap-1.5 shadow-2xs" title="Masuk ke Akun Wisatawan">
+                        <i class="fa-regular fa-user text-stone-500 text-xs"></i>
+                        <span>Masuk</span>
+                    </a>
+                @else
+                    <!-- Authenticated: Dropdown Akun Pengguna / Wisatawan -->
+                    <div class="relative">
+                        <button type="button" onclick="toggleUserDropdown()" id="userDropdownBtn" class="h-8 pl-1.5 pr-2.5 rounded-full border border-stone-200 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-800 text-[11px] font-semibold transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer">
+                            <span class="w-5 h-5 rounded-full bg-stone-900 text-white text-[9px] font-bold flex items-center justify-center">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                            </span>
+                            <span class="max-w-[85px] truncate">{{ Str::words(Auth::user()->name, 1, '') }}</span>
+                            <i class="fa-solid fa-chevron-down text-[8px] text-stone-400 transition-transform duration-200" id="userDropdownChevron"></i>
+                        </button>
+
+                        <!-- Floating Menu Box -->
+                        <div id="userDropdownMenu" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200/90 dark:border-stone-800 shadow-xl p-2 z-50 text-xs text-left animate-fadeIn">
+                            <div class="p-2.5 border-b border-stone-100 dark:border-stone-800 mb-1">
+                                <p class="font-bold text-stone-900 dark:text-white truncate">{{ Auth::user()->name }}</p>
+                                <p class="text-[11px] text-stone-400 truncate">{{ Auth::user()->email }}</p>
+                                <span class="mt-1.5 inline-block text-[10px] font-bold px-2 py-0.5 rounded-md {{ Auth::user()->isAdmin() ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' }}">
+                                    {{ Auth::user()->isAdmin() ? (Auth::user()->isSuperAdmin() ? 'Super Admin' : 'Admin Concierge') : 'Wisatawan' }}
+                                </span>
+                            </div>
+
+                            <a href="{{ route('user.dashboard') }}" class="w-full px-3 py-2 rounded-xl text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2 font-medium transition">
+                                <i class="fa-solid fa-ticket text-stone-400 text-xs"></i>
+                                <span>Tiket & Reservasi Saya</span>
+                            </a>
+
+                            <a href="{{ route('user.dashboard') }}#wishlist" class="w-full px-3 py-2 rounded-xl text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2 font-medium transition">
+                                <i class="fa-regular fa-heart text-stone-400 text-xs"></i>
+                                <span>Destinasi Tersimpan</span>
+                            </a>
+
+                            <a href="{{ route('user.dashboard') }}#profil" class="w-full px-3 py-2 rounded-xl text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-2 font-medium transition">
+                                <i class="fa-regular fa-user text-stone-400 text-xs"></i>
+                                <span>Pengaturan Akun</span>
+                            </a>
+
+                            @if (Auth::user()->isAdmin())
+                                <a href="{{ env('ADMIN_URL', 'http://localhost:8001') }}/dashboard" target="_blank" class="w-full px-3 py-2 rounded-xl text-amber-700 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/50 flex items-center gap-2 font-bold transition">
+                                    <i class="fa-solid fa-shield-halved text-amber-500 text-xs"></i>
+                                    <span>Panel Admin (8001) ↗</span>
+                                </a>
+                            @endif
+
+                            <div class="pt-1 mt-1 border-t border-stone-100 dark:border-stone-800">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="w-full px-3 py-2 rounded-xl text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/50 flex items-center gap-2 font-semibold transition text-left cursor-pointer">
+                                        <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
+                                        <span>Keluar (Logout)</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @endguest
 
                 <!-- CTA Button -->
                 <button onclick="openBookingModal()" class="ml-1 px-4 sm:px-5 py-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold tracking-wide transition-all shadow-sm active:scale-95 flex items-center gap-1.5 group cursor-pointer">
@@ -336,10 +393,40 @@
                 <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full py-3 px-4 rounded-full bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-semibold text-xs shadow-sm active:scale-98 transition-transform">
                     <span data-i18n="navPlanTrip">Rencanakan Trip Sekarang</span>
                 </button>
-                <a href="{{ env('ADMIN_URL', 'http://localhost:8001') }}/login" target="_blank" onclick="toggleMobileMenu()" class="w-full py-2.5 px-4 rounded-full border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 font-semibold text-xs flex items-center justify-center gap-2 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
-                    <i class="fa-solid fa-shield-halved text-xs"></i>
-                    <span>Masuk ke Panel Admin</span>
-                </a>
+                @guest
+                    <a href="{{ route('login') }}" onclick="toggleMobileMenu()" class="w-full py-2.5 px-4 rounded-full border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-200 font-semibold text-xs flex items-center justify-center gap-2 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
+                        <i class="fa-regular fa-user text-xs"></i>
+                        <span>Masuk Akun Wisatawan</span>
+                    </a>
+                @else
+                    <div class="p-3 rounded-2xl bg-stone-100/70 dark:bg-stone-800/70 space-y-2 text-xs text-left">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-7 h-7 rounded-full bg-stone-900 text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                            </span>
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-stone-900 dark:text-white truncate">{{ Auth::user()->name }}</p>
+                                <p class="text-[10px] text-stone-400 truncate">{{ Auth::user()->email }}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-stone-200/60 dark:border-stone-700">
+                            <a href="{{ route('user.dashboard') }}" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-xl bg-white dark:bg-stone-900 text-center font-semibold text-stone-800 dark:text-stone-200 shadow-2xs">
+                                Tiket Saya
+                            </a>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="w-full py-2 px-3 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-center font-semibold text-rose-600 dark:text-rose-300">
+                                    Keluar
+                                </button>
+                            </form>
+                        </div>
+                        @if (Auth::user()->isAdmin())
+                            <a href="{{ env('ADMIN_URL', 'http://localhost:8001') }}/dashboard" target="_blank" class="block w-full py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-center transition">
+                                🛡️ Buka Panel Admin (Port 8001)
+                            </a>
+                        @endif
+                    </div>
+                @endguest
             </div>
         </div>
     </header>
@@ -540,13 +627,22 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label data-i18n="modalBookNameLabel" class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Nama Lengkap</label>
-                        <input type="text" id="bookName" name="customer_name" required placeholder="Nama Anda" class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
+                        <input type="text" id="bookName" name="customer_name" value="{{ Auth::check() ? Auth::user()->name : '' }}" required placeholder="Nama Anda" class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
                     </div>
                     <div>
                         <label data-i18n="modalBookPhoneLabel" class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Nomor WhatsApp</label>
-                        <input type="tel" id="bookPhone" name="customer_phone" required placeholder="08xxxxxxxx" class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
+                        <input type="tel" id="bookPhone" name="customer_phone" value="{{ Auth::check() ? Auth::user()->phone : '' }}" required placeholder="08xxxxxxxx" class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
                     </div>
                 </div>
+
+                @auth
+                    <input type="hidden" name="customer_email" value="{{ Auth::user()->email }}">
+                @else
+                    <div>
+                        <label class="block font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Alamat Email (Untuk Pengiriman E-Tiket)</label>
+                        <input type="email" id="bookEmail" name="customer_email" placeholder="nama@email.com" class="w-full px-3.5 py-2 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 focus:ring-1 focus:ring-stone-900 focus:outline-none">
+                    </div>
+                @endauth
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
@@ -1208,6 +1304,28 @@
                 icon.className = 'fa-solid fa-xmark text-lg';
             }
         }
+
+        function toggleUserDropdown() {
+            const menu = document.getElementById('userDropdownMenu');
+            const chevron = document.getElementById('userDropdownChevron');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                if (chevron) chevron.classList.toggle('rotate-180');
+            }
+        }
+
+        // Close user dropdown if clicked outside
+        document.addEventListener('click', function(e) {
+            const btn = document.getElementById('userDropdownBtn');
+            const menu = document.getElementById('userDropdownMenu');
+            if (menu && !menu.classList.contains('hidden')) {
+                if (!menu.contains(e.target) && !btn?.contains(e.target)) {
+                    menu.classList.add('hidden');
+                    const chevron = document.getElementById('userDropdownChevron');
+                    if (chevron) chevron.classList.remove('rotate-180');
+                }
+            }
+        });
 
         let savedWishlist = new Set(JSON.parse(localStorage.getItem('nw_wishlist') || '[1, 3]'));
 

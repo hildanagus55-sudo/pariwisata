@@ -65,7 +65,7 @@ class BookingController extends Controller
             'item_name' => $itemName,
             'customer_name' => $validated['customer_name'],
             'customer_phone' => $validated['customer_phone'],
-            'customer_email' => $validated['customer_email'] ?? null,
+            'customer_email' => $validated['customer_email'] ?? (auth()->check() ? auth()->user()->email : null),
             'travel_date' => $validated['travel_date'],
             'pax' => $pax,
             'addon_drone' => $addonDrone,
