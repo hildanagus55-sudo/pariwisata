@@ -147,9 +147,44 @@
             background: radial-gradient(ellipse 65% 50% at 30% 65%, rgba(15,23,42,0.8) 0%, rgba(15,23,42,0) 70%),
                         radial-gradient(ellipse 75% 60% at 70% 35%, rgba(20,30,45,0.7) 0%, rgba(20,30,45,0) 70%);
         }
-        .dark .mist-layer-2 {
-            background: radial-gradient(ellipse 80% 55% at 50% 85%, rgba(12,18,28,0.9) 0%, rgba(12,18,28,0) 70%),
-                        radial-gradient(ellipse 55% 45% at 20% 25%, rgba(16,24,36,0.7) 0%, rgba(16,24,36,0) 65%);
+        /* Cinematic Side Cloud & Mist Sweep (Kanan ke Kiri) */
+        .mist-sweep-wrapper {
+            position: absolute;
+            inset: 0;
+            width: 140%;
+            height: 100%;
+            left: -20%;
+            pointer-events-none;
+            transform: translateX(120%);
+            transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.85s ease;
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+        .mist-sweep-in {
+            transform: translateX(0%) !important;
+            opacity: 1 !important;
+        }
+        .mist-sweep-out {
+            transform: translateX(-120%) !important;
+            opacity: 0 !important;
+            transition: transform 0.95s cubic-bezier(0.55, 0, 0.1, 1), opacity 0.85s ease !important;
+        }
+        .mist-leading-edge {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -100px;
+            width: 320px;
+            background: radial-gradient(ellipse 100% 60% at 90% 30%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 70%),
+                        radial-gradient(ellipse 100% 70% at 85% 70%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0) 70%),
+                        radial-gradient(ellipse 80% 50% at 95% 50%, rgba(240,248,245,0.9) 0%, rgba(240,248,245,0) 65%);
+            filter: blur(28px);
+            pointer-events-none;
+        }
+        .dark .mist-leading-edge {
+            background: radial-gradient(ellipse 100% 60% at 90% 30%, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0) 70%),
+                        radial-gradient(ellipse 100% 70% at 85% 70%, rgba(20,30,45,0.92) 0%, rgba(20,30,45,0) 70%),
+                        radial-gradient(ellipse 80% 50% at 95% 50%, rgba(12,18,28,0.9) 0%, rgba(12,18,28,0) 65%);
         }
         /* Mobile Bottom Dock & Touch Optimization */
         .mobile-bottom-dock {

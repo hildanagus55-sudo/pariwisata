@@ -19,11 +19,14 @@
             Browser Anda tidak mendukung tag video latar belakang.
         </video>
 
-        <!-- Cinematic Mist & Fog Transition Curtain (Kabut & Awan Nusantara) -->
-        <div id="heroMistOverlay" class="absolute inset-0 pointer-events-none opacity-0 z-[2] transition-opacity duration-700 ease-in-out overflow-hidden">
-            <div class="absolute inset-0 bg-white/40 dark:bg-stone-950/50 backdrop-blur-md"></div>
-            <div class="mist-layer mist-layer-1"></div>
-            <div class="mist-layer mist-layer-2"></div>
+        <!-- Cinematic Mist & Fog Transition Curtain (Awan & Kabut Menyapu dari Kanan ke Kiri) -->
+        <div id="heroMistOverlay" class="absolute inset-0 pointer-events-none z-[2] overflow-hidden">
+            <div id="heroMistCurtain" class="mist-sweep-wrapper">
+                <div class="absolute inset-0 bg-gradient-to-l from-white/95 via-white/85 to-transparent dark:from-stone-900/95 dark:via-stone-950/85 dark:to-transparent backdrop-blur-md"></div>
+                <div class="mist-layer mist-layer-1"></div>
+                <div class="mist-layer mist-layer-2"></div>
+                <div class="mist-leading-edge"></div>
+            </div>
         </div>
 
         <div class="absolute inset-0 hero-gradient"></div>
@@ -1228,9 +1231,9 @@
             }
         });
 
-        // Playlist otomatis untuk video beranda utama dengan animasi kabut & awan sinematik
+        // Playlist otomatis untuk video beranda utama dengan efek sapuan awan horizontal & paralaks sinematik
         const heroVid = document.getElementById('heroVideo');
-        const heroMist = document.getElementById('heroMistOverlay');
+        const heroMistCurtain = document.getElementById('heroMistCurtain');
         if (heroVid) {
             const heroPlaylist = [
                 "{{ asset('images/231170_medium.mp4') }}",
@@ -1239,43 +1242,64 @@
             let currentVidIdx = 0;
             let isSwitching = false;
 
-            const triggerMistTransition = () => {
+            const triggerSideCloudTransition = () => {
                 if (isSwitching) return;
                 isSwitching = true;
 
-                // 1. Gulungan kabut & awan pegunungan masuk menutupi video
-                if (heroMist) {
-                    heroMist.classList.remove('opacity-0');
-                    heroMist.classList.add('opacity-100');
+                // 1. Video 1 melanjutkan gerakan panning ke samping kiri
+                heroVid.style.transition = 'transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.85s ease';
+                heroVid.style.transform = 'scale(1.08) translateX(-3.5%)';
+
+                // 2. Sapuan awan & kabut berarak masuk dari samping kanan ke kiri
+                if (heroMistCurtain) {
+                    heroMistCurtain.classList.remove('mist-sweep-out');
+                    heroMistCurtain.classList.add('mist-sweep-in');
                 }
 
-                // 2. Ganti video saat kabut sedang tebal
+                // 3. Saat awan menutupi layar (setelah 700ms), muat video ke-2
                 setTimeout(() => {
                     currentVidIdx = (currentVidIdx + 1) % heroPlaylist.length;
                     heroVid.src = heroPlaylist[currentVidIdx];
                     heroVid.load();
+
+                    // Siapkan posisi awal video 2: mulai sedikit ke kanan sebelum zoom forward
+                    heroVid.style.transition = 'none';
+                    heroVid.style.transform = 'scale(1.02) translateX(3%)';
+
                     heroVid.play().then(() => {
-                        // 3. Kabut perlahan menipis & berarak pergi mengungkap pemandangan baru
+                        // 4. Video 2 melakukan gerakan maju memusat (smooth push-in zoom)
                         setTimeout(() => {
-                            if (heroMist) {
-                                heroMist.classList.remove('opacity-100');
-                                heroMist.classList.add('opacity-0');
+                            heroVid.style.transition = 'transform 1.4s cubic-bezier(0.16, 1, 0.3, 1)';
+                            heroVid.style.transform = 'scale(1.05) translateX(0%)';
+
+                            // 5. Awan menyapu keluar terus ke arah kiri mengungkap video ke-2
+                            if (heroMistCurtain) {
+                                heroMistCurtain.classList.remove('mist-sweep-in');
+                                heroMistCurtain.classList.add('mist-sweep-out');
                             }
-                            isSwitching = false;
-                        }, 250);
+
+                            // Selesai transisi, reset status
+                            setTimeout(() => {
+                                if (heroMistCurtain) {
+                                    heroMistCurtain.classList.remove('mist-sweep-out');
+                                }
+                                isSwitching = false;
+                            }, 1000);
+                        }, 80);
                     }).catch(() => {
-                        if (heroMist) {
-                            heroMist.classList.remove('opacity-100');
-                            heroMist.classList.add('opacity-0');
+                        if (heroMistCurtain) {
+                            heroMistCurtain.classList.remove('mist-sweep-in');
+                            heroMistCurtain.classList.add('mist-sweep-out');
                         }
+                        heroVid.style.transform = 'scale(1.05) translateX(0%)';
                         isSwitching = false;
                     });
-                }, 550);
+                }, 700);
             };
 
-            heroVid.addEventListener('ended', triggerMistTransition);
-            // Helper untuk preview langsung dari konsol atau tombol bila diperlukan
-            window.previewMistTransition = triggerMistTransition;
+            heroVid.addEventListener('ended', triggerSideCloudTransition);
+            // Helper untuk preview langsung dari konsol kapan saja: previewMistTransition()
+            window.previewMistTransition = triggerSideCloudTransition;
         }
 
         initBookingOptions();
