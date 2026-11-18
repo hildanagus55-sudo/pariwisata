@@ -16,7 +16,7 @@
             preload="auto"
             class="absolute inset-0 w-full h-full object-cover object-center scale-105 pointer-events-none"
         >
-            <source src="{{ asset('images/13021388_1920_1080_25fps.mp4') }}" type="video/mp4">
+            <source src="{{ asset('images/231170_medium.mp4') }}" type="video/mp4">
             Browser Anda tidak mendukung tag video latar belakang.
         </video>
         <div class="absolute inset-0 hero-gradient"></div>
