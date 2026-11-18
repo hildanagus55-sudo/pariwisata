@@ -419,11 +419,17 @@
             <!-- Left Photo Canvas -->
             <div class="lg:col-span-5 relative">
                 <div class="rounded-3xl overflow-hidden shadow-md border border-stone-200 dark:border-stone-800">
-                    <img 
-                        src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1000&q=80" 
-                        alt="Kehangatan Warga Lokal Indonesia" 
+                    <video 
+                        autoplay 
+                        muted 
+                        loop 
+                        playsinline 
+                        poster="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1000&q=80" 
                         class="w-full h-[420px] object-cover"
                     >
+                        <source src="{{ asset('images/13021388_1920_1080_25fps.mp4') }}" type="video/mp4">
+                        Browser Anda tidak mendukung tag video.
+                    </video>
                     <div class="p-5 bg-white dark:bg-stone-900 border-t border-stone-200/80 dark:border-stone-800">
                         <p data-i18n="storyQuote" class="font-serif italic text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
                             "Pariwisata yang baik bukan sekadar meninggalkan jejak langkah, melainkan membawa pulang rasa hormat pada tanah dan manusianya."
