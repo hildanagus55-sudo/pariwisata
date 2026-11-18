@@ -18,19 +18,14 @@
             class="absolute inset-0 w-full h-full object-cover object-center scale-105 pointer-events-none"
         >
             @if(file_exists(public_path('videos/hero.mp4')))
-                <source src="{{ asset('videos/hero.mp4') }}" type="video/mp4">
+                <source src="{{ asset('videos/hero.mp4') }}?v={{ filemtime(public_path('videos/hero.mp4')) }}" type="video/mp4">
             @endif
             @if(file_exists(public_path('videos/hero.webm')))
-                <source src="{{ asset('videos/hero.webm') }}" type="video/webm">
+                <source src="{{ asset('videos/hero.webm') }}?v={{ filemtime(public_path('videos/hero.webm')) }}" type="video/webm">
             @endif
             <source src="https://assets.mixkit.co/videos/51791/51791-720.mp4" type="video/mp4">
             <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/8/82/Bromo_Java_Indonesia_20220820_055918.webm/Bromo_Java_Indonesia_20220820_055918.webm.1080p.vp9.webm" type="video/webm">
-            <img 
-                src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2000&q=85" 
-                onerror="this.src='https://placehold.co/1920x1080/0e4437/ffffff?text=Pesona+Alam+Indonesia'"
-                alt="Pemandangan Alam Kepulauan Indonesia" 
-                class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
-            >
+            Browser Anda tidak mendukung tag video latar belakang.
         </video>
         <div class="absolute inset-0 hero-gradient"></div>
 
