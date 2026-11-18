@@ -1229,27 +1229,6 @@
             }
         });
 
-        // Pastikan video hero berputar secara otomatis
-        const heroVid = document.getElementById('heroVideo');
-        if (heroVid) {
-            heroVid.muted = true;
-            const playPromise = heroVid.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                    // Autoplay with sound or battery saver may defer, play on first user interaction
-                    const startPlay = () => {
-                        heroVid.play().catch(() => {});
-                        window.removeEventListener('click', startPlay);
-                        window.removeEventListener('touchstart', startPlay);
-                        window.removeEventListener('scroll', startPlay);
-                    };
-                    window.addEventListener('click', startPlay, { once: true });
-                    window.addEventListener('touchstart', startPlay, { once: true });
-                    window.addEventListener('scroll', startPlay, { once: true });
-                });
-            }
-        }
-
         initBookingOptions();
 
         const searchDate = document.getElementById('searchDate');
